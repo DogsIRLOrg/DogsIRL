@@ -19,7 +19,7 @@ namespace DogsIRL
             InitializeComponent();
         }
 
-        async void SignInButtonOnClicked(System.Object sender, System.EventArgs e)
+        async void OnButtonClicked(System.Object sender, System.EventArgs e)
         {
 
             await Navigation.PushAsync(new ProfileView());
@@ -27,7 +27,7 @@ namespace DogsIRL
 
         async void RegisterButtonOnClicked(System.Object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new Register());
+            await Navigation.PushAsync(new Page());
         }
     }
 }
