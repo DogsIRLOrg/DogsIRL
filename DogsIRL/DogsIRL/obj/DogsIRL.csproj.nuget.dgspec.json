@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj": {}
+    "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj": {}
   },
   "projects": {
-    "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj": {
+    "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj",
+        "projectUniqueName": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj",
         "projectName": "DogsIRL",
-        "projectPath": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj",
-        "packagesPath": "/Users/carringtonbeard/.nuget/packages/",
-        "outputPath": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/obj/",
+        "projectPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj",
+        "packagesPath": "/Users/teddydamian/.nuget/packages/",
+        "outputPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/carringtonbeard/.config/NuGet/NuGet.Config"
+          "/Users/teddydamian/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"

@@ -1934,20 +1934,20 @@
     ]
   },
   "packageFolders": {
-    "/Users/carringtonbeard/.nuget/packages/": {}
+    "/Users/teddydamian/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj",
+      "projectUniqueName": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj",
       "projectName": "DogsIRL.Android",
-      "projectPath": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj",
-      "packagesPath": "/Users/carringtonbeard/.nuget/packages/",
-      "outputPath": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/obj/",
+      "projectPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj",
+      "packagesPath": "/Users/teddydamian/.nuget/packages/",
+      "outputPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL.Android/obj/",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "/Users/carringtonbeard/.config/NuGet/NuGet.Config"
+        "/Users/teddydamian/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "monoandroid90"
@@ -1958,8 +1958,8 @@
       "frameworks": {
         "monoandroid90": {
           "projectReferences": {
-            "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj": {
-              "projectPath": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj"
+            "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj": {
+              "projectPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj"
             }
           }
         }

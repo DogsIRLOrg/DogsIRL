@@ -17,5 +17,12 @@ namespace DogsIRL
         {
             InitializeComponent();
         }
+
+        void SignIn(System.Object sender, System.EventArgs e)
+        {
+        }
+        void Register(System.Object sender, System.EventArgs e)
+        {
+        }
     }
 }
