@@ -5,9 +5,9 @@
         <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Papio_anubis_%28Serengeti%2C_2009%29.jpg/200px-Papio_anubis_%28Serengeti%2C_2009%29.jpg"
                HeightRequest="300" />
         <Label Text="Username" FontSize="20" HorizontalOptions="Center" />
-        <Entry Text="Enter Username" PlaceholderColor="Gray" FontSize="15" />
+        <Entry Text="Enter Username" x:Name = "NameEntry" PlaceholderColor="Gray" FontSize="15" />
         <Label Text="Password" FontSize="20" HorizontalOptions="Center"/>
-        <Entry PlaceholderColor="Gray" IsPassword="true" FontSize="15" />
+        <Entry PlaceholderColor="Gray" x:Name = "Password" IsPassword="true" FontSize="15" />
         <Button Text="Sign In"
                 Clicked="OnButtonClicked" />
 

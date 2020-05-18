@@ -1,7 +1,26 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.ProfileView">
     <ContentPage.Content>
-                  <Label Text="HelloWorld" FontSize="20" HorizontalOptions="Center" />
-
+        <StackLayout>
+            <ListView x:Name="petCardsList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Name}"></Label>
+                                <Label Text="{Binding Sex}"></Label>
+                                <Label Text="{Binding Owner}"></Label>
+                                <Label Text="{Binding GoodDog}"></Label>
+                                <Label Text="{Binding Floofiness}"></Label>
+                                <Label Text="{Binding Energy}"></Label>
+                                <Label Text="{Binding Snuggles}"></Label>
+                                <Label Text="{Binding Appetite}"></Label>
+                                <Label Text="{Binding Bravery}"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

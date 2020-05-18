@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj": {}
+    "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj": {}
   },
   "projects": {
-    "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj": {
+    "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj",
+        "projectUniqueName": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj",
         "projectName": "DogsIRL.Android",
-        "projectPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj",
-        "packagesPath": "/Users/teddydamian/.nuget/packages/",
-        "outputPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL.Android/obj/",
+        "projectPath": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/DogsIRL.Android.csproj",
+        "packagesPath": "/Users/carringtonbeard/.nuget/packages/",
+        "outputPath": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/obj/",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [
-          "/Users/teddydamian/.config/NuGet/NuGet.Config"
+          "/Users/carringtonbeard/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "monoandroid90"
@@ -26,8 +26,8 @@
         "frameworks": {
           "monoandroid90": {
             "projectReferences": {
-              "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj": {
-                "projectPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj"
+              "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj": {
+                "projectPath": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj"
               }
             }
           }
@@ -36,6 +36,18 @@
       "frameworks": {
         "monoandroid90": {
           "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "System.Runtime.Serialization.Json": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "Xam.Plugin.Connectivity": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.3.1, )"
@@ -48,17 +60,17 @@
         }
       }
     },
-    "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj": {
+    "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj",
+        "projectUniqueName": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj",
         "projectName": "DogsIRL",
-        "projectPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj",
-        "packagesPath": "/Users/teddydamian/.nuget/packages/",
-        "outputPath": "/Users/teddydamian/Desktop/codefellow/code401ASP.NET/DogsIRL/DogsIRL/DogsIRL/obj/",
+        "projectPath": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/DogsIRL.csproj",
+        "packagesPath": "/Users/carringtonbeard/.nuget/packages/",
+        "outputPath": "/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/teddydamian/.config/NuGet/NuGet.Config"
+          "/Users/carringtonbeard/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -86,6 +98,18 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "System.Runtime.Serialization.Json": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "Xam.Plugin.Connectivity": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.3.1, )"
@@ -105,7 +129,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.202/RuntimeIdentifierGraph.json"
         }
       }
     }
