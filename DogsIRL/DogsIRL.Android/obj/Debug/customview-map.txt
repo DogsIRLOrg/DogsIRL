@@ -21,6 +21,7 @@ background;obj/Debug/res/mipmap-anydpi-v26/icon.xml
 background;obj/Debug/res/mipmap-anydpi-v26/icon_round.xml
 cache-path;/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/obj/Debug/lp/39/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
 color;obj/Debug/res/values/colors.xml
+crc64720bb2db43a66fe9.FormsViewPager;/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/obj/Debug/lp/40/jl/res/layout/rootlayout.xml
 external-cache-path;/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/obj/Debug/lp/39/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
 external-path;/Users/carringtonbeard/codefellows/401/DogsIRL/DogsIRL/DogsIRL.Android/obj/Debug/lp/39/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
 foreground;obj/Debug/res/mipmap-anydpi-v26/icon.xml

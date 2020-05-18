@@ -1,28 +1,22 @@
 ﻿<Properties StartupConfiguration="{3F8818B9-4E27-4C68-844C-26BEA40B8DD9}|Default">
   <MonoDevelop.Ide.ItemProperties.DogsIRL.Android PreferredExecutionTarget="Android.testdevice" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="DogsIRL/ProfileView.xaml">
     <Files>
-      <File FileName="DogsIRL/MainPage.xaml.cs" Line="48" Column="59" />
-      <File FileName="DogsIRL/MainPage.xaml" Line="12" Column="45" />
+      <File FileName="DogsIRL/MainPage.xaml.cs" Line="52" Column="1" />
+      <File FileName="DogsIRL/MainPage.xaml" />
       <File FileName="DogsIRL/CreatePetcard.xaml" />
-      <File FileName="DogsIRL/CreatePetcard.xaml.cs" />
       <File FileName="DogsIRL/ProfileView.xaml" Line="5" Column="32" />
-      <File FileName="DogsIRL/ProfileView.xaml.cs" Line="29" Column="6" />
-      <File FileName="DogsIRL/App.xaml.cs" Line="13" Column="58" />
-      <File FileName="DogsIRL/Models/UserSignIn.cs" Line="10" Column="1" />
-      <File FileName="DogsIRL/RegisterPage.xaml" Line="4" Column="23" />
+      <File FileName="DogsIRL/ProfileView.xaml.cs" Line="31" Column="1" />
+      <File FileName="DogsIRL/App.xaml.cs" />
       <File FileName="DogsIRL/RegisterPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="DogsIRL/Models/PetCard.cs" Line="17" Column="42" />
+      <File FileName="DogsIRL/RegisterPage.xaml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DogsIRL" expanded="True">
             <Node name="DogsIRL" expanded="True">
-              <Node name="Models" expanded="True" />
-              <Node name="RegisterPage.xaml" expanded="True">
-                <Node name="MainPage.xaml.cs" selected="True" />
-              </Node>
+              <Node name="ProfileView.xaml" selected="True" />
             </Node>
           </Node>
         </State>
@@ -35,5 +29,4 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DogsIRL.iOS FirstBuild="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget." />
 </Properties>
