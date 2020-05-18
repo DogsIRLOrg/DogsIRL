@@ -2,6 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="DogsIRL.MainPage">
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+        <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Papio_anubis_%28Serengeti%2C_2009%29.jpg/200px-Papio_anubis_%28Serengeti%2C_2009%29.jpg"
+               HeightRequest="300" />
+        <Label Text="Username" FontSize="20" HorizontalOptions="Center" />
+        <Entry Text="Enter Username" PlaceholderColor="Gray" FontSize="15" />
+        <Label Text="Password" FontSize="20" HorizontalOptions="Center"/>
+        <Entry PlaceholderColor="Gray" IsPassword="true" FontSize="15" />
+        <Button Text="Sign In"
+                Clicked="OnButtonClicked" />
+
+
+        <Label Text="-----Or-----" FontSize="20"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="EndAndExpand" />
+
+        <Button Text="Create New Account"
+                HorizontalOptions="FillAndExpand"
+                Clicked="RegisterButtonOnClicked"  />
     </StackLayout>
 </ContentPage>
