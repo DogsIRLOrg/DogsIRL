@@ -9,7 +9,7 @@
         <Label Text="Password" FontSize="20" HorizontalOptions="Center"/>
         <Entry PlaceholderColor="Gray" IsPassword="true" FontSize="15" />
         <Button Text="Sign In"
-                Clicked="SignInButtonOnClicked" />
+                Clicked="OnButtonClicked" />
 
 
         <Label Text="-----Or-----" FontSize="20"
