@@ -3,7 +3,7 @@
     <ContentPage.Content>
         <StackLayout>
          <Label Text="Username" FontSize="20" HorizontalOptions="Center" />
-        <Entry Text="Enter Username" x:Name = "username" PlaceholderColor="Gray" FontSize="15" />
+        <Entry x:Name = "username" PlaceholderColor="Gray" FontSize="15" />
         <Label Text="Email" FontSize="20" HorizontalOptions="Center"/>
         <Entry PlaceholderColor="Gray" x:Name = "email" IsPassword="true" FontSize="15" />
             <Label Text="Password" FontSize="20" HorizontalOptions="Center"/>
