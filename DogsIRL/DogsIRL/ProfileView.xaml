@@ -1,7 +1,69 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.ProfileView">
-    <ContentPage.Content>
-                  <Label Text="HelloWorld" FontSize="20" HorizontalOptions="Center" />
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"   
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
+             xmlns:local="clr-namespace:DogsIRL"  
+             x:Class="DogsIRL.ProfileView">
+        <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>
 
+    <ContentPage.Content>
+            <StackLayout>
+          <Image Source="DogPark.png" Opacity="0.5"
+                 RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+<CollectionView x:Name="petCardsList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        
+                            <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Name : " Grid.Column="0" Grid.Row="0"></Label>
+                                <Label TextColor="Black" Text="{Binding Name}" Grid.Column="1" Grid.Row="0"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Sex : " Grid.Column="0" Grid.Row="1"></Label>
+                                <Label TextColor="Black" Text="{Binding Sex}" Grid.Column="1" Grid.Row="1"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Owner : " Grid.Column="0" Grid.Row="2"></Label>
+                                <Label TextColor="Black" Text="{Binding Owner}" Grid.Column="1" Grid.Row="2"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Good Dog Rating : " Grid.Column="0" Grid.Row="3"></Label>
+                                <Label TextColor="Black" Text="{Binding GoodDog}" Grid.Column="1" Grid.Row="3"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Floofiness Rating : " Grid.Column="0" Grid.Row="4"></Label>
+                                <Label TextColor="Black" Text="{Binding Floofiness}" Grid.Column="1" Grid.Row="4"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Energy Rating : " Grid.Column="0" Grid.Row="5"></Label>
+                                <Label TextColor="Black" Text="{Binding Energy}" Grid.Column="1" Grid.Row="5"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Snuggles Rating : " Grid.Column="0" Grid.Row="6"></Label>
+                                <Label TextColor="Black" Text="{Binding Snuggles}" Grid.Column="1" Grid.Row="6"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Appetite Rating : " Grid.Column="0" Grid.Row="7"></Label>
+                                <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="7"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Bravery Rating : " Grid.Column="0" Grid.Row="8"></Label>
+                                <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="8"></Label>
+                            </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Go To Park"
+                HorizontalOptions="FillAndExpand"
+                Clicked="ParkButtonClicked" />
+                </StackLayout>
+
+       
     </ContentPage.Content>
 </ContentPage>
