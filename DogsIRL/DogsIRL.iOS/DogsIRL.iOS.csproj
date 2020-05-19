@@ -134,6 +134,9 @@
     <PackageReference Include="Xamd.Plugins.Forms.ImageCarousel">
       <Version>1.0.2</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.DataAnnotations">
+      <Version>2.2.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -141,5 +144,8 @@
       <Project>{B1D1CC50-CFB8-4D15-A0C1-7B5ECA490E96}</Project>
       <Name>DogsIRL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DogPark.png" />
   </ItemGroup>
 </Project>

@@ -19,12 +19,6 @@ namespace DogsIRL
         {
             InitializeComponent();
             GetPets();
-            imageSources.Add("XamarinmonkeyLogo.png");
-            imageSources.Add("github.png");
-            imageSources.Add("microsoft.png");
-
-
-            imgSlider.Images = imageSources;
         }
 
         public async void GetPets()
@@ -33,6 +27,11 @@ namespace DogsIRL
             var response = await client.GetStringAsync("https://dogsirl-api.azurewebsites.net/api/petcards");
             var pets = JsonConvert.DeserializeObject<List<PetCard>>(response);
             petCardsList.ItemsSource = pets;
+        }
+
+        async void ParkButtonClicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new ParkPage());
         }
     }
 }

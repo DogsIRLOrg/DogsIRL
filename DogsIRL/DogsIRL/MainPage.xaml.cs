@@ -45,7 +45,7 @@ namespace DogsIRL
 
         async void RegisterButtonOnClicked(System.Object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new ProfileView());
+            await Navigation.PushAsync(new RegisterPage());
         }
     }
 }
