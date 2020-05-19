@@ -16,23 +16,8 @@ namespace DogsIRL
             InitializeComponent();
         }
 
-        //    public async Task RegisterUserAsync(
-        //string email, string password, string confirmPassword, string username)
-        //    {
-        //        var model = new RegisterInput
-        //        {
-        //            Username = username,
-        //            Email = email,
-        //            Password = password,
-        //            ConfirmPassword = confirmPassword
-        //        };
-        //        var json = JsonConvert.SerializeObject(model);
-        //        HttpContent httpContent = new StringContent(json);
-        //        httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-        //        var client = new HttpClient();
-        //        var response = await client.PostAsync(
-        //            "http://localhost:49563/api/Account/Register", httpContent);
-        //    }
+       // There used to be zombie code here
+
 
         async void OnButtonClicked(System.Object sender, System.EventArgs e)
         {
