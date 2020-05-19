@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamd.ImageCarousel.Forms.Plugin.iOS;
 
 namespace DogsIRL.iOS
 {
@@ -24,6 +25,7 @@ namespace DogsIRL.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            ImageCarouselRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

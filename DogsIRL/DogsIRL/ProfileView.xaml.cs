@@ -6,17 +6,25 @@ using Newtonsoft.Json;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using Plugin.Connectivity;
+using Xamd.ImageCarousel.Forms.Plugin.Abstractions;
 
 namespace DogsIRL
 {
     public partial class ProfileView : ContentPage
     {
         //HttpClient client = new HttpClient();
+        ObservableCollection<FileImageSource> imageSources = new ObservableCollection<FileImageSource>();
 
         public ProfileView()
         {
             InitializeComponent();
             GetPets();
+            imageSources.Add("XamarinmonkeyLogo.png");
+            imageSources.Add("github.png");
+            imageSources.Add("microsoft.png");
+
+
+            imgSlider.Images = imageSources;
         }
 
         public async void GetPets()

@@ -1,26 +1,67 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.ProfileView">
+xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions"  
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"   
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
+             xmlns:local="clr-namespace:DogsIRL"  
+             xmlns:controls="clr-namespace:Xamd.ImageCarousel.Forms.Plugin.Abstractions;assembly=Xamd.ImageCarousel.Forms.Plugin.Abstractions"  
+             x:Class="DogsIRL.ProfileView">
     <ContentPage.Content>
-        <StackLayout>
-            <ListView x:Name="petCardsList">
-                <ListView.ItemTemplate>
+        <RelativeLayout>
+          <Image Source="https://www.locinox.com/content/files/images/concept/concept-10.png" Opacity="0.5"/>
+<CollectionView x:Name="petCardsList">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding Name}"></Label>
-                                <Label Text="{Binding Sex}"></Label>
-                                <Label Text="{Binding Owner}"></Label>
-                                <Label Text="{Binding GoodDog}"></Label>
-                                <Label Text="{Binding Floofiness}"></Label>
-                                <Label Text="{Binding Energy}"></Label>
-                                <Label Text="{Binding Snuggles}"></Label>
-                                <Label Text="{Binding Appetite}"></Label>
-                                <Label Text="{Binding Bravery}"></Label>
-                            </StackLayout>
-                        </ViewCell>
+                        
+                            <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Name : " Grid.Column="0" Grid.Row="0"></Label>
+                                <Label TextColor="Black" Text="{Binding Name}" Grid.Column="1" Grid.Row="0"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Sex : " Grid.Column="0" Grid.Row="1"></Label>
+                                <Label TextColor="Black" Text="{Binding Sex}" Grid.Column="1" Grid.Row="1"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Owner : " Grid.Column="0" Grid.Row="2"></Label>
+                                <Label TextColor="Black" Text="{Binding Owner}" Grid.Column="1" Grid.Row="2"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Good Dog Rating : " Grid.Column="0" Grid.Row="3"></Label>
+                                <Label TextColor="Black" Text="{Binding GoodDog}" Grid.Column="1" Grid.Row="3"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Floofiness Rating : " Grid.Column="0" Grid.Row="4"></Label>
+                                <Label TextColor="Black" Text="{Binding Floofiness}" Grid.Column="1" Grid.Row="4"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Energy Rating : " Grid.Column="0" Grid.Row="5"></Label>
+                                <Label TextColor="Black" Text="{Binding Energy}" Grid.Column="1" Grid.Row="5"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Snuggles Rating : " Grid.Column="0" Grid.Row="6"></Label>
+                                <Label TextColor="Black" Text="{Binding Snuggles}" Grid.Column="1" Grid.Row="6"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Appetite Rating : " Grid.Column="0" Grid.Row="7"></Label>
+                                <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="7"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Bravery Rating : " Grid.Column="0" Grid.Row="8"></Label>
+                                <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="8"></Label>
+                            </Grid>
+                        
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        <StackLayout>
+             <StackLayout HorizontalOptions="Center" VerticalOptions="Start">  
+            <Image Margin="0,50,0,0" x:Name="imgBanner" Source="banner.png" ></Image>  
+        </StackLayout>  
+        <StackLayout HorizontalOptions="Center" VerticalOptions="End">  
+            <controls:ImageCarousel x:Name="imgSlider" HeightRequest="300" WidthRequest="300" />  
+        </StackLayout>  
         </StackLayout>
+        </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
