@@ -35,12 +35,16 @@ namespace DogsIRL
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var client = new HttpClient();
             var response = await client.PostAsync(
-                "https://localhost:5001/api/accounts/login", content);
-            if(response.IsSuccessStatusCode)
+                "https://dogsirl-api.azurewebsites.net/api/account/login", content);
+            if(response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-            await Navigation.PushAsync(new ProfileView());
+                await Navigation.PushAsync(new ProfileView());
             }
-            await DisplayAlert("Failed Login Attempt", "Something has gone horribly wrong. Its probably your fault", "Try Again");
+            else
+            {
+                await DisplayAlert("Failed Login Attempt", "Something has gone horribly wrong. Its probably your fault", "Try Again");
+
+            }
         }
 
         async void RegisterButtonOnClicked(System.Object sender, System.EventArgs e)
