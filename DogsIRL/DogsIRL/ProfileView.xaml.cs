@@ -33,5 +33,10 @@ namespace DogsIRL
         {
             await Navigation.PushAsync(new ParkPage());
         }
+        
+            async void PetCardButtonClicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new CreatePetcard());
+        }
     }
 }

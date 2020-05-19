@@ -62,6 +62,9 @@
             <Button Text="Go To Park"
                 HorizontalOptions="FillAndExpand"
                 Clicked="ParkButtonClicked" />
+                <Button Text="Create a PetCard"
+                HorizontalOptions="FillAndExpand"
+                Clicked="PetCardButtonClicked" />
                 </StackLayout>
 
        
