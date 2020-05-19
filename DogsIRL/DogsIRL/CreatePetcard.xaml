@@ -1,7 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.CreatePetcard">
     <ContentPage.Content>
-                  <Label Text="HelloWorld" FontSize="20" HorizontalOptions="Center" />
+        <ScrollView>
+                  <StackLayout>
 
+         <Label Text="Pet Name" FontSize="20" HorizontalOptions="Center" />
+        <Entry x:Name = "petname" PlaceholderColor="Gray" FontSize="15" />
+
+        <Label Text="Sex" FontSize="20" HorizontalOptions="Center"/>
+        <Entry PlaceholderColor="Gray" x:Name = "sex" FontSize="15" />
+
+            <Label Text="Owner" FontSize="20" HorizontalOptions="Center"/>
+        <Entry PlaceholderColor="Gray" x:Name = "owner" FontSize="15" />
+
+         <Label Text="Age in Years" FontSize="20" HorizontalOptions="Center"/>
+        <Entry PlaceholderColor="Gray" x:Name = "ageyears" FontSize="15" />
+
+         <Label Text="Good Dog Rating" FontSize="20" HorizontalOptions="Center"/>
+        <Slider Value="5" Maximum="10" Minimum="1" x:Name="gooddog"></Slider>
+
+        <Label Text="Floofiness Rating" FontSize="20" HorizontalOptions="Center"/>
+        <Slider Value="5" Maximum="10" Minimum="1" x:Name="floofiness"></Slider>
+
+        <Label Text="Energy Rating" FontSize="20" HorizontalOptions="Center"/>
+        <Slider Value="5" Maximum="10" Minimum="1" x:Name="energy"></Slider>
+
+        <Label Text="Snuggles Rating" FontSize="20" HorizontalOptions="Center"/>
+        <Slider Value="5" Maximum="10" Minimum="1" x:Name="snuggles"></Slider>
+
+        <Label Text="Appetite Rating" FontSize="20" HorizontalOptions="Center"/>
+        <Slider Value="5" Maximum="10" Minimum="1" x:Name="appetite"></Slider>
+
+        <Label Text="Bravery Rating" FontSize="20" HorizontalOptions="Center"/>
+        <Slider Value="5" Maximum="10" Minimum="1" x:Name="bravery"></Slider>
+
+        <Button Text="Create Pet Card"
+                Clicked="OnButtonClicked" />
+            </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+
