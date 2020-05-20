@@ -50,17 +50,17 @@ namespace DogsIRL
             await Navigation.PushAsync(new CreatePetcard());
         }
 
-        public async void LogoutClicked()
-        {
-            var json = JsonConvert.SerializeObject(App.Username);
-            HttpContent httpContent = new StringContent(json);
-            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var client = new HttpClient();
-            var response = await client.PostAsync(
-                "https://dogsirl-api.azurewebsites.net/api/account/logout", httpContent);
-            App.Username = null;
-            App.CurrentDog = null;
-            await Navigation.PushAsync(new MainPage());
-        }
+        //public async void LogoutClicked()
+        //{
+        //    var json = JsonConvert.SerializeObject(App.Username);
+        //    HttpContent httpContent = new StringContent(json);
+        //    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        //    var client = new HttpClient();
+        //    var response = await client.PostAsync(
+        //        "https://dogsirl-api.azurewebsites.net/api/account/logout", httpContent);
+        //    App.Username = null;
+        //    App.CurrentDog = null;
+        //    await Navigation.PushAsync(new MainPage());
+        //}
     }
 }

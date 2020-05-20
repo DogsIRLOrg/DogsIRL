@@ -11,14 +11,20 @@
                   "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                 RelativeLayout.HeightConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
-            <Label x:Name="LineOne" HorizontalOptions="End" Padding="10" FontSize="Large"></Label>
-            <Label x:Name="LineTwo" HorizontalOptions="Start" Padding="10" FontSize="Large">blah blah blah</Label>
-            <Label x:Name="LineThree" HorizontalOptions="End" Padding="10" FontSize="Large">big ol doinks</Label>
-            <Label x:Name="LineFour" HorizontalOptions="Start" Padding="10" FontSize="Large">jrjrwnfgi</Label>
-            <Label x:Name="LineFive" HorizontalOptions="End" Padding="10" FontSize="Large">  burn it </Label>
+            <Label x:Name="LineOne" HorizontalOptions="End" Padding="10" FontSize="Medium"></Label>
+            <Label x:Name="LineTwo" HorizontalOptions="Start" Padding="10" FontSize="Medium"></Label>
+            <Label x:Name="LineThree" HorizontalOptions="End" Padding="10" FontSize="Medium"></Label>
+            <Label x:Name="LineFour" HorizontalOptions="Start" Padding="10" FontSize="Medium"></Label>
+            <Label x:Name="LineFive" HorizontalOptions="End" Padding="10" FontSize="Medium"></Label>
             <StackLayout Orientation="Horizontal">
-                <Label x:Name="CurrentDogName"></Label>
-                <Label x:Name="OtherDogName"></Label>
+
+                <StackLayout Grid.Row="1" Orientation="Horizontal">
+                     <Label x:Name="CurrentDogName" Padding="15,0,0,0"/>
+                     <Label x:Name="OtherDogName" Padding="290,0,0,0"/>
+                </StackLayout>
+
+                <!--<Label x:Name="CurrentDogName" HorizontalOptions="Start"></Label>
+                <Label x:Name="OtherDogName" HorizontalOptions="End"></Label>-->
                 <!--<Image Source="{Binding Image}"/>
                 <Image Source="{Binding Image}"/>-->
             </StackLayout>
