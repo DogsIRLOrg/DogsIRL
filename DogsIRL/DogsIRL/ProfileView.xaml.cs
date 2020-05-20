@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using Plugin.Connectivity;
 using Xamd.ImageCarousel.Forms.Plugin.Abstractions;
+using System.Net.Http.Headers;
 
 namespace DogsIRL
 {
@@ -47,6 +48,19 @@ namespace DogsIRL
             async void PetCardButtonClicked(System.Object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new CreatePetcard());
+        }
+
+        public async void LogoutClicked()
+        {
+            var json = JsonConvert.SerializeObject(App.Username);
+            HttpContent httpContent = new StringContent(json);
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var client = new HttpClient();
+            var response = await client.PostAsync(
+                "https://dogsirl-api.azurewebsites.net/api/account/logout", httpContent);
+            App.Username = null;
+            App.CurrentDog = null;
+            await Navigation.PushAsync(new MainPage());
         }
     }
 }
