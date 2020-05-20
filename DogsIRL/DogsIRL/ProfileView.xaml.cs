@@ -25,7 +25,7 @@ namespace DogsIRL
         public async void GetPets()
         {
             var client = new HttpClient();
-            var response = await client.GetStringAsync($"https://dogsirl-api.azurewebsites.net/api/petcards/user/{App.Username}");
+            var response = await client.GetStringAsync($"{App.ApiUrl}/petcards/user/{App.Username}");
             PetList = JsonConvert.DeserializeObject<List<PetCard>>(response);
             petCardsList.ItemsSource = PetList;
 

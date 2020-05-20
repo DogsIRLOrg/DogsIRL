@@ -8,7 +8,7 @@ namespace DogsIRL
 {
     public partial class App : Application
     {
-        //public static string FolderPath;
+        public static string ApiUrl = "https://dogsirl-api.azurewebsites.net/api";
         public static string Username;
         public static PetCard CurrentDog;
 
@@ -16,7 +16,6 @@ namespace DogsIRL
         {
             Device.SetFlags(new string[] { "RadioButton_Experimental" });
             InitializeComponent();
-            //FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
             MainPage = new NavigationPage(new MainPage());
         }
 
