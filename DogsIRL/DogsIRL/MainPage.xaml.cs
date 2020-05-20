@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -30,6 +31,8 @@ namespace DogsIRL
                 UserName = NameEntry.Text,
                 Password = Password.Text,
             };
+
+            
             var json = JsonConvert.SerializeObject(signInUser);
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -38,6 +41,7 @@ namespace DogsIRL
                 "https://dogsirl-api.azurewebsites.net/api/account/login", content);
             if(response.StatusCode == System.Net.HttpStatusCode.OK)
             {
+                App.Username = signInUser.UserName;
                 await Navigation.PushAsync(new ProfileView());
             }
             else

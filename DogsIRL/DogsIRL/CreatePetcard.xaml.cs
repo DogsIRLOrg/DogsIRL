@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -12,25 +13,26 @@ namespace DogsIRL
     {
         public CreatePetcard()
         {
+
             InitializeComponent();
             
         }
 
         async void OnButtonClicked(System.Object sender, System.EventArgs e)
         {
-            
-                var model = new PetCard
-                {
-                    Name = petname.Text,
-                    Owner = owner.Text,
-                    Sex = sex.Text,
-                    AgeYears = int.Parse(ageyears.Text),
-                    GoodDog = (sbyte)gooddog.Value,
-                    Floofiness = (sbyte)floofiness.Value,
-                    Energy = (sbyte)energy.Value,
-                    Snuggles = (sbyte)snuggles.Value,
-                    Appetite = (sbyte)appetite.Value,
-                    Bravery = (sbyte)bravery.Value
+
+            var model = new PetCard
+            {
+                Name = petname.Text,
+                Owner = App.Username,
+                Sex = sex.SelectedIndex == 0 ? "Male" : "Female",
+                AgeYears = int.Parse(ageyears.Text),
+                GoodDog = (sbyte)gooddog.Value,
+                Floofiness = (sbyte)floofiness.Value,
+                Energy = (sbyte)energy.Value,
+                Snuggles = (sbyte)snuggles.Value,
+                Appetite = (sbyte)appetite.Value,
+                Bravery = (sbyte)bravery.Value
                     
                 };
                 var json = JsonConvert.SerializeObject(model);
@@ -39,6 +41,7 @@ namespace DogsIRL
                 var client = new HttpClient();
                 var response = await client.PostAsync(
                     "https://dogsirl-api.azurewebsites.net/api/petcards", httpContent);
+                App.CurrentDog = model;
                 await Navigation.PushAsync(new ProfileView());
            
         }

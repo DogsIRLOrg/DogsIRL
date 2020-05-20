@@ -9,15 +9,14 @@
 
     <ContentPage.Content>
             <StackLayout>
-          <Image Source="DogPark.png" Opacity="0.5"
+          <!--<Image Source="DogPark.png" Opacity="0.5"
                  RelativeLayout.WidthConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                 RelativeLayout.HeightConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
-<CollectionView x:Name="petCardsList">
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>-->
+<CollectionView ItemsLayout="HorizontalList" x:Name="petCardsList">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        
                             <Grid RelativeLayout.WidthConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint=
@@ -62,11 +61,11 @@
             <Button Text="Go To Park"
                 HorizontalOptions="FillAndExpand"
                 Clicked="ParkButtonClicked" />
-                <Button Text="Create a PetCard"
+  
+             <Button Text="+ Add new Pet"
                 HorizontalOptions="FillAndExpand"
                 Clicked="PetCardButtonClicked" />
                 </StackLayout>
-
        
     </ContentPage.Content>
 </ContentPage>

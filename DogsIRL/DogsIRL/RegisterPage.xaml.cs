@@ -36,6 +36,7 @@ namespace DogsIRL
                 var client = new HttpClient();
                 var response = await client.PostAsync(
                     "https://dogsirl-api.azurewebsites.net/api/account/register", httpContent);
+                App.Username = model.Username;
                 await Navigation.PushAsync(new ProfileView());
             }
         }
