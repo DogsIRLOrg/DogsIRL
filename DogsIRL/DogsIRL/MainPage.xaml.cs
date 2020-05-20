@@ -38,7 +38,7 @@ namespace DogsIRL
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var client = new HttpClient();
             var response = await client.PostAsync(
-                "https://dogsirl-api.azurewebsites.net/api/account/login", content);
+                $"{App.ApiUrl}/account/login", content);
             if(response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 App.Username = signInUser.UserName;

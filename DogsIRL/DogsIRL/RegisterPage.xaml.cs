@@ -16,8 +16,6 @@ namespace DogsIRL
             InitializeComponent();
         }
 
-       // There used to be zombie code here
-
 
         async void OnButtonClicked(System.Object sender, System.EventArgs e)
         {
@@ -35,7 +33,11 @@ namespace DogsIRL
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 var client = new HttpClient();
                 var response = await client.PostAsync(
-                    "https://dogsirl-api.azurewebsites.net/api/account/register", httpContent);
+                    $"{App.ApiUrl}/account/register", httpContent);
+                if (!response.IsSuccessStatusCode)
+                {
+                    await DisplayAlert("Registration failed", "Oh no! We weren't able to register. Make sure your username, email, and password are valid, or try again later.", "Return");
+                }
                 App.Username = model.Username;
                 await Navigation.PushAsync(new ProfileView());
             }
