@@ -14,6 +14,7 @@ namespace DogsIRL
     {
         //HttpClient client = new HttpClient();
         ObservableCollection<FileImageSource> imageSources = new ObservableCollection<FileImageSource>();
+        private List<PetCard> PetList { get; set; }
 
         public ProfileView()
         {
@@ -24,9 +25,18 @@ namespace DogsIRL
         public async void GetPets()
         {
             var client = new HttpClient();
-            var response = await client.GetStringAsync("https://dogsirl-api.azurewebsites.net/api/petcards");
-            var pets = JsonConvert.DeserializeObject<List<PetCard>>(response);
-            petCardsList.ItemsSource = pets;
+            var response = await client.GetStringAsync($"https://dogsirl-api.azurewebsites.net/api/petcards/user/{App.Username}");
+            PetList = JsonConvert.DeserializeObject<List<PetCard>>(response);
+            petCardsList.ItemsSource = PetList;
+
+            if(PetList.Count != 0)
+            {
+                App.CurrentDog = PetList[0];
+            }
+            else
+            {
+                await Navigation.PushAsync(new CreatePetcard());
+            }
         }
 
         async void ParkButtonClicked(System.Object sender, System.EventArgs e)
