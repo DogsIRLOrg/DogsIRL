@@ -40,7 +40,7 @@ namespace DogsIRL
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 var client = new HttpClient();
                 var response = await client.PostAsync(
-                    "https://dogsirl-api.azurewebsites.net/api/petcards", httpContent);
+                    $"{App.ApiUrl}/petcards", httpContent);
                 App.CurrentDog = model;
                 await Navigation.PushAsync(new ProfileView());
            

@@ -31,7 +31,7 @@ namespace DogsIRL
         public async Task<PetCard> GetRandomOtherDog(string owner)
         {
             var client = new HttpClient();
-            var response = await client.GetStringAsync("https://dogsirl-api.azurewebsites.net/api/petcards");
+            var response = await client.GetStringAsync($"{App.ApiUrl}/petcards");
             var pets = JsonConvert.DeserializeObject<List<PetCard>>(response);
             var otherPets = pets.Where(pet => pet.Owner != owner).ToList();
 
