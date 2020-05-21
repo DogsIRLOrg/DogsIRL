@@ -9,7 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using DogsIRL.Models;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using DogsIRL.Services;
 
 namespace DogsIRL
 {
@@ -19,9 +21,11 @@ namespace DogsIRL
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        ApiAccountService ApiAccountService { get; set; }
         public MainPage()
         {
             InitializeComponent();
+            ApiAccountService = new ApiAccountService();
         }
 
         async void OnButtonClicked(System.Object sender, System.EventArgs e)
@@ -31,25 +35,19 @@ namespace DogsIRL
                 UserName = NameEntry.Text,
                 Password = Password.Text,
             };
-
-            
-            var json = JsonConvert.SerializeObject(signInUser);
-            HttpContent content = new StringContent(json);
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var client = new HttpClient();
-            var response = await client.PostAsync(
-                $"{App.ApiUrl}/account/login", content);
-            if(response.StatusCode == System.Net.HttpStatusCode.OK)
+            var result = await ApiAccountService.RequestLogin(signInUser);
+            if (result.IsSuccessStatusCode)
             {
-                App.Username = signInUser.UserName;
                 await Navigation.PushAsync(new ProfileView());
             }
             else
             {
                 await DisplayAlert("Failed Login Attempt", "Something has gone horribly wrong. Its probably your fault", "Try Again");
-
             }
+            
         }
+
+        
 
         async void RegisterButtonOnClicked(System.Object sender, System.EventArgs e)
         {

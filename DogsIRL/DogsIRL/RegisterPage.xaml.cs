@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using DogsIRL.Models;
+using DogsIRL.Services;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -11,9 +12,12 @@ namespace DogsIRL
 {
     public partial class RegisterPage : ContentPage
     {
+        private readonly ApiAccountService _apiAccountService;
+
         public RegisterPage()
         {
             InitializeComponent();
+            _apiAccountService = new ApiAccountService();
         }
 
 
@@ -39,6 +43,7 @@ namespace DogsIRL
                     await DisplayAlert("Registration failed", "Oh no! We weren't able to register. Make sure your username, email, and password are valid, or try again later.", "Return");
                 }
                 App.Username = model.Username;
+                await _apiAccountService.RequestJwtTokenFromApi();
                 await Navigation.PushAsync(new ProfileView());
             }
         }

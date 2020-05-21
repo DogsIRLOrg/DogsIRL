@@ -1,24 +1,17 @@
 ﻿using System;
 using System.Collections;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using DogsIRL.Models;
 using DogsIRL.Models;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
-using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
-using Xamarin.Forms;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms.PlatformConfiguration;
@@ -70,7 +63,7 @@ namespace DogsIRL
             await CrossMedia.Current.Initialize();
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
-                await DisplayAlert("Error", "This is not support on your device.", "OK");
+                await DisplayAlert("Error", "This is not supported on your device.", "OK");
                 return;
             }
             else
