@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using DogsIRL.Models;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace DogsIRL
@@ -31,6 +33,8 @@ namespace DogsIRL
         public async Task<PetCard> GetRandomOtherDog(string owner)
         {
             var client = new HttpClient();
+            string token = await SecureStorage.GetAsync("jwtToken");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var response = await client.GetStringAsync($"{App.ApiUrl}/petcards");
             var pets = JsonConvert.DeserializeObject<List<PetCard>>(response);
             var otherPets = pets.Where(pet => pet.Owner != owner).ToList();
@@ -127,6 +131,8 @@ namespace DogsIRL
 
         async void OnCollectClicked(System.Object sender, System.EventArgs e)
         {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             await Navigation.PushAsync(new ProfileView());
         }
     }

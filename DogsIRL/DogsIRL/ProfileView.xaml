@@ -27,6 +27,7 @@
                             </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
+                                    <RowDefinition Height="150"/>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
@@ -38,22 +39,23 @@
                                 </Grid.RowDefinitions>
                                 <Label TextColor="Black" HorizontalOptions="End" Text="Name : " Grid.Column="0" Grid.Row="0"></Label>
                                 <Label TextColor="Black" Text="{Binding Name}" Grid.Column="1" Grid.Row="0"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Sex : " Grid.Column="0" Grid.Row="1"></Label>
-                                <Label TextColor="Black" Text="{Binding Sex}" Grid.Column="1" Grid.Row="1"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Owner : " Grid.Column="0" Grid.Row="2"></Label>
-                                <Label TextColor="Black" Text="{Binding Owner}" Grid.Column="1" Grid.Row="2"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Good Dog Rating : " Grid.Column="0" Grid.Row="3"></Label>
-                                <Label TextColor="Black" Text="{Binding GoodDog}" Grid.Column="1" Grid.Row="3"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Floofiness Rating : " Grid.Column="0" Grid.Row="4"></Label>
-                                <Label TextColor="Black" Text="{Binding Floofiness}" Grid.Column="1" Grid.Row="4"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Energy Rating : " Grid.Column="0" Grid.Row="5"></Label>
-                                <Label TextColor="Black" Text="{Binding Energy}" Grid.Column="1" Grid.Row="5"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Snuggles Rating : " Grid.Column="0" Grid.Row="6"></Label>
-                                <Label TextColor="Black" Text="{Binding Snuggles}" Grid.Column="1" Grid.Row="6"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Appetite Rating : " Grid.Column="0" Grid.Row="7"></Label>
-                                <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="7"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Bravery Rating : " Grid.Column="0" Grid.Row="8"></Label>
-                                <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="8"></Label>
+                                <Image Source="{Binding ImageURL}" Grid.ColumnSpan="2" Grid.Row="1" />
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Sex : " Grid.Column="0" Grid.Row="2"></Label>
+                                <Label TextColor="Black" Text="{Binding Sex}" Grid.Column="1" Grid.Row="2"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Owner : " Grid.Column="0" Grid.Row="3"></Label>
+                                <Label TextColor="Black" Text="{Binding Owner}" Grid.Column="1" Grid.Row="3"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Good Dog Rating : " Grid.Column="0" Grid.Row="4"></Label>
+                                <Label TextColor="Black" Text="{Binding GoodDog}" Grid.Column="1" Grid.Row="4"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Floofiness Rating : " Grid.Column="0" Grid.Row="5"></Label>
+                                <Label TextColor="Black" Text="{Binding Floofiness}" Grid.Column="1" Grid.Row="5"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Energy Rating : " Grid.Column="0" Grid.Row="6"></Label>
+                                <Label TextColor="Black" Text="{Binding Energy}" Grid.Column="1" Grid.Row="6"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Snuggles Rating : " Grid.Column="0" Grid.Row="7"></Label>
+                                <Label TextColor="Black" Text="{Binding Snuggles}" Grid.Column="1" Grid.Row="7"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Appetite Rating : " Grid.Column="0" Grid.Row="8"></Label>
+                                <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="8"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Bravery Rating : " Grid.Column="0" Grid.Row="9"></Label>
+                                <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="9"></Label>
                             </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

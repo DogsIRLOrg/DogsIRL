@@ -9,6 +9,7 @@ using Plugin.Connectivity;
 using Xamd.ImageCarousel.Forms.Plugin.Abstractions;
 using System.Net.Http.Headers;
 using DogsIRL.Services;
+using Xamarin.Essentials;
 
 namespace DogsIRL
 {
@@ -29,6 +30,7 @@ namespace DogsIRL
         public async void GetPetsOfCurrentUser()
         {
             var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             var response = await client.GetStringAsync($"{App.ApiUrl}/petcards/user/{App.Username}");
             if (response.Length == 0)
             {
