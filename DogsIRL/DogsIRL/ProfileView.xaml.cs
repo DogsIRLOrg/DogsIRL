@@ -10,6 +10,7 @@ using Xamd.ImageCarousel.Forms.Plugin.Abstractions;
 using System.Net.Http.Headers;
 using DogsIRL.Services;
 using Xamarin.Essentials;
+using System.Linq;
 
 namespace DogsIRL
 {
@@ -55,11 +56,17 @@ namespace DogsIRL
             await Navigation.PushAsync(new CreatePetcard());
         }
 
-        public async void LogoutClicked()
+        public async void LogoutClicked(System.Object sender, System.EventArgs e)
         {
+            var existingPages = Navigation.NavigationStack.ToList();
+            foreach (var page in existingPages)
+            {
+            var previousPage = Navigation.NavigationStack.LastOrDefault();
+                Navigation.RemovePage(previousPage);
+            }
             _apiAccountService = new ApiAccountService();
             _apiAccountService.Logout();
-            await Navigation.PushAsync(new MainPage());
+            //await Navigation.PushAsync(new MainPage());
         }
     }
 }

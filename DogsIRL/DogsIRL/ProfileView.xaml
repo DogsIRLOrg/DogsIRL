@@ -6,14 +6,12 @@
         <ContentPage.Resources>
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>
-
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Clicked="LogoutClicked"/>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
             <StackLayout>
-          <!--<Image Source="DogPark.png" Opacity="0.5"
-                 RelativeLayout.WidthConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-                RelativeLayout.HeightConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>-->
+          
 <CollectionView ItemsLayout="HorizontalList" x:Name="petCardsList">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -67,6 +65,10 @@
              <Button Text="+ Add new Pet"
                 HorizontalOptions="FillAndExpand"
                 Clicked="PetCardButtonClicked" />
+
+                <Button Text="Logout"
+                HorizontalOptions="FillAndExpand"
+                Clicked="LogoutClicked" />
                 </StackLayout>
        
     </ContentPage.Content>
