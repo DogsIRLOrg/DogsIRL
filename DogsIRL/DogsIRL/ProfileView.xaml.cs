@@ -14,13 +14,28 @@ namespace DogsIRL
     public partial class ProfileView : ContentPage
     {
         //HttpClient client = new HttpClient();
-        ObservableCollection<FileImageSource> imageSources = new ObservableCollection<FileImageSource>();
         private List<PetCard> PetList { get; set; }
 
         public ProfileView()
         {
             InitializeComponent();
             GetPets();
+        }
+
+       public async void LogoutButtonClicked(System.Object sender, System.EventArgs e)
+        {
+            var json = JsonConvert.SerializeObject(App.Username);
+            HttpContent httpContent = new StringContent(json);
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var client = new HttpClient();
+            var response = await client.PostAsync(
+                $"{App.ApiUrl}/account/logout", httpContent);
+            if (response.IsSuccessStatusCode)
+            {
+                App.Username = null;
+                App.CurrentDog = null;
+                await Navigation.PushAsync(new MainPage());
+            }
         }
 
         public async void GetPets()
@@ -50,17 +65,6 @@ namespace DogsIRL
             await Navigation.PushAsync(new CreatePetcard());
         }
 
-        //public async void LogoutClicked()
-        //{
-        //    var json = JsonConvert.SerializeObject(App.Username);
-        //    HttpContent httpContent = new StringContent(json);
-        //    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-        //    var client = new HttpClient();
-        //    var response = await client.PostAsync(
-        //        "https://dogsirl-api.azurewebsites.net/api/account/logout", httpContent);
-        //    App.Username = null;
-        //    App.CurrentDog = null;
-        //    await Navigation.PushAsync(new MainPage());
-        //}
+        
     }
 }

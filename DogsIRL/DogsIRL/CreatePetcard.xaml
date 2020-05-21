@@ -43,6 +43,22 @@
         <Label Text="Bravery Rating" FontSize="20" HorizontalOptions="Center"/>
         <Slider Value="5" Maximum="10" Minimum="1" x:Name="bravery"></Slider>
 
+        <Grid>  
+        <Grid.ColumnDefinitions>  
+            <ColumnDefinition Width="*" />  
+        </Grid.ColumnDefinitions>  
+        <Grid.RowDefinitions>  
+            <RowDefinition Height="*" />  
+        </Grid.RowDefinitions>  
+        <Button x:Name="btnSelectPic" Grid.Row="0" Grid.Column="0" Text="Select picture" Clicked="btnSelectPic_Clicked" BackgroundColor="DodgerBlue" TextColor="White" />  
+        <Button x:Name="btnTakePic" Grid.Row="0" Grid.Column="1" Text="Take picture" Clicked="btnTakePic_Clicked" BackgroundColor="DodgerBlue" TextColor="White" />  
+    </Grid>  
+    <Image x:Name="imageView" HeightRequest="300" WidthRequest="400" />  
+    <ActivityIndicator x:Name="uploadIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />  
+    <Button Text="Upload to Blob" Clicked="btnUpload_Clicked" x:Name="btnUpload" BackgroundColor="Green" TextColor="White" />  
+  <Editor x:Name="UploadedUrl" TextColor="Black" HeightRequest="85" Text="Image URL:" /> 
+
+
         <Button Text="Create Pet Card"
                 Clicked="OnButtonClicked" />
             </StackLayout>

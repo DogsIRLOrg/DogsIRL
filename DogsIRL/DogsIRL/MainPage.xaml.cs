@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DogsIRL.Models;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace DogsIRL

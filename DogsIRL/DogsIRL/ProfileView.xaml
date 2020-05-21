@@ -6,17 +6,24 @@
         <ContentPage.Resources>
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>
-
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Clicked="LogoutClicked">
+            </ToolbarItem>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
             <StackLayout>
+    <Button Text="Logout"
+                HorizontalOptions="FillAndExpand"
+                Clicked="LogoutButtonClicked" />
           <!--<Image Source="DogPark.png" Opacity="0.5"
                  RelativeLayout.WidthConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                 RelativeLayout.HeightConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>-->
-<CollectionView ItemsLayout="HorizontalList" x:Name="petCardsList">
+<CollectionView x:Name="petCardsList">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
+                        
                             <Grid RelativeLayout.WidthConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint=
@@ -61,11 +68,11 @@
             <Button Text="Go To Park"
                 HorizontalOptions="FillAndExpand"
                 Clicked="ParkButtonClicked" />
-  
-             <Button Text="+ Add new Pet"
+                <Button Text="Create a PetCard"
                 HorizontalOptions="FillAndExpand"
                 Clicked="PetCardButtonClicked" />
                 </StackLayout>
+
        
     </ContentPage.Content>
 </ContentPage>
