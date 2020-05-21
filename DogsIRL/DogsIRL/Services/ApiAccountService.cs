@@ -5,9 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 
 namespace DogsIRL.Services
 {
@@ -27,7 +25,6 @@ namespace DogsIRL.Services
                 string token = await result.Content.ReadAsStringAsync();
                 return token;
             }
-           // string token = result.ToString();
             return null;
         }
 
@@ -41,7 +38,7 @@ namespace DogsIRL.Services
             {
                 App.Username = userSignIn.UserName;
                 string token = await RequestJwtTokenFromApi();
-                 App.Token = token;
+                App.Token = token;
             }
             return response;
         }
