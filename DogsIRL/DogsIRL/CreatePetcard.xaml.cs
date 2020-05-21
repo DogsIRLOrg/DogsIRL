@@ -165,6 +165,7 @@ namespace DogsIRL
             var model = new PetCard
             {
                 Name = petname.Text,
+                ImageURL = UploadedUrl.Text,
                 Owner = App.Username,
                 Sex = sex.SelectedIndex == 0 ? "Male" : "Female",
                 AgeYears = int.Parse(ageyears.Text),
@@ -180,11 +181,19 @@ namespace DogsIRL
                 HttpContent httpContent = new StringContent(json);
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                 var client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
                 var response = await client.PostAsync(
                     $"{App.ApiUrl}/petcards", httpContent);
+            if (response.IsSuccessStatusCode)
+            {
+
                 App.CurrentDog = model;
                 await Navigation.PushAsync(new ProfileView());
-           
+            }
+            else
+            {
+                await DisplayAlert("Error Adding Pet", "There was an error adding your pet, please try again, but better.", "Return");
+            }
         }
     }
 }

@@ -22,8 +22,13 @@ namespace DogsIRL.Services
         public async Task<string> RequestJwtTokenFromApi()
         {
             HttpResponseMessage result = await Client.GetAsync($"{App.ApiUrl}/main/token");
-            string token = result.Content.ToString();
-            return token;
+            if (result.IsSuccessStatusCode)
+            {
+                string token = await result.Content.ReadAsStringAsync();
+                return token;
+            }
+           // string token = result.ToString();
+            return null;
         }
 
         public async Task<HttpResponseMessage> RequestLogin(UserSignIn userSignIn)
@@ -36,13 +41,13 @@ namespace DogsIRL.Services
             {
                 App.Username = userSignIn.UserName;
                 string token = await RequestJwtTokenFromApi();
-                await SecureStorage.SetAsync("jwtToken", token);
+                 App.Token = token;
             }
             return response;
         }
         public void Logout()
         {
-            SecureStorage.Remove("jwtToken");
+            App.Token = null;
             App.Username = null;
             App.CurrentDog = null;
         }
