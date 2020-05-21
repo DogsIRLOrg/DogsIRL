@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using Plugin.Connectivity;
 using Xamd.ImageCarousel.Forms.Plugin.Abstractions;
 using System.Net.Http.Headers;
+using DogsIRL.Services;
 
 namespace DogsIRL
 {
@@ -16,28 +17,30 @@ namespace DogsIRL
         //HttpClient client = new HttpClient();
         ObservableCollection<FileImageSource> imageSources = new ObservableCollection<FileImageSource>();
         private List<PetCard> PetList { get; set; }
+        private ApiAccountService _apiAccountService { get; set; }
 
         public ProfileView()
         {
             InitializeComponent();
-            GetPets();
+            GetPetsOfCurrentUser();
+            
         }
 
-        public async void GetPets()
+        public async void GetPetsOfCurrentUser()
         {
             var client = new HttpClient();
             var response = await client.GetStringAsync($"{App.ApiUrl}/petcards/user/{App.Username}");
-            PetList = JsonConvert.DeserializeObject<List<PetCard>>(response);
-            petCardsList.ItemsSource = PetList;
-
-            if(PetList.Count != 0)
-            {
-                App.CurrentDog = PetList[0];
-            }
-            else
+            if (response.Length == 0)
             {
                 await Navigation.PushAsync(new CreatePetcard());
             }
+            
+            PetList = JsonConvert.DeserializeObject<List<PetCard>>(response);
+            if (App.CurrentDog == null)
+            {
+                App.CurrentDog = PetList[0];
+            }
+            petCardsList.ItemsSource = PetList;
         }
 
         async void ParkButtonClicked(System.Object sender, System.EventArgs e)
@@ -50,17 +53,11 @@ namespace DogsIRL
             await Navigation.PushAsync(new CreatePetcard());
         }
 
-        //public async void LogoutClicked()
-        //{
-        //    var json = JsonConvert.SerializeObject(App.Username);
-        //    HttpContent httpContent = new StringContent(json);
-        //    httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-        //    var client = new HttpClient();
-        //    var response = await client.PostAsync(
-        //        "https://dogsirl-api.azurewebsites.net/api/account/logout", httpContent);
-        //    App.Username = null;
-        //    App.CurrentDog = null;
-        //    await Navigation.PushAsync(new MainPage());
-        //}
+        public async void LogoutClicked()
+        {
+            _apiAccountService = new ApiAccountService();
+            _apiAccountService.Logout();
+            await Navigation.PushAsync(new MainPage());
+        }
     }
 }
