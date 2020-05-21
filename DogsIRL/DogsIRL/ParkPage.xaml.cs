@@ -5,15 +5,18 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using DogsIRL.Models;
+using DogsIRL.Services;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace DogsIRL
 {
+
     public partial class ParkPage : ContentPage
     {
         public PetCard OtherDog { get; set; }
+        private ApiAccountService _apiAccountService { get; set; }
 
         public ParkPage()
         {
@@ -134,6 +137,17 @@ namespace DogsIRL
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             await Navigation.PushAsync(new ProfileView());
+        }
+        public async void LogoutClicked(System.Object sender, System.EventArgs e)
+        {
+            var existingPages = Navigation.NavigationStack.ToList();
+            foreach (var page in existingPages)
+            {
+                var previousPage = Navigation.NavigationStack.LastOrDefault();
+                Navigation.RemovePage(previousPage);
+            }
+            _apiAccountService = new ApiAccountService();
+            _apiAccountService.Logout();
         }
     }
 }

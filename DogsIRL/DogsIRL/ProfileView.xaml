@@ -6,9 +6,13 @@
         <ContentPage.Resources>
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Text="Logout" Clicked="LogoutClicked"/>
-    </ContentPage.ToolbarItems>-->
+    <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Logout"
+                 IconImageSource="mainLogout.png"
+                 Order="Primary"
+                 Priority="0"
+                 Clicked="LogoutClicked"/>
+</ContentPage.ToolbarItems>
     <ContentPage.Content>
             <StackLayout>
           
@@ -65,10 +69,6 @@
              <Button Text="+ Add new Pet"
                 HorizontalOptions="FillAndExpand"
                 Clicked="PetCardButtonClicked" />
-
-                <Button Text="Logout"
-                HorizontalOptions="FillAndExpand"
-                Clicked="LogoutClicked" />
                 </StackLayout>
        
     </ContentPage.Content>

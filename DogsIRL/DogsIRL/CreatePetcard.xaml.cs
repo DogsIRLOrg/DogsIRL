@@ -15,11 +15,14 @@ using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms.PlatformConfiguration;
+using DogsIRL.Services;
 
 namespace DogsIRL
 {
     public partial class CreatePetcard : ContentPage
     {
+        private ApiAccountService _apiAccountService { get; set; }
+
         public CreatePetcard()
         {
 
@@ -195,5 +198,17 @@ namespace DogsIRL
                 await DisplayAlert("Error Adding Pet", "There was an error adding your pet, please try again, but better.", "Return");
             }
         }
+        public async void LogoutClicked(System.Object sender, System.EventArgs e)
+        {
+            var existingPages = Navigation.NavigationStack.ToList();
+            foreach (var page in existingPages)
+            {
+                var previousPage = Navigation.NavigationStack.LastOrDefault();
+                Navigation.RemovePage(previousPage);
+            }
+            _apiAccountService = new ApiAccountService();
+            _apiAccountService.Logout();
+        }
     }
+
 }

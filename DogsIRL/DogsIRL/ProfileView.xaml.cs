@@ -66,7 +66,6 @@ namespace DogsIRL
             }
             _apiAccountService = new ApiAccountService();
             _apiAccountService.Logout();
-            //await Navigation.PushAsync(new MainPage());
         }
     }
 }

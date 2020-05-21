@@ -108,11 +108,19 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\xml\file_paths.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\mainLogout.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\main.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\xml\file_paths.xml">
+    <AndroidResource Include="Resources\drawable\gus.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

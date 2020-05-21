@@ -3,6 +3,13 @@
     <ContentPage.Resources>
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+      <ToolbarItem Text="Logout"
+                     IconImageSource="mainLogout.png"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="LogoutClicked"/>
+    </ContentPage.ToolbarItems> 
     <ContentPage.Content>
         <ScrollView>
         <StackLayout>
