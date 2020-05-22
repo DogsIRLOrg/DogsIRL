@@ -32,10 +32,10 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label x:Name="CurrentDogName" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start"/>
-                        <Image x:Name="CurrentDogImage" Grid.Row="1" Grid.Column="0" HorizontalOptions="Start"/>
-                        <Label x:Name="OtherDogName" Grid.Row="0" Grid.Column="1" HorizontalOptions="End"/>
-                        <Image x:Name="OtherDogImage" Grid.Row="1" Grid.Column="1" HorizontalOptions="End"/>
+                        <Label x:Name="CurrentDogName" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" FontSize="Large"/>
+                        <Image x:Name="CurrentDogImage" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
+                        <Label x:Name="OtherDogName" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" FontSize="Large"/>
+                        <Image x:Name="OtherDogImage" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
                  </Grid>
                  <Button Text="Interact"
                 Clicked="OnInteractClicked" />
