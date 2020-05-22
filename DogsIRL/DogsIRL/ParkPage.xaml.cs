@@ -29,8 +29,9 @@ namespace DogsIRL
            
             OtherDog = await GetRandomOtherDog(App.Username);
             OtherDogName.Text = OtherDog.Name;
-
+            OtherDogImage.Source = OtherDog.ImageURL;
             CurrentDogName.Text = App.CurrentDog.Name;
+            CurrentDogImage.Source = App.CurrentDog.ImageURL;
             GetInteraction(App.CurrentDog, OtherDog);
         }
 
