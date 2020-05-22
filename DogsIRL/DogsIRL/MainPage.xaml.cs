@@ -38,6 +38,8 @@ namespace DogsIRL
             var result = await ApiAccountService.RequestLogin(signInUser);
             if (result.IsSuccessStatusCode)
             {
+                var token = await ApiAccountService.RequestJwtTokenFromApi();
+                App.Token = token;
                 await Navigation.PushAsync(new ProfileView());
             }
             else

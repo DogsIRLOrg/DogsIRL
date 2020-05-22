@@ -15,11 +15,14 @@ using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms.PlatformConfiguration;
+using DogsIRL.Services;
 
 namespace DogsIRL
 {
     public partial class CreatePetcard : ContentPage
     {
+        private ApiAccountService _apiAccountService { get; set; }
+
         public CreatePetcard()
         {
 
@@ -186,7 +189,9 @@ namespace DogsIRL
                     $"{App.ApiUrl}/petcards", httpContent);
             if (response.IsSuccessStatusCode)
             {
-
+                string stringContent = await response.Content.ReadAsStringAsync();
+                PetCard postedPetCard = JsonConvert.DeserializeObject<PetCard>(stringContent);
+                await AddToCollection(postedPetCard.ID);
                 App.CurrentDog = model;
                 await Navigation.PushAsync(new ProfileView());
             }
@@ -195,5 +200,35 @@ namespace DogsIRL
                 await DisplayAlert("Error Adding Pet", "There was an error adding your pet, please try again, but better.", "Return");
             }
         }
+        public async void LogoutClicked(System.Object sender, System.EventArgs e)
+        {
+            //var existingPages = Navigation.NavigationStack.ToList();
+            //foreach (var page in existingPages)
+            //{
+            //    var previousPage = Navigation.NavigationStack.LastOrDefault();
+            //    Navigation.RemovePage(previousPage);
+            //}
+            await Navigation.PopToRootAsync();
+
+            _apiAccountService = new ApiAccountService();
+            await _apiAccountService.Logout();
+        }
+
+        public async Task AddToCollection(int petCardId)
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
+            CollectInput collectInput = new CollectInput
+            {
+                Username = App.Username,
+                PetCardID = petCardId
+            };
+
+            var collectJson = JsonConvert.SerializeObject(collectInput);
+            HttpContent collectContent = new StringContent(collectJson);
+            collectContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var collectionResponse = await client.PostAsync($"{App.ApiUrl}/collection", collectContent);
+        }
     }
+
 }

@@ -43,7 +43,8 @@ namespace DogsIRL
                     await DisplayAlert("Registration failed", "Oh no! We weren't able to register. Make sure your username, email, and password are valid, or try again later.", "Return");
                 }
                 App.Username = model.Username;
-                await _apiAccountService.RequestJwtTokenFromApi();
+               string token = await _apiAccountService.RequestJwtTokenFromApi();
+                App.Token = token;
                 await Navigation.PushAsync(new ProfileView());
             }
         }
