@@ -16,7 +16,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="My Profile:"></Label>
+                <Label Text="My Profile:" FontSize="Title"></Label>
                 <CollectionView ItemsLayout="HorizontalList" x:Name="petCardsList" HeightRequest="400">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -66,7 +66,7 @@
                 <Button Text="+ Add new Pet"
                 HorizontalOptions="FillAndExpand"
                 Clicked="PetCardButtonClicked" />
-                <Label Text="My Collected Pet Cards:"></Label>
+                <Label FontSize="Large" Text="My Collected Pet Cards:"></Label>
                 <CollectionView x:Name="collectionList">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"
@@ -75,7 +75,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
-                                <Label Text="{Binding Name}"/>
+                                <Label FontSize="Medium" HorizontalOptions="Center" Text="{Binding Name}"/>
                                 <Image Source="{Binding ImageURL}"/>
                             </StackLayout>
                         </DataTemplate>
