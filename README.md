@@ -49,3 +49,9 @@ Security - Protecting users emails and passwords as they are stored. We will use
 
 #### Patch Notes
 May 22 - 2020 || App Created.
+
+#### Resources
+- Blob Storage - https://www.c-sharpcorner.com/article/xamarin-forms-upload-image-to-blob-storage/
+- JSON Web Token - https://www.c-sharpcorner.com/article/asp-net-core-web-api-creating-and-validating-jwt-json-web-token/
+- StackOverflow - https://stackoverflow.com/
+- Microsoft Docs Xamarin Forms - https://docs.microsoft.com/en-us/xamarin/xamarin-forms/
