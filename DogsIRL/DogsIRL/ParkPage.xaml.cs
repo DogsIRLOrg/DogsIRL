@@ -26,6 +26,7 @@ namespace DogsIRL
 
         protected override async void OnAppearing()
         {
+           
             OtherDog = await GetRandomOtherDog(App.Username);
             OtherDogName.Text = OtherDog.Name;
 
@@ -36,8 +37,7 @@ namespace DogsIRL
         public async Task<PetCard> GetRandomOtherDog(string owner)
         {
             var client = new HttpClient();
-            string token = await SecureStorage.GetAsync("jwtToken");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             var response = await client.GetStringAsync($"{App.ApiUrl}/petcards");
             var pets = JsonConvert.DeserializeObject<List<PetCard>>(response);
             var otherPets = pets.Where(pet => pet.Owner != owner).ToList();
@@ -126,28 +126,46 @@ namespace DogsIRL
 
         async void OnInteractClicked(System.Object sender, System.EventArgs e)
         {
+            await AddToCollection(OtherDog.ID);
             var previousPage = Navigation.NavigationStack.LastOrDefault();
             await Navigation.PushAsync(new ParkPage());
             Navigation.RemovePage(previousPage);
      
         }
+        public async Task AddToCollection(int petCardId)
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
+            CollectInput collectInput = new CollectInput
+            {
+                Username = App.Username,
+                PetCardID = petCardId
+            };
+
+            var collectJson = JsonConvert.SerializeObject(collectInput);
+            HttpContent collectContent = new StringContent(collectJson);
+            collectContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var collectionResponse = await client.PostAsync($"{App.ApiUrl}/collection", collectContent);
+        }
 
         async void OnCollectClicked(System.Object sender, System.EventArgs e)
         {
+            await AddToCollection(OtherDog.ID);
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             await Navigation.PushAsync(new ProfileView());
         }
         public async void LogoutClicked(System.Object sender, System.EventArgs e)
         {
-            var existingPages = Navigation.NavigationStack.ToList();
-            foreach (var page in existingPages)
-            {
-                var previousPage = Navigation.NavigationStack.LastOrDefault();
-                Navigation.RemovePage(previousPage);
-            }
+            //var existingPages = Navigation.NavigationStack.ToList();
+            //foreach (var page in existingPages)
+            //{
+            //    var previousPage = Navigation.NavigationStack.LastOrDefault();
+            //     Navigation.RemovePage(previousPage);
+            //}
+           await Navigation.PopToRootAsync();
             _apiAccountService = new ApiAccountService();
-            _apiAccountService.Logout();
+           await _apiAccountService.Logout();
         }
     }
 }

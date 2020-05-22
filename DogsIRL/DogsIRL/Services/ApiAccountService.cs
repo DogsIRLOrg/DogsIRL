@@ -37,7 +37,7 @@ namespace DogsIRL.Services
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var response = await Client.PostAsync($"{App.ApiUrl}/account/login", content);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            if (response.IsSuccessStatusCode)
             {
                 App.Username = userSignIn.UserName;
                 string token = await RequestJwtTokenFromApi();
@@ -45,11 +45,11 @@ namespace DogsIRL.Services
             }
             return response;
         }
-        public void Logout()
+        public async Task Logout()
         {
-            App.Token = null;
             App.Username = null;
             App.CurrentDog = null;
+            App.Token = null;
         }
         
     }

@@ -11,6 +11,7 @@ using System.Net.Http.Headers;
 using DogsIRL.Services;
 using Xamarin.Essentials;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace DogsIRL
 {
@@ -33,9 +34,10 @@ namespace DogsIRL
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             var response = await client.GetStringAsync($"{App.ApiUrl}/petcards/user/{App.Username}");
-            if (response.Length == 0)
+            if (response.Length <= 2)
             {
                 await Navigation.PushAsync(new CreatePetcard());
+                return;
             }
             
             PetList = JsonConvert.DeserializeObject<List<PetCard>>(response);
@@ -58,14 +60,16 @@ namespace DogsIRL
 
         public async void LogoutClicked(System.Object sender, System.EventArgs e)
         {
-            var existingPages = Navigation.NavigationStack.ToList();
-            foreach (var page in existingPages)
-            {
-            var previousPage = Navigation.NavigationStack.LastOrDefault();
-                Navigation.RemovePage(previousPage);
-            }
+            //var existingPages = Navigation.NavigationStack.ToList();
+            //foreach (var page in existingPages)
+            //{
+            //var previousPage = Navigation.NavigationStack.LastOrDefault();
+            //    Navigation.RemovePage(previousPage);
+            //}
+            await Navigation.PopToRootAsync();
+
             _apiAccountService = new ApiAccountService();
-            _apiAccountService.Logout();
+           await _apiAccountService.Logout();
         }
     }
 }
