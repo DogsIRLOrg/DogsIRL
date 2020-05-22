@@ -24,6 +24,9 @@ namespace DogsIRL
 
         }
 
+        /// <summary>
+        /// This method will grab other dog and interact with the current user's dog by calling the GetInteraction method.
+        /// </summary>
         protected override async void OnAppearing()
         {
            
@@ -35,6 +38,9 @@ namespace DogsIRL
             GetInteraction(App.CurrentDog, OtherDog);
         }
 
+        /// <summary>
+        /// This method will generate random dog. We put owner in param so that it will grab anything other than that user's dog.
+        /// </summary>
         public async Task<PetCard> GetRandomOtherDog(string owner)
         {
             var client = new HttpClient();
@@ -48,12 +54,20 @@ namespace DogsIRL
             return otherPets[randomPetIndex];
         }
 
+        /// <summary>
+        /// A method to generate random number
+        /// </summary>
         int RandomNumber(int min, int max)
         {
             Random random = new Random();
             return random.Next(min, max);
         }
 
+        /// <summary>
+        /// This method generate interaction with other dog. We set up 3 lines for hellos conversations and 2 lines for goodbyes. It will be randomly assigned.
+        /// </summary>
+        /// <param name="currentDog"></param>
+        /// <param name="otherDog"></param>
         public void GetInteraction(PetCard currentDog, PetCard otherDog)
         {
             string[,] HelloConvo = new string[,]
@@ -124,7 +138,9 @@ namespace DogsIRL
 
         }
 
-
+        /// <summary>
+        /// This method will regenerate new interactions with different dog.(may possibly the same dog but different interaction.)
+        /// </summary>
         async void OnInteractClicked(System.Object sender, System.EventArgs e)
         {
             await AddToCollection(OtherDog.ID);
@@ -133,6 +149,10 @@ namespace DogsIRL
             Navigation.RemovePage(previousPage);
      
         }
+
+        /// <summary>
+        /// This method will add the other dog's petcard that is being interacted with.
+        /// </summary>
         public async Task AddToCollection(int petCardId)
         {
             var client = new HttpClient();
@@ -149,6 +169,9 @@ namespace DogsIRL
             var collectionResponse = await client.PostAsync($"{App.ApiUrl}/collection", collectContent);
         }
 
+        /// <summary>
+        /// This method is connected to the button in front end, will add the other dog's petcard that is being interacted with.
+        /// </summary>
         async void OnCollectClicked(System.Object sender, System.EventArgs e)
         {
             await AddToCollection(OtherDog.ID);
@@ -156,14 +179,12 @@ namespace DogsIRL
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             await Navigation.PushAsync(new ProfileView());
         }
+
+        /// <summary>
+        /// Method to logout.
+        /// </summary>
         public async void LogoutClicked(System.Object sender, System.EventArgs e)
         {
-            //var existingPages = Navigation.NavigationStack.ToList();
-            //foreach (var page in existingPages)
-            //{
-            //    var previousPage = Navigation.NavigationStack.LastOrDefault();
-            //     Navigation.RemovePage(previousPage);
-            //}
            await Navigation.PopToRootAsync();
             _apiAccountService = new ApiAccountService();
            await _apiAccountService.Logout();

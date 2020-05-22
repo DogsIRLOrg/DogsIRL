@@ -32,6 +32,9 @@ namespace DogsIRL
             
         }
 
+        /// <summary>
+        /// This method will get the current user's pet. If no pet exist, it will redirect to Create Petcard page.
+        /// </summary>
         public async void GetPetsOfCurrentUser()
         {
             var client = new HttpClient();
@@ -51,6 +54,9 @@ namespace DogsIRL
             petCardsList.ItemsSource = PetList;
         }
 
+        /// <summary>
+        /// This method will show all the petcards that has been collected by the user after interacting with other pet in the park.
+        /// </summary>
         public async void GetCollectionOfCurrentUser()
         {
             var client = new HttpClient();
@@ -65,16 +71,25 @@ namespace DogsIRL
             collectionList.ItemsSource = CollectedList;
         }
 
+        /// <summary>
+        /// This method is wired with the button to link it to ParkPage.
+        /// </summary>
         async void ParkButtonClicked(System.Object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new ParkPage());
         }
-        
-            async void PetCardButtonClicked(System.Object sender, System.EventArgs e)
+
+        /// <summary>
+        /// This method is wired with the button to link it to CreatePetCard.
+        /// </summary>
+        async void PetCardButtonClicked(System.Object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new CreatePetcard());
         }
 
+        /// <summary>
+        /// This method is wired with the button to link it to Logout.
+        /// </summary>
         public async void LogoutClicked(System.Object sender, System.EventArgs e)
         {
             await Navigation.PopToRootAsync();
