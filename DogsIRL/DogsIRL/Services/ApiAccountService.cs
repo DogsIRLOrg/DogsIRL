@@ -45,7 +45,7 @@ namespace DogsIRL.Services
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var response = await Client.PostAsync($"{App.ApiUrl}/account/login", content);
-            if (response.IsSuccessStatusCode)
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 App.Username = userSignIn.UserName;
                 string token = await RequestJwtTokenFromApi();

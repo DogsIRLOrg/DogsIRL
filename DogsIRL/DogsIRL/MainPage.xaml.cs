@@ -27,7 +27,11 @@ namespace DogsIRL
             InitializeComponent();
             ApiAccountService = new ApiAccountService();
         }
-
+        /// <summary>
+        /// Checks input username and password, if a match is found in database, logs user in.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         async void OnButtonClicked(System.Object sender, System.EventArgs e)
         {
             var signInUser = new UserSignIn()
@@ -36,10 +40,10 @@ namespace DogsIRL
                 Password = Password.Text,
             };
             var result = await ApiAccountService.RequestLogin(signInUser);
-            if (result.IsSuccessStatusCode)
+            if (result.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                var token = await ApiAccountService.RequestJwtTokenFromApi();
-                App.Token = token;
+                //var token = await ApiAccountService.RequestJwtTokenFromApi();
+                //App.Token = token;
                 await Navigation.PushAsync(new ProfileView());
             }
             else
@@ -50,7 +54,11 @@ namespace DogsIRL
         }
 
         
-
+        /// <summary>
+        /// Takes current user to a register page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         async void RegisterButtonOnClicked(System.Object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new RegisterPage());
