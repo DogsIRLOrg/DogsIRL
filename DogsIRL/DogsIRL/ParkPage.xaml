@@ -18,24 +18,26 @@
                   "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                 RelativeLayout.HeightConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
-            <Label x:Name="LineOne" HorizontalOptions="End" Padding="10" FontSize="Medium"></Label>
-            <Label x:Name="LineTwo" HorizontalOptions="Start" Padding="10" FontSize="Medium"></Label>
-            <Label x:Name="LineThree" HorizontalOptions="End" Padding="10" FontSize="Medium"></Label>
-            <Label x:Name="LineFour" HorizontalOptions="Start" Padding="10" FontSize="Medium"></Label>
-            <Label x:Name="LineFive" HorizontalOptions="End" Padding="10" FontSize="Medium"></Label>
-            <StackLayout Orientation="Horizontal">
-
-                <StackLayout Grid.Row="1" Orientation="Horizontal">
-                     <Label x:Name="CurrentDogName" Padding="15,0,0,0"/>
-                     <Label x:Name="OtherDogName" Padding="290,0,0,0"/>
-                </StackLayout>
-
-                <!--<Label x:Name="CurrentDogName" HorizontalOptions="Start"></Label>
-                <Label x:Name="OtherDogName" HorizontalOptions="End"></Label>-->
-                <!--<Image Source="{Binding Image}"/>
-                <Image Source="{Binding Image}"/>-->
-            </StackLayout>
-            <Button Text="Interact"
+                <Label x:Name="LineOne" HorizontalOptions="Start" Padding="10" FontSize="Medium"></Label>
+                <Label x:Name="LineTwo" HorizontalOptions="End" Padding="10" FontSize="Medium"></Label>
+                <Label x:Name="LineThree" HorizontalOptions="Start" Padding="10" FontSize="Medium"></Label>
+                <Label x:Name="LineFour" HorizontalOptions="End" Padding="10" FontSize="Medium"></Label>
+                <Label x:Name="LineFive" HorizontalOptions="Start" Padding="10" FontSize="Medium"></Label>
+                <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="200"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="CurrentDogName" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start"/>
+                        <Image x:Name="CurrentDogImage" Grid.Row="1" Grid.Column="0" HorizontalOptions="Start"/>
+                        <Label x:Name="OtherDogName" Grid.Row="0" Grid.Column="1" HorizontalOptions="End"/>
+                        <Image x:Name="OtherDogImage" Grid.Row="1" Grid.Column="1" HorizontalOptions="End"/>
+                 </Grid>
+                 <Button Text="Interact"
                 Clicked="OnInteractClicked" />
             <Button Text="Collect"
                 Clicked="OnCollectClicked" />

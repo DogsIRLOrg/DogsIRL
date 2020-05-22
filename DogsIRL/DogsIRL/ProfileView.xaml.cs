@@ -20,12 +20,15 @@ namespace DogsIRL
         //HttpClient client = new HttpClient();
         ObservableCollection<FileImageSource> imageSources = new ObservableCollection<FileImageSource>();
         private List<PetCard> PetList { get; set; }
+        private List<PetCard> CollectedList { get; set; }
         private ApiAccountService _apiAccountService { get; set; }
+
 
         public ProfileView()
         {
             InitializeComponent();
             GetPetsOfCurrentUser();
+            GetCollectionOfCurrentUser();
             
         }
 
@@ -48,6 +51,20 @@ namespace DogsIRL
             petCardsList.ItemsSource = PetList;
         }
 
+        public async void GetCollectionOfCurrentUser()
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
+            var response = await client.GetStringAsync($"{App.ApiUrl}/collection/{App.Username}");
+            var collectedPetCardsList = JsonConvert.DeserializeObject<List<CollectedPetCard>>(response);
+            CollectedList = new List<PetCard>();
+            foreach(CollectedPetCard collectedPetCard in collectedPetCardsList)
+            {
+                CollectedList.Add(collectedPetCard.PetCard);
+            }
+            collectionList.ItemsSource = CollectedList;
+        }
+
         async void ParkButtonClicked(System.Object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new ParkPage());
@@ -60,14 +77,7 @@ namespace DogsIRL
 
         public async void LogoutClicked(System.Object sender, System.EventArgs e)
         {
-            //var existingPages = Navigation.NavigationStack.ToList();
-            //foreach (var page in existingPages)
-            //{
-            //var previousPage = Navigation.NavigationStack.LastOrDefault();
-            //    Navigation.RemovePage(previousPage);
-            //}
             await Navigation.PopToRootAsync();
-
             _apiAccountService = new ApiAccountService();
            await _apiAccountService.Logout();
         }
