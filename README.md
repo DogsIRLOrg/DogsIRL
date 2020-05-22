@@ -19,7 +19,7 @@ User will be able to collect the petcards of fellow pets once they have interact
 Pets will be able to have short text dialogue.
 
 ### **Scope Out**
-Our web app will never sell the data of our users.
+Our Mobile app will never sell the data of our users.
 
 ### **Functional Requirements**
 1. A user can create a profile and create a pet for that profile.
