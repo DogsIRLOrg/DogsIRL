@@ -34,6 +34,10 @@ namespace DogsIRL
         private MediaFile _mediaFile;
         private string URL { get; set; }
 
+        /// <summary>
+        /// When Page is loaded, checks if app has permission for camera use. If not, requests permission.
+        /// </summary>
+        /// <returns>Permission status</returns>
         public async Task<PermissionStatus> CheckAndRequestCameraPermission()
         {
             var status = await Permissions.CheckStatusAsync<Permissions.Camera>();
@@ -47,6 +51,10 @@ namespace DogsIRL
             return status;
         }
 
+        /// <summary>
+        /// When Page is loaded, checks if app has permission for photo gallery use. If not, requests permission.
+        /// </summary>
+        /// <returns>Permission status</returns>
         public async Task<PermissionStatus> CheckAndRequestPhotoPermission()
         {
             var status = await Permissions.CheckStatusAsync<Permissions.Photos>();
@@ -59,6 +67,11 @@ namespace DogsIRL
 
             return status;
         }
+        /// <summary>
+        /// Checks permissions, if granted will open photo gallery and allow user to select image to be uploaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnSelectPic_Clicked(object sender, EventArgs e)
         {
             var status = await Permissions.RequestAsync<Permissions.Photos>();
@@ -82,7 +95,12 @@ namespace DogsIRL
             }
         }
 
-        //Upload picture button    
+        //Upload picture button
+        /// <summary>
+        /// Prepares image url to be uploaded to blob storage.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnUpload_Clicked(object sender, EventArgs e)
         {
 
@@ -97,7 +115,12 @@ namespace DogsIRL
             }
         }
 
-        //Take picture from camera    
+        //Take picture from camera
+        /// <summary>
+        /// Checks camera permission, if granted will open users camera and allow image to be captured and prepared for blob storage.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void btnTakePic_Clicked(object sender, EventArgs e)
         {
             var status = await Permissions.RequestAsync<Permissions.Camera>();
@@ -126,7 +149,11 @@ namespace DogsIRL
             }
         }
 
-        //Upload to blob function    
+        //Upload to blob function
+        /// <summary>
+        /// Identitifies blob storage key and container, and uploads current selected image to chosen container.
+        /// </summary>
+        /// <param name="stream"></param>
         private async void UploadImage(Stream stream)
         {
             Busy();
@@ -143,6 +170,9 @@ namespace DogsIRL
             await DisplayAlert("Uploaded", "Image uploaded to Blob Storage Successfully!", "OK");
         }
 
+        /// <summary>
+        /// Displays spinning loading graphic while uploading image
+        /// </summary>
         public void Busy()
         {
             uploadIndicator.IsVisible = true;
@@ -152,6 +182,9 @@ namespace DogsIRL
             btnUpload.IsEnabled = false;
         }
 
+        /// <summary>
+        /// Hides spinning loading graphic once upload is complete
+        /// </summary>
         public void NotBusy()
         {
             uploadIndicator.IsVisible = false;
@@ -161,7 +194,11 @@ namespace DogsIRL
             btnUpload.IsEnabled = true;
         }
     
-
+        /// <summary>
+        /// Takes in the inout data from user and creates a new PetCard with assigned values. Saves new PetCard to database. Adds new PetCard to current users collected pets.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
     async void OnButtonClicked(System.Object sender, System.EventArgs e)
         {
 
@@ -200,6 +237,11 @@ namespace DogsIRL
                 await DisplayAlert("Error Adding Pet", "There was an error adding your pet, please try again, but better.", "Return");
             }
         }
+        /// <summary>
+        /// Logs current user out and clears the Navigation stack back to the root level
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void LogoutClicked(System.Object sender, System.EventArgs e)
         {
             //var existingPages = Navigation.NavigationStack.ToList();
@@ -214,6 +256,11 @@ namespace DogsIRL
             await _apiAccountService.Logout();
         }
 
+        /// <summary>
+        /// Adds the current dog being created to the current users collected dogs.
+        /// </summary>
+        /// <param name="petCardId"></param>
+        /// <returns></returns>
         public async Task AddToCollection(int petCardId)
         {
             var client = new HttpClient();
