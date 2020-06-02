@@ -23,17 +23,17 @@ namespace DogsIRL.Services
         /// Recieves a unique jwt token from the backend API to be used for authorization
         /// </summary>
         /// <returns>JWT Token as a String</returns>
-        public async Task<string> RequestJwtTokenFromApi()
-        {
-            HttpResponseMessage result = await Client.GetAsync($"{App.ApiUrl}/main/token");
-            if (result.IsSuccessStatusCode)
-            {
-                string token = await result.Content.ReadAsStringAsync();
-                return token;
-            }
-           // string token = result.ToString();
-            return null;
-        }
+        //public async Task<string> RequestJwtTokenFromApi()
+        //{
+        //    HttpResponseMessage result = await Client.GetAsync($"{App.ApiUrl}/main/token");
+        //    if (result.IsSuccessStatusCode)
+        //    {
+        //        string token = await result.Content.ReadAsStringAsync();
+        //        return token;
+        //    }
+        //   // string token = result.ToString();
+        //    return null;
+        //}
         /// <summary>
         /// Requests Login credentials from API and assigns user name and JWT Token
         /// </summary>
@@ -48,8 +48,8 @@ namespace DogsIRL.Services
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 App.Username = userSignIn.UserName;
-                string token = await RequestJwtTokenFromApi();
-                 App.Token = token;
+                string token = await response.Content.ReadAsStringAsync();
+                App.Token = token;
             }
             return response;
         }
