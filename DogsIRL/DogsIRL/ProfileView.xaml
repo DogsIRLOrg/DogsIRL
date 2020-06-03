@@ -55,6 +55,9 @@
                                 <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="8"></Label>
                                 <Label TextColor="Black" HorizontalOptions="End" Text="Bravery Rating : " Grid.Column="0" Grid.Row="9"></Label>
                                 <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="9"></Label>
+                                <Button Text="Edit"
+                                HorizontalOptions="FillAndExpand"
+                                Clicked="EditPetCardClicked" />
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

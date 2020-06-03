@@ -96,5 +96,10 @@ namespace DogsIRL
             _apiAccountService = new ApiAccountService();
            await _apiAccountService.Logout();
         }
+
+        public async void EditPetCardClicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new EditPetCard());
+        }
     }
 }
