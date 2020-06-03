@@ -1,18 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.CreatePetcard">
-    <ContentPage.ToolbarItems>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.EditPetCard">
+        <ContentPage.ToolbarItems>
       <ToolbarItem Text="Logout"
                      IconImageSource="mainLogout.png"
                      Order="Primary"
                      Priority="0"
                      Clicked="LogoutClicked"/>
-    </ContentPage.ToolbarItems> 
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView>
-            
-        <StackLayout>
-
-         <Label Text="Pet Name" FontSize="20" HorizontalOptions="Center" />
+          <ScrollView>
+               <StackLayout>
+                            <Label Text="Pet Name" FontSize="20" HorizontalOptions="Center" />
         <Entry x:Name = "petname" PlaceholderColor="Gray" FontSize="15" />
         <Picker  x:Name = "sex" Title="Boy Doggo or Girl Doggo?" >
             <Picker.Items>
@@ -61,10 +59,10 @@
     <Button Text="Upload to Blob" Clicked="btnUpload_Clicked" x:Name="btnUpload" BackgroundColor="Green" TextColor="White" />  
   <Editor x:Name="UploadedUrl" TextColor="Black" HeightRequest="85" Text="Image URL:" /> 
 
-        <Button Text="Create Pet Card"
+        <Button Text="Edit Pet Card"
                 Clicked="OnButtonClicked" />
-            </StackLayout>
-            </ScrollView>
+
+               </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
-

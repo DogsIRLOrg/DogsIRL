@@ -199,7 +199,7 @@ namespace DogsIRL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-    async void OnButtonClicked(System.Object sender, System.EventArgs e)
+        async void OnButtonClicked(System.Object sender, System.EventArgs e)
         {
 
             var model = new PetCard
