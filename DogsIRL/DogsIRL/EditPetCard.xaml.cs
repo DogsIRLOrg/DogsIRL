@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using DogsIRL.Models;
 using DogsIRL.Services;
 using Microsoft.WindowsAzure.Storage;
@@ -219,15 +220,18 @@ namespace DogsIRL
             var json = JsonConvert.SerializeObject(model);
             HttpContent httpContent = new StringContent(json);
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var request = new HttpRequestMessage(HttpMethod.Delete, $"{App.ApiUrl}/petcards/{model.ID}");
+            request.Content = httpContent;
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
-            var response = await client.DeleteAsync(
-                $"{App.ApiUrl}/petcards/{model.ID}");
+            var response = await client.SendAsync(
+                request);
             if (response.IsSuccessStatusCode)
             {
                 string stringContent = await response.Content.ReadAsStringAsync();
                 PetCard postedPetCard = JsonConvert.DeserializeObject<PetCard>(stringContent);
                 App.CurrentDog = model;
+                await DisplayAlert("Pet Successfully Deleted", $"You have deleted the pet card for {model.Name}", "Return");
                 await Navigation.PushAsync(new ProfileView());
             }
             else
