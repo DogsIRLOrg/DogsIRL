@@ -147,6 +147,8 @@ namespace DogsIRL
             snuggles.Value = currentPet.Snuggles;
             appetite.Value = currentPet.Appetite;
             bravery.Value = currentPet.Bravery;
+            imageView.Source = currentPet.ImageURL;
+            App.CurrentDog = currentPet;
 
         }
 
