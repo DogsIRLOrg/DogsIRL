@@ -20,7 +20,7 @@
                 <CollectionView ItemsLayout="HorizontalList" x:Name="petCardsList" HeightRequest="400">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ContentView>
+                        <ContentView x:Name="contentView">
                             <Grid RowSpacing="0" Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -39,6 +39,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
+                                <Label Text="{Binding ID}" x:Name="CurrentID" IsVisible="false"/>
                 <BoxView Color="Gray" Grid.ColumnSpan="2" Grid.RowSpan="11" CornerRadius="30"/>
                                 <Label TextColor="Black" Padding="5" Text="{Binding Name}" FontSize="Large" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="0"></Label>
                                 <Frame Padding="0" Margin="0" IsClippedToBounds="True" CornerRadius="10"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="Transparent" >
@@ -60,7 +61,7 @@
                                 <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="8"></Label>
                                 <Label TextColor="Black" HorizontalOptions="End" Text="Bravery Rating : " Grid.Column="0" Grid.Row="9"></Label>
                                 <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="9"></Label>
-                                <Button Text="Edit"
+                                <Button x:Name="{Binding ID}" Text="Edit"
                                 Clicked="EditPetCardClicked" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="10"/>
                             </Grid>
                             </ContentView>

@@ -49,6 +49,15 @@ namespace DogsIRL.Services
             App.CurrentDog = null;
             App.Token = null;
         }
+
+        //public async Task <PetCard> GetPetCardByID(int petCardID)
+        //{
+        //    var response = await Client.GetAsync($"{App.ApiUrl}/petcards/{petCardID}");
+        //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        //    {
+
+        //    }
+        //}
         
     }
 }

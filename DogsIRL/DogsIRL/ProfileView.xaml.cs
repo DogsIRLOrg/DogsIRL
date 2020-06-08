@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using Plugin.Connectivity;
-using Xamd.ImageCarousel.Forms.Plugin.Abstractions;
 using System.Net.Http.Headers;
 using DogsIRL.Services;
 using Xamarin.Essentials;
@@ -99,6 +98,10 @@ namespace DogsIRL
 
         public async void EditPetCardClicked(System.Object sender, System.EventArgs e)
         {
+            Button button = (Button)sender;
+            Grid grid = (Grid)button.Parent;
+            Label label = (Label)grid.Children[0];
+            App.CurrentDog = PetList.Where(card => card.ID.ToString() == label.Text).FirstOrDefault();
             await Navigation.PushAsync(new EditPetCard());
         }
     }
