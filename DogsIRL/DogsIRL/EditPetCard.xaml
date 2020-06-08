@@ -59,10 +59,11 @@
     <Button Text="Upload to Blob" Clicked="btnUpload_Clicked" x:Name="btnUpload" BackgroundColor="Green" TextColor="White" />  
   <Editor x:Name="UploadedUrl" TextColor="Black" HeightRequest="85" Text="Image URL:" /> 
 
-        <Button Text="Edit Pet Card"
+        <Button Text="Update this pet"
                 Clicked="OnButtonClicked" />
-
-               </StackLayout>
+         <Button Text="Delete this pet"
+                Clicked="OnDeleteButtonClicked" />
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
