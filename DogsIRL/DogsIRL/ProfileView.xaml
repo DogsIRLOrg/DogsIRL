@@ -20,14 +20,16 @@
                 <CollectionView ItemsLayout="HorizontalList" x:Name="petCardsList" HeightRequest="400">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                            <Grid RowSpacing="0">
+                        <ContentView>
+                            <Grid RowSpacing="0" Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="150"/>
+                                    <RowDefinition Height="150" />
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -37,8 +39,11 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label TextColor="Black" Text="{Binding Name}" FontSize="Large" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="0"></Label>
-                                <Image Source="{Binding ImageURL}" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="1" />
+                <BoxView Color="Gray" Grid.ColumnSpan="2" Grid.RowSpan="11" CornerRadius="30"/>
+                                <Label TextColor="Black" Padding="5" Text="{Binding Name}" FontSize="Large" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="0"></Label>
+                                <Frame Padding="0" Margin="0" IsClippedToBounds="True" CornerRadius="10"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="Transparent" >
+                                  <Image Source="{Binding ImageURL}" VerticalOptions="FillAndExpand"/>
+                                </Frame>
                                 <Label TextColor="Black" HorizontalOptions="End" Text="Sex : " Grid.Column="0" Grid.Row="2"></Label>
                                 <Label TextColor="Black" Text="{Binding Sex}" Grid.Column="1" Grid.Row="2"></Label>
                                 <Label TextColor="Black" HorizontalOptions="End" Text="Owner : " Grid.Column="0" Grid.Row="3"></Label>
@@ -56,9 +61,9 @@
                                 <Label TextColor="Black" HorizontalOptions="End" Text="Bravery Rating : " Grid.Column="0" Grid.Row="9"></Label>
                                 <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="9"></Label>
                                 <Button Text="Edit"
-                                HorizontalOptions="FillAndExpand"
-                                Clicked="EditPetCardClicked" />
+                                Clicked="EditPetCardClicked" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="10"/>
                             </Grid>
+                            </ContentView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -77,10 +82,17 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
+                            <ContentView>
+                                <Frame CornerRadius="10" BackgroundColor="Gray" Padding="5" Margin="2">
                             <StackLayout>
                                 <Label FontSize="Medium" HorizontalOptions="Center" Text="{Binding Name}"/>
-                                <Image Source="{Binding ImageURL}"/>
+                                <Frame IsClippedToBounds="True" Padding="0" Margin="0" CornerRadius="8">
+                                  <Image Source="{Binding ImageURL}" VerticalOptions="FillAndExpand" />
+                                </Frame>
                             </StackLayout>
+                                   
+                                </Frame>
+                                </ContentView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
