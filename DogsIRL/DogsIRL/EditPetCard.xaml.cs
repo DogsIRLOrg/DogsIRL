@@ -230,7 +230,7 @@ namespace DogsIRL
             {
                 string stringContent = await response.Content.ReadAsStringAsync();
                 PetCard postedPetCard = JsonConvert.DeserializeObject<PetCard>(stringContent);
-                App.CurrentDog = model;
+                App.CurrentDog = null;
                 await DisplayAlert("Pet Successfully Deleted", $"You have deleted the pet card for {model.Name}", "Return");
                 await Navigation.PushAsync(new ProfileView());
             }
