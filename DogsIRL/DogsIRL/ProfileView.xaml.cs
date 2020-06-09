@@ -46,6 +46,7 @@ namespace DogsIRL
             }
             
             PetList = JsonConvert.DeserializeObject<List<PetCard>>(response);
+            CurrentDog.ItemsSource = PetList;
             if (App.CurrentDog == null)
             {
                 App.CurrentDog = PetList[0];
@@ -75,6 +76,7 @@ namespace DogsIRL
         /// </summary>
         async void ParkButtonClicked(System.Object sender, System.EventArgs e)
         {
+
             await Navigation.PushAsync(new ParkPage());
         }
 
@@ -103,6 +105,17 @@ namespace DogsIRL
             Label label = (Label)grid.Children[0];
             App.CurrentDog = PetList.Where(card => card.ID.ToString() == label.Text).FirstOrDefault();
             await Navigation.PushAsync(new EditPetCard());
+        }
+
+        void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                App.CurrentDog = PetList[selectedIndex];
+            }
         }
     }
 }

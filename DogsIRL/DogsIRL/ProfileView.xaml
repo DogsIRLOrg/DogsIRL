@@ -68,10 +68,18 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-                <Button Text="Go To Park"
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                <Picker SelectedIndexChanged="OnPickerSelectedIndexChanged" TextColor="Black" BackgroundColor="LightGray" ItemsSource="{Binding PetList}" ItemDisplayBinding="{Binding Name}"
+                       SelectedItem="{Binding SelectedPet}" x:Name = "CurrentDog" Title="Select Dog" >
+                </Picker>
+                <Button Grid.Column="1" Text="Go To Park"
                 HorizontalOptions="FillAndExpand"
                 Clicked="ParkButtonClicked" />
-  
+                </Grid>
                 <Button Text="+ Add new Pet"
                 HorizontalOptions="FillAndExpand"
                 Clicked="PetCardButtonClicked" />
