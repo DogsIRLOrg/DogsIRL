@@ -156,4 +156,7 @@
     <BundleResource Include="Resources\DogPark.png" />
     <BundleResource Include="Resources\main.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\donate.png" />
+  </ItemGroup>
 </Project>

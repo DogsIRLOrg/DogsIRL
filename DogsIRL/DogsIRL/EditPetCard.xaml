@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.EditPetCard">
-        <ContentPage.ToolbarItems>
-      <ToolbarItem Text="Logout"
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>  
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout"
                      IconImageSource="mainLogout.png"
                      Order="Primary"
                      Priority="0"
                      Clicked="LogoutClicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-          <ScrollView>
+        <ScrollView>
                <StackLayout>
                             <Label Text="Pet Name" FontSize="20" HorizontalOptions="Center" />
         <Entry x:Name = "petname" PlaceholderColor="Gray" FontSize="15" />
