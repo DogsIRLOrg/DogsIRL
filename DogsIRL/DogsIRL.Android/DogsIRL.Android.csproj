@@ -136,7 +136,9 @@
       </Generator>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\donate.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DogsIRL\DogsIRL.csproj">
       <Project>{B1D1CC50-CFB8-4D15-A0C1-7B5ECA490E96}</Project>
