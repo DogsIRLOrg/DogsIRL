@@ -49,8 +49,9 @@ namespace DogsIRL
                     UserName = username.Text,
                     Password = password.Text
                };
-                await _apiAccountService.RequestLogin(signIn);
-                await Navigation.PushAsync(new ProfileView());
+                await DisplayAlert("Confirm Email", "Please check your email for a confirmation link in order to log in.","Go to Login Page");
+               // await _apiAccountService.RequestLogin(signIn);
+                await Navigation.PushAsync(new MainPage());
             }
         }
     }
