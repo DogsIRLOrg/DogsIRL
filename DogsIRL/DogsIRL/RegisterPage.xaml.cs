@@ -35,12 +35,9 @@ namespace DogsIRL
                     Password = password.Text,
                     ConfirmPassword = confirmPassword.Text
                 };
-                var json = JsonConvert.SerializeObject(model);
-                HttpContent httpContent = new StringContent(json);
-                httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                var client = new HttpClient();
-                var response = await client.PostAsync(
-                    $"{App.ApiUrl}/account/register", httpContent);
+
+                var response = await _apiAccountService.RequestRegister(model);
+
                 if (!response.IsSuccessStatusCode)
                 {
                     await DisplayAlert("Registration failed", "Oh no! We weren't able to register. Make sure your username, email, and password are valid, or try again later.", "Return");
