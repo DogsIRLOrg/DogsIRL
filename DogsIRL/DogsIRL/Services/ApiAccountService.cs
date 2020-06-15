@@ -14,10 +14,15 @@ namespace DogsIRL.Services
     public class ApiAccountService
     {
         HttpClient Client { get; set; }
-      
+
         public ApiAccountService()
         {
-            Client = new HttpClient();
+#if DEBUG
+            HttpClientHandler insecureHandler = GetInsecureHandler();
+            Client = new HttpClient(insecureHandler);
+#else
+            HttpClient Client = new HttpClient();
+#endif
         }
 
         /// <summary>
@@ -39,6 +44,24 @@ namespace DogsIRL.Services
             }
             return response;
         }
+
+        ///!!!!!!!!!!!!!TODO!!!!!!!!!!
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> RequestRegister(RegisterInput input)
+        {
+            var json = JsonConvert.SerializeObject(input);
+            HttpContent httpContent = new StringContent(json);
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await Client.PostAsync(
+                $"{App.ApiUrl}/account/register", httpContent);
+
+            return response;
+        }
+
         /// <summary>
         /// Clears cached data for current user
         /// </summary>
@@ -48,6 +71,21 @@ namespace DogsIRL.Services
             App.Username = null;
             App.CurrentDog = null;
             App.Token = null;
+        }
+
+        public HttpClientHandler GetInsecureHandler()
+        {
+            HttpClientHandler handler = new HttpClientHandler();
+
+            handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
+            {
+                if (cert.Issuer.Equals("CN=localhost"))
+                    return true;
+
+                return errors == System.Net.Security.SslPolicyErrors.None;
+            };
+
+            return handler;
         }
 
         //public async Task <PetCard> GetPetCardByID(int petCardID)
