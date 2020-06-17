@@ -27,6 +27,7 @@ namespace DogsIRL
         {
 
             InitializeComponent();
+            _apiAccountService = new ApiAccountService();
             CheckAndRequestCameraPermission();
             CheckAndRequestPhotoPermission();
         }
@@ -220,8 +221,15 @@ namespace DogsIRL
                 var json = JsonConvert.SerializeObject(model);
                 HttpContent httpContent = new StringContent(json);
                 httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                var client = new HttpClient();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
+
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
                 var response = await client.PostAsync(
                     $"{App.ApiUrl}/petcards", httpContent);
             if (response.IsSuccessStatusCode)
@@ -263,7 +271,12 @@ namespace DogsIRL
         /// <returns></returns>
         public async Task AddToCollection(int petCardId)
         {
-            var client = new HttpClient();
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             CollectInput collectInput = new CollectInput
             {
