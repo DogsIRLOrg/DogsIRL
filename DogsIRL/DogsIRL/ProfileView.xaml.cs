@@ -26,9 +26,11 @@ namespace DogsIRL
         public ProfileView()
         {
             InitializeComponent();
+            _apiAccountService = new ApiAccountService();
             GetPetsOfCurrentUser();
             GetCollectionOfCurrentUser();
-            
+
+
         }
 
         /// <summary>
@@ -36,7 +38,14 @@ namespace DogsIRL
         /// </summary>
         public async void GetPetsOfCurrentUser()
         {
-            var client = new HttpClient();
+
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
+
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             var response = await client.GetStringAsync($"{App.ApiUrl}/petcards/user/{App.Username}");
             if (response.Length <= 2)
@@ -59,7 +68,12 @@ namespace DogsIRL
         /// </summary>
         public async void GetCollectionOfCurrentUser()
         {
-            var client = new HttpClient();
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             var response = await client.GetStringAsync($"{App.ApiUrl}/collection/{App.Username}");
             var collectedPetCardsList = JsonConvert.DeserializeObject<List<CollectedPetCard>>(response);

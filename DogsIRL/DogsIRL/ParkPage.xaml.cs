@@ -21,7 +21,7 @@ namespace DogsIRL
         public ParkPage()
         {
             InitializeComponent();
-
+            _apiAccountService = new ApiAccountService();
         }
 
         /// <summary>
@@ -43,7 +43,12 @@ namespace DogsIRL
         /// </summary>
         public async Task<PetCard> GetRandomOtherDog(string owner)
         {
-            var client = new HttpClient();
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             var response = await client.GetStringAsync($"{App.ApiUrl}/petcards");
             var pets = JsonConvert.DeserializeObject<List<PetCard>>(response);
@@ -155,7 +160,12 @@ namespace DogsIRL
         /// </summary>
         public async Task AddToCollection(int petCardId)
         {
-            var client = new HttpClient();
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             CollectInput collectInput = new CollectInput
             {
@@ -175,7 +185,12 @@ namespace DogsIRL
         async void OnCollectClicked(System.Object sender, System.EventArgs e)
         {
             await AddToCollection(OtherDog.ID);
-            var client = new HttpClient();
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             await Navigation.PushAsync(new ProfileView());
         }

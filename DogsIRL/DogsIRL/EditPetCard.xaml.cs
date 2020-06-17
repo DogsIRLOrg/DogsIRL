@@ -22,6 +22,7 @@ namespace DogsIRL
         public EditPetCard()
         {
             InitializeComponent();
+            _apiAccountService = new ApiAccountService();
             BringInPetCardCurrentValues();
 
         }
@@ -132,7 +133,12 @@ namespace DogsIRL
 
             int currentDogId = App.CurrentDog.ID;
 
-            var client = new HttpClient();
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             var response = await client.GetStringAsync($"{App.ApiUrl}/petcards/{currentDogId}");
             var currentPet = JsonConvert.DeserializeObject<PetCard>(response);
@@ -182,7 +188,12 @@ namespace DogsIRL
             var json = JsonConvert.SerializeObject(model);
             HttpContent httpContent = new StringContent(json);
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var client = new HttpClient();
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             var response = await client.PutAsync(
                 $"{App.ApiUrl}/petcards/{model.ID}", httpContent);
@@ -222,7 +233,12 @@ namespace DogsIRL
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var request = new HttpRequestMessage(HttpMethod.Delete, $"{App.ApiUrl}/petcards/{model.ID}");
             request.Content = httpContent;
-            var client = new HttpClient();
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             var response = await client.SendAsync(
                 request);
