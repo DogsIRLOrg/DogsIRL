@@ -3,6 +3,7 @@
 - Andrew Casper
 - Carrington Beard
 - Teddy Damian
+- Brody Rebne
 
 ## Problem Domain
 DogsIRL is a social platform for pets to interact with other pets. People like pet pictures and want to interact with them more. Pets increase happiness and emotional wellbeing. Login page, upload info/details: name, playfulness, fluffiness, snugability, vegetarian/carnivore, etc. Park page for interaction to view other puppies.
@@ -42,6 +43,9 @@ Security - Protecting users emails and passwords as they are stored. We will use
 *  *  *  *  *
 ## Domain Modeling
 ![DomainModeling](https://github.com/401FinalProjectOrg/DogsIRL/blob/dev/DogsIRLDomainModel.png)
+*  *  *  *  *
+## Forgot Password Structure
+![ForgotPassword](https://github.com/401FinalProjectOrg/DogsIRL/blob/dev/Forgot-password.png)
 *  *  *  *  *
 
 #### Patch Notes
