@@ -63,5 +63,10 @@ namespace DogsIRL
         {
             await Navigation.PushAsync(new RegisterPage());
         }
+
+        async void ForgotPasswordButtonOnClicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new ForgotPasswordPage());
+        }
     }
 }

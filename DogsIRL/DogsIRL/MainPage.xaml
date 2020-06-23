@@ -19,6 +19,10 @@
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="EndAndExpand" />
 
+        <Button Text="Forgot Password"
+                HorizontalOptions="FillAndExpand"
+                Clicked="ForgotPasswordButtonOnClicked"  />
+
         <Button Text="Create New Account"
                 HorizontalOptions="FillAndExpand"
                 Clicked="RegisterButtonOnClicked"  />

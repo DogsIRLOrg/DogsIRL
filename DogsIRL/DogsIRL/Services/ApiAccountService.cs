@@ -88,14 +88,15 @@ namespace DogsIRL.Services
             return handler;
         }
 
-        //public async Task <PetCard> GetPetCardByID(int petCardID)
-        //{
-        //    var response = await Client.GetAsync($"{App.ApiUrl}/petcards/{petCardID}");
-        //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        //    {
+        public async Task<HttpResponseMessage> RequestForgotPassword(EmailInput input)
+        {
+            var json = JsonConvert.SerializeObject(input);
+            HttpContent httpContent = new StringContent(json);
+            httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await Client.PostAsync(
+               $"{App.ApiUrl}/account/forgot-password", httpContent);
+            return response;
+        }
 
-        //    }
-        //}
-        
     }
 }
