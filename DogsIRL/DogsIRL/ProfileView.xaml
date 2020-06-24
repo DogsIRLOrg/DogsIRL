@@ -3,67 +3,132 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
              xmlns:local="clr-namespace:DogsIRL"  
              x:Class="DogsIRL.ProfileView">
-        <ContentPage.Resources>
+    <ContentPage.Resources>
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Donate"
+                     />
+        <ToolbarItem Text="Logout"
+                     IconImageSource="mainLogout.png"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="LogoutClicked"/>
+</ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <ScrollView>
             <StackLayout>
-          <Image Source="DogPark.png" Opacity="0.5"
-                 RelativeLayout.WidthConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-                RelativeLayout.HeightConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
-<CollectionView x:Name="petCardsList">
+                <Label Text="My Profile:" FontSize="Title"></Label>
+                <CollectionView ItemsLayout="HorizontalList" x:Name="petCardsList" HeightRequest="400">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        
-                            <Grid RelativeLayout.WidthConstraint=
-              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-            RelativeLayout.HeightConstraint=
-              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                        <ContentView x:Name="contentView">
+                            <Grid RowSpacing="0" Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                                </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="150" />
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Name : " Grid.Column="0" Grid.Row="0"></Label>
-                                <Label TextColor="Black" Text="{Binding Name}" Grid.Column="1" Grid.Row="0"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Sex : " Grid.Column="0" Grid.Row="1"></Label>
-                                <Label TextColor="Black" Text="{Binding Sex}" Grid.Column="1" Grid.Row="1"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Owner : " Grid.Column="0" Grid.Row="2"></Label>
-                                <Label TextColor="Black" Text="{Binding Owner}" Grid.Column="1" Grid.Row="2"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Good Dog Rating : " Grid.Column="0" Grid.Row="3"></Label>
-                                <Label TextColor="Black" Text="{Binding GoodDog}" Grid.Column="1" Grid.Row="3"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Floofiness Rating : " Grid.Column="0" Grid.Row="4"></Label>
-                                <Label TextColor="Black" Text="{Binding Floofiness}" Grid.Column="1" Grid.Row="4"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Energy Rating : " Grid.Column="0" Grid.Row="5"></Label>
-                                <Label TextColor="Black" Text="{Binding Energy}" Grid.Column="1" Grid.Row="5"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Snuggles Rating : " Grid.Column="0" Grid.Row="6"></Label>
-                                <Label TextColor="Black" Text="{Binding Snuggles}" Grid.Column="1" Grid.Row="6"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Appetite Rating : " Grid.Column="0" Grid.Row="7"></Label>
-                                <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="7"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Bravery Rating : " Grid.Column="0" Grid.Row="8"></Label>
-                                <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="8"></Label>
+                                <Label Text="{Binding ID}" x:Name="CurrentID" IsVisible="false"/>
+                                    <Frame StyleClass="Card,PetCard" Grid.ColumnSpan="2" Grid.RowSpan="11" CornerRadius="30" BorderColor="#335470">
+                                        <BoxView>
+                                        </BoxView>
+                                    </Frame>
+                                            
+                                <Label TextColor="Black" Padding="5" Text="{Binding Name}" FontSize="Large" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="0"></Label>
+                                <Frame Padding="1" Margin="1" IsClippedToBounds="True" CornerRadius="30"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.RowSpan="11" BackgroundColor="Transparent" >
+                                    <Image Source="boneBg.png" Aspect="AspectFill"/>
+                                    </Frame>
+                                <Frame Padding="0" Margin="0" IsClippedToBounds="True" CornerRadius="10"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="Transparent" >
+                                  <Image Source="{Binding ImageURL}" VerticalOptions="FillAndExpand"/>
+                                </Frame>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Sex : " Grid.Column="0" Grid.Row="2"></Label>
+                                <Label TextColor="Black" Text="{Binding Sex}" Grid.Column="1" Grid.Row="2"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Owner : " Grid.Column="0" Grid.Row="3"></Label>
+                                <Label TextColor="Black" Text="{Binding Owner}" Grid.Column="1" Grid.Row="3"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Good Dog Rating : " Grid.Column="0" Grid.Row="4"></Label>
+                                <Label TextColor="Black" Text="{Binding GoodDog}" Grid.Column="1" Grid.Row="4"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Floofiness Rating : " Grid.Column="0" Grid.Row="5"></Label>
+                                <Label TextColor="Black" Text="{Binding Floofiness}" Grid.Column="1" Grid.Row="5"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Energy Rating : " Grid.Column="0" Grid.Row="6"></Label>
+                                <Label TextColor="Black" Text="{Binding Energy}" Grid.Column="1" Grid.Row="6"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Snuggles Rating : " Grid.Column="0" Grid.Row="7"></Label>
+                                <Label TextColor="Black" Text="{Binding Snuggles}" Grid.Column="1" Grid.Row="7"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Appetite Rating : " Grid.Column="0" Grid.Row="8"></Label>
+                                <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="8"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Bravery Rating : " Grid.Column="0" Grid.Row="9"></Label>
+                                <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="9"></Label>
+                                <Button x:Name="{Binding ID}" Text="Edit"
+                                Clicked="EditPetCardClicked" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="10"/>
                             </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Button Text="Go To Park"
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                <Picker SelectedIndexChanged="OnPickerSelectedIndexChanged" ItemsSource="{Binding PetList}" ItemDisplayBinding="{Binding Name}"
+                       SelectedItem="{Binding SelectedPet}" x:Name = "CurrentDog" Title="Select Dog" >
+                </Picker>
+                <Button Grid.Column="1" Text="Go To Park"
                 HorizontalOptions="FillAndExpand"
                 Clicked="ParkButtonClicked" />
-                </StackLayout>
-
-       
+                </Grid>
+                <Button Text="+ Add new Pet"
+                HorizontalOptions="FillAndExpand"
+                Clicked="PetCardButtonClicked" />
+                <Label FontSize="Large" Text="My Collected Pet Cards:"></Label>
+                <CollectionView x:Name="collectionList">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                        Span="3" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ContentView>
+                                <Frame Padding="2" Margin="2" IsClippedToBounds="True" Grid.Row="0" CornerRadius="25" Grid.ColumnSpan="1" Grid.RowSpan="3"  HorizontalOptions="Center" BackgroundColor="Transparent" >
+                            <Grid RowSpacing="0" BackgroundColor="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                    <Image Margin="2" Source="boneBg.png" Aspect="AspectFill" BackgroundColor="White"/>
+                                <Frame StyleClass="Card,CollectionCard" HasShadow="False" BorderColor="#335470" BackgroundColor="Transparent">
+                            <StackLayout>
+                                <Label FontSize="Medium" HorizontalOptions="Center" Text="{Binding Name}" Grid.Row="0" Grid.ColumnSpan="1" BackgroundColor="Transparent"/>
+                                <Frame IsClippedToBounds="True" Grid.Row="0" Padding="0" Margin="0" CornerRadius="8">
+                                  <Image Source="{Binding ImageURL}" VerticalOptions="FillAndExpand" />
+                                </Frame>
+                            </StackLayout>
+                                   
+                                </Frame>
+                             </Grid>
+                                    </Frame>
+                                </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
