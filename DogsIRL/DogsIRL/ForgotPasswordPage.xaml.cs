@@ -30,6 +30,7 @@ namespace DogsIRL
                 if (!response.IsSuccessStatusCode)
                 {
                     await DisplayAlert("Forgot Password Server Error", "Please try again later.", "Return");
+                    return;
                 }
 
                 await DisplayAlert("Request sent", "Please check your email for a link to reset your password. Your email must be confirmed to reset your password.", "Return to Login Page");
