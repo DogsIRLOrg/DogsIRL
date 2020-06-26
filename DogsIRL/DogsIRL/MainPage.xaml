@@ -3,6 +3,7 @@
     <ContentPage.Resources>
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>
+    <ScrollView>
     <StackLayout>
         <!-- Place new controls here -->
         <Image Source="main.png"
@@ -27,4 +28,5 @@
                 HorizontalOptions="FillAndExpand"
                 Clicked="RegisterButtonOnClicked"  />
     </StackLayout>
+    </ScrollView>
 </ContentPage>
