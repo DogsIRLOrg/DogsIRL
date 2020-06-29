@@ -109,7 +109,7 @@ namespace DogsIRL
         {
             await Navigation.PopToRootAsync();
             _apiAccountService = new ApiAccountService();
-           await _apiAccountService.Logout();
+            await _apiAccountService.Logout();
         }
 
         public async void EditPetCardClicked(System.Object sender, System.EventArgs e)
@@ -130,6 +130,11 @@ namespace DogsIRL
             {
                 App.CurrentDog = PetList[selectedIndex];
             }
+        }
+
+        public async void DonateClicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new DonatePage());
         }
     }
 }
