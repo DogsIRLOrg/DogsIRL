@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DogsIRL.Models;
 using DogsIRL.Services;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 
 namespace DogsIRL
@@ -40,7 +41,13 @@ namespace DogsIRL
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    await DisplayAlert("Registration failed", "Oh no! We weren't able to register. Make sure your username, email, and password are valid, or try again later.", "Return");
+                    string content = await response.Content.ReadAsStringAsync();
+                    List<IdentityError> errors = JsonConvert.DeserializeObject<List<IdentityError>>(content);
+                    foreach (IdentityError error in errors)
+                    {
+                        await DisplayAlert("Registration failed", error.Description, "Return");
+                    }
+                    return;
                 }
                 var signIn = new UserSignIn {
                     UserName = username.Text,
