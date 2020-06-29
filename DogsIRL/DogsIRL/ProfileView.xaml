@@ -8,6 +8,7 @@
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Donate"
+                     Clicked="DonateClicked"
                      />
         <ToolbarItem Text="Logout"
                      IconImageSource="mainLogout.png"
