@@ -22,7 +22,7 @@ namespace DogsIRL
 
         async void VenmoOnClicked(System.Object sender, System.EventArgs e)
         {
-            await Browser.OpenAsync("https://www.google.com/maps", BrowserLaunchMode.SystemPreferred);
+            await Browser.OpenAsync("https://www.venmo.com/andrew-casper", BrowserLaunchMode.SystemPreferred);
 
         }
     }
