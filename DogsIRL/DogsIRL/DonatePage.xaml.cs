@@ -14,9 +14,9 @@ namespace DogsIRL
         }
         
 
-        async void PaypalOnClicked(System.Object sender, System.EventArgs e)
+        async void CashAppOnClicked(System.Object sender, System.EventArgs e)
         {
-            await Browser.OpenAsync("https://www.paypal.com/", BrowserLaunchMode.SystemPreferred);
+            await Browser.OpenAsync("https://cash.app/$AndrewC921", BrowserLaunchMode.SystemPreferred);
          
         }
 

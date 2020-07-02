@@ -6,9 +6,9 @@
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="EndAndExpand" />
 
-                <Button Text="PayPal"
+                <Button Text="CashApp"
                 HorizontalOptions="FillAndExpand"
-                Clicked="PaypalOnClicked"  />
+                Clicked="CashAppOnClicked"  />
 
                <Button Text="Venmo"
                 HorizontalOptions="FillAndExpand"
