@@ -26,10 +26,11 @@ namespace DogsIRL
         public ProfileView()
         {
             InitializeComponent();
+            Busy();
             _apiAccountService = new ApiAccountService();
             GetPetsOfCurrentUser();
             GetCollectionOfCurrentUser();
-
+            NotBusy();
 
         }
 
@@ -53,7 +54,7 @@ namespace DogsIRL
                 await Navigation.PushAsync(new CreatePetcard());
                 return;
             }
-            
+
             PetList = JsonConvert.DeserializeObject<List<PetCard>>(response);
             CurrentDog.ItemsSource = PetList;
             if (App.CurrentDog == null)
@@ -78,7 +79,7 @@ namespace DogsIRL
             var response = await client.GetStringAsync($"{App.ApiUrl}/collection/{App.Username}");
             var collectedPetCardsList = JsonConvert.DeserializeObject<List<CollectedPetCard>>(response);
             CollectedList = new List<PetCard>();
-            foreach(CollectedPetCard collectedPetCard in collectedPetCardsList)
+            foreach (CollectedPetCard collectedPetCard in collectedPetCardsList)
             {
                 CollectedList.Add(collectedPetCard.PetCard);
             }
@@ -90,8 +91,9 @@ namespace DogsIRL
         /// </summary>
         async void ParkButtonClicked(System.Object sender, System.EventArgs e)
         {
-
+            Busy();
             await Navigation.PushAsync(new ParkPage());
+            NotBusy();
         }
 
         /// <summary>
@@ -99,7 +101,9 @@ namespace DogsIRL
         /// </summary>
         async void PetCardButtonClicked(System.Object sender, System.EventArgs e)
         {
+            Busy();
             await Navigation.PushAsync(new CreatePetcard());
+            NotBusy();
         }
 
         /// <summary>
@@ -114,15 +118,18 @@ namespace DogsIRL
 
         public async void EditPetCardClicked(System.Object sender, System.EventArgs e)
         {
+            Busy();
             Button button = (Button)sender;
             Grid grid = (Grid)button.Parent;
             Label label = (Label)grid.Children[0];
             App.CurrentDog = PetList.Where(card => card.ID.ToString() == label.Text).FirstOrDefault();
             await Navigation.PushAsync(new EditPetCard());
+            NotBusy();
         }
 
         void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
+            Busy();
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
 
@@ -130,11 +137,34 @@ namespace DogsIRL
             {
                 App.CurrentDog = PetList[selectedIndex];
             }
+            NotBusy();
         }
 
         public async void DonateClicked(System.Object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new DonatePage());
+        }
+
+        public void Busy()
+        {
+            loadingIndicator.IsVisible = true;
+            loadingIndicator.IsRunning = true;
+            CurrentDog.IsVisible = false;
+            btnGoToPark.IsVisible = false;
+            btnAddNewPet.IsVisible = false;
+        }
+
+        /// <summary>
+        /// Hides spinning loading graphic once upload is complete
+        /// </summary>
+        public void NotBusy()
+        {
+            loadingIndicator.IsVisible = false;
+            loadingIndicator.IsRunning = false;
+            CurrentDog.IsVisible = true;
+            btnGoToPark.IsVisible = true;
+            btnAddNewPet.IsVisible = true;
+
         }
     }
 }
