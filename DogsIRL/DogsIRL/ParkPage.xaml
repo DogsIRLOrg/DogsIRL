@@ -37,9 +37,12 @@
                         <Label x:Name="OtherDogName" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" FontSize="Large"/>
                         <Image x:Name="OtherDogImage" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
                  </Grid>
+                <ActivityIndicator x:Name="loadingIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />
                  <Button Text="Interact"
+                         x:Name="btnInteract"
                 Clicked="OnInteractClicked" />
             <Button Text="Collect"
+                    x:Name="btnCollect"
                 Clicked="OnCollectClicked" />
         </StackLayout>
      </ScrollView>

@@ -19,6 +19,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                <ActivityIndicator x:Name="loadingIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />
                 <Label Text="My Profile:" FontSize="Title"></Label>
                 <CollectionView ItemsLayout="HorizontalList" x:Name="petCardsList" HeightRequest="400">
                 <CollectionView.ItemTemplate>
@@ -87,10 +88,12 @@
                        SelectedItem="{Binding SelectedPet}" x:Name = "CurrentDog" Title="Select Dog" >
                 </Picker>
                 <Button Grid.Column="1" Text="Go To Park"
+                        x:Name="btnGoToPark"
                 HorizontalOptions="FillAndExpand"
                 Clicked="ParkButtonClicked" />
                 </Grid>
                 <Button Text="+ Add new Pet"
+                        x:Name="btnAddNewPet"
                 HorizontalOptions="FillAndExpand"
                 Clicked="PetCardButtonClicked" />
                 <Label FontSize="Large" Text="My Collected Pet Cards:"></Label>

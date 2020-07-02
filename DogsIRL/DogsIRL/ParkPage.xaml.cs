@@ -148,10 +148,12 @@ namespace DogsIRL
         /// </summary>
         async void OnInteractClicked(System.Object sender, System.EventArgs e)
         {
+            Busy();
             await AddToCollection(OtherDog.ID);
             var previousPage = Navigation.NavigationStack.LastOrDefault();
             await Navigation.PushAsync(new ParkPage());
             Navigation.RemovePage(previousPage);
+            NotBusy();
      
         }
 
@@ -184,6 +186,7 @@ namespace DogsIRL
         /// </summary>
         async void OnCollectClicked(System.Object sender, System.EventArgs e)
         {
+            Busy();
             await AddToCollection(OtherDog.ID);
 #if DEBUG
             HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
@@ -193,6 +196,7 @@ namespace DogsIRL
 #endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             await Navigation.PushAsync(new ProfileView());
+            NotBusy();
         }
 
         /// <summary>
@@ -203,6 +207,25 @@ namespace DogsIRL
            await Navigation.PopToRootAsync();
             _apiAccountService = new ApiAccountService();
            await _apiAccountService.Logout();
+        }
+
+        public void Busy()
+        {
+            loadingIndicator.IsVisible = true;
+            loadingIndicator.IsRunning = true;
+            btnInteract.IsVisible = false;
+            btnCollect.IsVisible = false;
+        }
+
+        /// <summary>
+        /// Hides spinning loading graphic once upload is complete
+        /// </summary>
+        public void NotBusy()
+        {
+            loadingIndicator.IsVisible = false;
+            loadingIndicator.IsRunning = false;
+            btnInteract.IsVisible = true;
+            btnCollect.IsVisible = true;
         }
     }
 }

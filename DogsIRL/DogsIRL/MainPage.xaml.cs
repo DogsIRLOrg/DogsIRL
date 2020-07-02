@@ -34,6 +34,7 @@ namespace DogsIRL
         /// <param name="e"></param>
         async void OnButtonClicked(System.Object sender, System.EventArgs e)
         {
+            Busy();
             var signInUser = new UserSignIn()
             {
                 UserName = NameEntry.Text,
@@ -50,7 +51,7 @@ namespace DogsIRL
             {
                 await DisplayAlert("Failed Login Attempt", "Something has gone horribly wrong. Its probably your fault", "Try Again");
             }
-            
+            NotBusy();
         }
 
         
@@ -61,12 +62,45 @@ namespace DogsIRL
         /// <param name="e"></param>
         async void RegisterButtonOnClicked(System.Object sender, System.EventArgs e)
         {
+            Busy();
             await Navigation.PushAsync(new RegisterPage());
+            NotBusy();
         }
 
         async void ForgotPasswordButtonOnClicked(System.Object sender, System.EventArgs e)
         {
+            Busy();
             await Navigation.PushAsync(new ForgotPasswordPage());
+            NotBusy();
+        }
+
+        public void Busy()
+        {
+            loadingIndicator.IsVisible = true;
+            loadingIndicator.IsRunning = true;
+            textOr.IsVisible = false;
+            btnCreate.IsVisible = false;
+            btnSignIn.IsVisible = false;
+            btnForgot.IsVisible = false;
+            btnCreate.IsEnabled = false;
+            btnForgot.IsEnabled = false;
+            btnSignIn.IsEnabled = false;
+        }
+
+        /// <summary>
+        /// Hides spinning loading graphic once upload is complete
+        /// </summary>
+        public void NotBusy()
+        {
+            loadingIndicator.IsVisible = false;
+            loadingIndicator.IsRunning = false;
+            textOr.IsVisible = true;
+            btnCreate.IsVisible = true;
+            btnSignIn.IsVisible = true;
+            btnForgot.IsVisible = true;
+            btnCreate.IsEnabled = true;
+            btnForgot.IsEnabled = true;
+            btnSignIn.IsEnabled = true;
         }
     }
 }
