@@ -59,8 +59,8 @@
     </Grid>  
     <Image x:Name="imageView" HeightRequest="300" WidthRequest="400" />  
     <ActivityIndicator x:Name="uploadIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />  
-    <Button Text="Upload to Blob" Clicked="btnUpload_Clicked" x:Name="btnUpload" BackgroundColor="Green" TextColor="White" />  
-  <Editor x:Name="UploadedUrl" TextColor="Black" HeightRequest="85" Text="Image URL:" /> 
+    <Button Text="Upload to Blob" Clicked="btnUpload_Clicked" x:Name="btnUpload" BackgroundColor="Green" TextColor="White" />
+                <Editor x:Name="UploadedUrl" TextColor="Black" HeightRequest="85" Text="https://dogsirlblob.blob.core.windows.net/dogsirl/main.png" /> 
 
         <Button Text="Update this pet"
                 Clicked="OnButtonClicked" />
