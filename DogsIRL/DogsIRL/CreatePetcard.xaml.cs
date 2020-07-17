@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using DogsIRL.Models;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 using Xamarin.Essentials;
-using Xamarin.Forms.PlatformConfiguration;
 using DogsIRL.Services;
 
 namespace DogsIRL
@@ -112,7 +107,14 @@ namespace DogsIRL
             }
             else
             {
-                UploadImage(_mediaFile.GetStream());
+
+                if (await UploadImageAsync(_mediaFile.GetStream(), $"{App.Username}(TempImage)")) {
+                    await DisplayAlert("Uploaded", "Image uploaded to Blob Storage Successfully!", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Upload failed :(", "Image failed to upload to the server for some reason. Try again later?", "OK");
+                }
             }
         }
 
@@ -155,20 +157,38 @@ namespace DogsIRL
         /// Identitifies blob storage key and container, and uploads current selected image to chosen container.
         /// </summary>
         /// <param name="stream"></param>
-        private async void UploadImage(Stream stream)
+        //private async void UploadImage(Stream stream)
+        //{
+        //    Busy();
+        //    var account = CloudStorageAccount.Parse();
+        //    var client = account.CreateCloudBlobClient();
+        //    var container = client.GetContainerReference("dogs");
+        //    await container.CreateIfNotExistsAsync();
+        //    var name = Guid.NewGuid().ToString();
+        //    var blockBlob = container.GetBlockBlobReference($"{name}.png");
+        //    await blockBlob.UploadFromStreamAsync(stream);
+        //    URL = blockBlob.Uri.OriginalString;
+        //    UploadedUrl.Text = URL;
+        //    NotBusy();
+        //    await DisplayAlert("Uploaded", "Image uploaded to Blob Storage Successfully!", "OK");
+        //}
+
+        // Code from https://dzone.com/articles/how-to-upload-images-to-an-aspnet-core-rest-servic
+        public async Task<bool> UploadImageAsync(Stream image, string fileName)
         {
             Busy();
-            var account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=dogsirl;AccountKey=UzCWlAFitDySBsbsndgKVh/hr2IQZz8DJQDPQzG45yhRoAQ2GqMbzifDslOnheiHlSl72smlA3vYncRgbFSIBQ==;EndpointSuffix=core.windows.net");
-            var client = account.CreateCloudBlobClient();
-            var container = client.GetContainerReference("dogs");
-            await container.CreateIfNotExistsAsync();
-            var name = Guid.NewGuid().ToString();
-            var blockBlob = container.GetBlockBlobReference($"{name}.png");
-            await blockBlob.UploadFromStreamAsync(stream);
-            URL = blockBlob.Uri.OriginalString;
-            UploadedUrl.Text = URL;
-            NotBusy();
-            await DisplayAlert("Uploaded", "Image uploaded to Blob Storage Successfully!", "OK");
+            HttpContent fileStreamContent = new StreamContent(image);
+            fileStreamContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data") { Name = "file", FileName = fileName };
+            fileStreamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
+            using (var client = new HttpClient())
+            using (var formData = new MultipartFormDataContent())
+            {
+                formData.Add(fileStreamContent);
+                var response = await client.PostAsync($"{App.ApiUrl}/petcards/uploadimage", formData);
+                UploadedUrl.Text = await response.Content.ReadAsStringAsync();
+                NotBusy();
+                return response.IsSuccessStatusCode;
+            }
         }
 
         /// <summary>
