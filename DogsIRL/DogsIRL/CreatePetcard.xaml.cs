@@ -177,10 +177,20 @@ namespace DogsIRL
         public async Task<bool> UploadImageAsync(Stream image, string fileName)
         {
             Busy();
+
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
+
             HttpContent fileStreamContent = new StreamContent(image);
             fileStreamContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data") { Name = "file", FileName = fileName };
             fileStreamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
-            using (var client = new HttpClient())
+
             using (var formData = new MultipartFormDataContent())
             {
                 formData.Add(fileStreamContent);
