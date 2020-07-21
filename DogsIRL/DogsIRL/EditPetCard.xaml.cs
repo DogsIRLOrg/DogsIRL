@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using DogsIRL.Models;
 using DogsIRL.Services;
 using Microsoft.WindowsAzure.Storage;
@@ -40,7 +41,7 @@ namespace DogsIRL
             }
             else
             {
-                UploadImage(_mediaFile.GetStream());
+                await UploadImageAsync(_mediaFile.GetStream(), $"{App.Username}(TempImageEdit)");
             }
         }
 
@@ -95,20 +96,22 @@ namespace DogsIRL
             }
         }
 
-        private async void UploadImage(Stream stream)
+        // Code from https://dzone.com/articles/how-to-upload-images-to-an-aspnet-core-rest-servic
+        public async Task<bool> UploadImageAsync(Stream image, string fileName)
         {
             Busy();
-            var account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=dogsirl;AccountKey=UzCWlAFitDySBsbsndgKVh/hr2IQZz8DJQDPQzG45yhRoAQ2GqMbzifDslOnheiHlSl72smlA3vYncRgbFSIBQ==;EndpointSuffix=core.windows.net");
-            var client = account.CreateCloudBlobClient();
-            var container = client.GetContainerReference("dogs");
-            await container.CreateIfNotExistsAsync();
-            var name = Guid.NewGuid().ToString();
-            var blockBlob = container.GetBlockBlobReference($"{name}.png");
-            await blockBlob.UploadFromStreamAsync(stream);
-            URL = blockBlob.Uri.OriginalString;
-            UploadedUrl.Text = URL;
-            NotBusy();
-            await DisplayAlert("Uploaded", "Image uploaded to Blob Storage Successfully!", "OK");
+            HttpContent fileStreamContent = new StreamContent(image);
+            fileStreamContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data") { Name = "file", FileName = fileName };
+            fileStreamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
+            using (var client = new HttpClient())
+            using (var formData = new MultipartFormDataContent())
+            {
+                formData.Add(fileStreamContent);
+                var response = await client.PostAsync($"{App.ApiUrl}/petcards/uploadimage", formData);
+                UploadedUrl.Text = await response.Content.ReadAsStringAsync();
+                NotBusy();
+                return response.IsSuccessStatusCode;
+            }
         }
 
         public void Busy()
