@@ -1,6 +1,6 @@
 ![Main Logo](/assets/main.png)
 
-## Authors
+## Authors 🐶
 - Andrew Casper
 - Carrington Beard
 - Teddy Damian
