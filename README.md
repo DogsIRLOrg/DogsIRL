@@ -13,7 +13,7 @@ Dogs IRL is a platform built on a simple principle: people like pets :). They li
 ### **Vision**
 DogsIRL allows pet owners and dog lovers to share their pet pictures, meet and interact with other doggos in the network, and collect cards of every pup they meet to add to their collection. Users can create cards for their pets, adding a picture and attaching cute and personalized doggo statistics such as floofiness, bravery, snuggability, and appetite. The long-term draw of the application is the chance for each user to build a collection of good dogs within the app, which has driven the popularity of other apps in the same space such as Pokemon Go. The difference is that Dogs IRL offers a limitless supply of new and unique good dogs to meet, as new users add their pups to the network. 
 
-That's right: infinite dogs.
+That's right: infinite dogs. ♾🐶
 
 Dog owners are active, so it feels important to us that our application live in the mobile space. To support that mobile application, we have built a backend RESTful API in ASP.NET Core to fulfill the demand for pups. We securely store user data using Microsoft's Identity Server, and host our backend and databases on Microsoft Azure.
 
