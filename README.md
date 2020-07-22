@@ -1,5 +1,3 @@
-# DogsIRL
-
 ![Main Logo](/assets/main.png)
 
 ## Authors
