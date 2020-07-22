@@ -1,15 +1,15 @@
 ![Main Logo](/assets/main.png)
 
-## Authors 🐶
+## 🐶 Authors 
 - Andrew Casper
 - Carrington Beard
 - Teddy Damian
 - Brody Rebne
 
-## Problem Domain
+## 🐶 Problem Domain
 Dogs IRL is a platform built on a simple principle: people like pets :). They like pictures of doggos and they want to see more pups. They want to see new pictures from pets they've met every time they log in, they want their good boy or good girl to meet other good boys and good girls, and they want to add those good dogs to their collection to see them every day. For our users, this interaction increases happiness and emotional wellbeing.
 
-## Software Requirements
+## 🐶 Software Requirements
 ### **Vision**
 DogsIRL allows pet owners and dog lovers to share their pet pictures, meet and interact with other doggos in the network, and collect cards of every pup they meet to add to their collection. Users can create cards for their pets, adding a picture and attaching cute and personalized doggo statistics such as floofiness, bravery, snuggability, and appetite. The long-term draw of the application is the chance for each user to build a collection of good dogs within the app, which has driven the popularity of other apps in the same space such as Pokemon Go. The difference is that Dogs IRL offers a limitless supply of new and unique good dogs to meet, as new users add their pups to the network. 
 
@@ -43,16 +43,16 @@ A user will sign up and create a profile. At this point a user can create a 'pet
 
 Security - Protecting users emails and passwords as they are stored. We will use ASP.NET Core Identity to store users information and hash passwords. Users will be able to sign up and create a profile and not worry about their information being stolen.
 
-## ERD Diagram
+## 🐶 ERD Diagram
 ![ERD Diagram](https://github.com/401FinalProjectOrg/DogsIRL/blob/dev/DogsIRL%20ER%20Diagram.png)
 *  *  *  *  *
-## Wireframe
+## 🐶 Wireframe
 ![Wireframe](https://github.com/401FinalProjectOrg/DogsIRL/blob/dev/DogsIRL%20Wireframes.png)
 *  *  *  *  *
-## Domain Modeling
+## 🐶 Domain Modeling
 ![DomainModeling](https://github.com/401FinalProjectOrg/DogsIRL/blob/dev/DogsIRLDomainModel.png)
 *  *  *  *  *
-## Forgot Password Structure
+## 🐶 Forgot Password Structure
 ![ForgotPassword](https://github.com/401FinalProjectOrg/DogsIRL/blob/dev/Forgot-password.png)
 *  *  *  *  *
 
