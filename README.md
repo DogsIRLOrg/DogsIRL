@@ -22,8 +22,8 @@ Our future stretch goals include geolocation support which we hope will allow us
 ### **Scope In**
 This web app will allow users to create profiles for their dogs.
 The app will allow pets to virtually interact with each other.
-User will be able to collect the petcards of fellow pets once they have interacted.
-Pets will be able to have short text dialogue.
+Users will be able to collect the petcards of other pets once they have interacted.
+Pets will be able to have short text dialogue interactions.
 
 ### **Scope Out**
 Selling user data.
