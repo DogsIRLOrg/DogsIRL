@@ -1,4 +1,7 @@
 # DogsIRL
+
+![Main Logo](/assets/main.png)
+
 ## Authors
 - Andrew Casper
 - Carrington Beard
