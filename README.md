@@ -17,6 +17,8 @@ That's right: infinite dogs. ♾🐶
 
 Dog owners are active, so it feels important to us that our application live in the mobile space. To support that mobile application, we have built a backend RESTful API in ASP.NET Core to fulfill the demand for pups. We securely store user data using Microsoft's Identity Server, and host our backend and databases on Microsoft Azure.
 
+[Link to the Github Project for our backend API](https://github.com/401FinalProjectOrg/DogsIRL-API)
+
 Our future stretch goals include geolocation support which we hope will allow users to seek out and meet dogs that are close to them, improving animations and overall appearance of every page, and the ability for users to upload additional images of their dogs for newsfeed/story functionality.
 
 ### **Scope In**
