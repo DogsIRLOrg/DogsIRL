@@ -41,7 +41,7 @@ namespace DogsIRL
             }
             else
             {
-                if (await UploadImageAsync(_mediaFile.GetStream(), $"{App.Username}(TempImage)"))
+                if (await UploadImageAsync(_mediaFile.GetStream(), "temp"))
                 {
                     await DisplayAlert("Uploaded", "Image uploaded to Blob Storage Successfully!", "OK");
                 }
@@ -119,12 +119,12 @@ namespace DogsIRL
 
             HttpContent fileStreamContent = new StreamContent(image);
             fileStreamContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data") { Name = "file", FileName = fileName };
-            fileStreamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
+            fileStreamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
 
             using (var formData = new MultipartFormDataContent())
             {
                 formData.Add(fileStreamContent);
-                var response = await client.PostAsync($"{App.ApiUrl}/petcards/uploadimage", formData);
+                var response = await client.PostAsync($"{App.ApiUrl}/image/uploadimage", formData);
                 UploadedUrl.Text = await response.Content.ReadAsStringAsync();
                 NotBusy();
                 return response.IsSuccessStatusCode;
