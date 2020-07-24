@@ -107,7 +107,6 @@ namespace DogsIRL
             }
             else
             {
-
                 if (await UploadImageAsync(_mediaFile.GetStream(), $"{App.Username}(TempImage)")) {
                     await DisplayAlert("Uploaded", "Image uploaded to Blob Storage Successfully!", "OK");
                 }

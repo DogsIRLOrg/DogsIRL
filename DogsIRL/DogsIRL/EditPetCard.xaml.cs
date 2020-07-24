@@ -41,7 +41,14 @@ namespace DogsIRL
             }
             else
             {
-                await UploadImageAsync(_mediaFile.GetStream(), $"{App.Username}(TempImageEdit)");
+                if (await UploadImageAsync(_mediaFile.GetStream(), $"{App.Username}(TempImage)"))
+                {
+                    await DisplayAlert("Uploaded", "Image uploaded to Blob Storage Successfully!", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Upload failed :(", "Image failed to upload to the server for some reason. Try again later?", "OK");
+                }
             }
         }
 
@@ -100,10 +107,20 @@ namespace DogsIRL
         public async Task<bool> UploadImageAsync(Stream image, string fileName)
         {
             Busy();
+
+#if DEBUG
+            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
+            HttpClient client = new HttpClient(insecureHandler);
+#else
+            HttpClient client = new HttpClient();
+#endif
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
+
             HttpContent fileStreamContent = new StreamContent(image);
             fileStreamContent.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data") { Name = "file", FileName = fileName };
-            fileStreamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
-            using (var client = new HttpClient())
+            fileStreamContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
+
             using (var formData = new MultipartFormDataContent())
             {
                 formData.Add(fileStreamContent);
