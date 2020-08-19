@@ -50,22 +50,9 @@ namespace DogsIRL
             HttpClient client = new HttpClient();
 #endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
-            var response = await client.GetStringAsync($"{App.ApiUrl}/petcards");
-            var pets = JsonConvert.DeserializeObject<List<PetCard>>(response);
-            var otherPets = pets.Where(pet => pet.Owner != owner).ToList();
-
-            int randomPetIndex = RandomNumber(0, otherPets.Count);
-            
-            return otherPets[randomPetIndex];
-        }
-
-        /// <summary>
-        /// A method to generate random number
-        /// </summary>
-        int RandomNumber(int min, int max)
-        {
-            Random random = new Random();
-            return random.Next(min, max);
+            var response = await client.GetStringAsync($"{App.ApiUrl}/petcards/random");
+            //TODO: return only a dog that doesn't belong to the user
+            return JsonConvert.DeserializeObject<PetCard>(response);
         }
 
         /// <summary>
