@@ -39,13 +39,13 @@ namespace DogsIRL.Services
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 App.Username = userSignIn.UserName;
-                string token = await response.Content.ReadAsStringAsync();
-                App.Token = token;
+                string responseContent = await response.Content.ReadAsStringAsync();
+                LoginJwt loginJwt = JsonConvert.DeserializeObject<LoginJwt>(responseContent);
+                App.Token = loginJwt.Jwt;
             }
             return response;
         }
 
-        ///!!!!!!!!!!!!!TODO!!!!!!!!!!
         /// <summary>
         /// 
         /// </summary>
