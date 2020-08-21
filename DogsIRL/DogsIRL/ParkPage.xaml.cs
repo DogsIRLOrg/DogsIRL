@@ -124,13 +124,6 @@ namespace DogsIRL
         {
             Busy();
             await AddToCollection(OtherDog.ID);
-#if DEBUG
-            HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
-            HttpClient client = new HttpClient(insecureHandler);
-#else
-            HttpClient client = new HttpClient();
-#endif
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
             await Navigation.PushAsync(new ProfileView());
             NotBusy();
         }
