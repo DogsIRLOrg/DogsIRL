@@ -69,8 +69,19 @@ namespace DogsIRL
             HttpClient client = new HttpClient();
 #endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
-            var response = await client.GetStringAsync($"{App.ApiUrl}/interaction/random");
-            Interaction randomInteraction = JsonConvert.DeserializeObject<Interaction>(response);
+
+            DogNamePair dogNames = new DogNamePair
+            {
+                CurrentDogName = currentDog.Name,
+                OtherDogName = otherDog.Name
+            };
+            var dogNamesJson = JsonConvert.SerializeObject(dogNames);
+            HttpContent dogNamesContent = new StringContent(dogNamesJson);
+            dogNamesContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            
+            var response = await client.PostAsync($"{App.ApiUrl}/interaction/random", dogNamesContent);
+            string stringContent = await response.Content.ReadAsStringAsync();
+            Interaction randomInteraction = JsonConvert.DeserializeObject<Interaction>(stringContent);
 
             LineOne.Text = randomInteraction.OpeningLine;
             LineTwo.Text = randomInteraction.OpeningLineOther;
