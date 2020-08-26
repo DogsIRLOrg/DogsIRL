@@ -160,7 +160,7 @@ namespace DogsIRL
             HttpClient client = new HttpClient();
 #endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
-            var response = await client.GetStringAsync($"{App.ApiUrl}/petcards/{currentDogId}");
+            var response = await client.GetStringAsync($"{App.ApiUrl}/petcards/mypets/{currentDogId}");
             var currentPet = JsonConvert.DeserializeObject<PetCard>(response);
 
             petname.Text = currentPet.Name;
