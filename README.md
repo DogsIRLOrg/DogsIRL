@@ -15,7 +15,7 @@ DogsIRL allows pet owners and dog lovers to share their pet pictures, meet and i
 
 That's right: infinite dogs. ♾🐶
 
-Dog owners are active, so it feels important to us that our application live in the mobile space. To support that mobile application, we have built a backend RESTful API in ASP.NET Core to fulfill the demand for pups. We securely store user data using Microsoft's Identity Server, and host our backend and databases on Microsoft Azure.
+Dog owners are active, so it feels important to us that our application live in the mobile space. To support that mobile application, we have built a backend RESTful API in ASP.NET Core to fulfill the demand for pups. We securely store user data using Microsoft's Identity, and host our backend and databases on Microsoft Azure.
 
 [Link to the Github Project for our backend API](https://github.com/401FinalProjectOrg/DogsIRL-API)
 
