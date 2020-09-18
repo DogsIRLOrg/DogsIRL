@@ -139,6 +139,26 @@ namespace DogsIRL
             NotBusy();
         }
 
+        async void CurrentDogSwiped(System.Object sender, System.EventArgs e)
+        {
+            Petting petting = new Petting
+            {
+                Username = App.Username,
+                PetCardId = App.CurrentDog.ID,
+                DateTimePetted = DateTime.Now
+            };
+        }
+
+        async void OtherDogSwiped(System.Object sender, System.EventArgs e)
+        {
+            Petting petting = new Petting
+            {
+                Username = App.Username,
+                PetCardId = OtherDog.ID,
+                DateTimePetted = DateTime.Now
+            };
+        }
+
         /// <summary>
         /// Method to logout.
         /// </summary>
@@ -148,6 +168,8 @@ namespace DogsIRL
             _apiAccountService = new ApiAccountService();
            await _apiAccountService.Logout();
         }
+
+
 
         public void Busy()
         {

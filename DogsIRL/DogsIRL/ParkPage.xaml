@@ -33,9 +33,19 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label x:Name="CurrentDogName" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" FontSize="Large"/>
-                        <Image x:Name="CurrentDogImage" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
-                        <Label x:Name="OtherDogName" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" FontSize="Large"/>
-                        <Image x:Name="OtherDogImage" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
+                    <Image x:Name="CurrentDogImage" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left,Right" Swiped="CurrentDogSwiped"/>
+                            <SwipeGestureRecognizer Direction="Up, Down" Swiped="CurrentDogSwiped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="OtherDogName" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" FontSize="Large"/>
+                    <Image x:Name="OtherDogImage" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center">
+                        <Image.GestureRecognizers>
+                            <SwipeGestureRecognizer Direction="Left,Right" Swiped="OtherDogSwiped"/>
+                            <SwipeGestureRecognizer Direction="Up, Down" Swiped="OtherDogSwiped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                  </Grid>
                 <ActivityIndicator x:Name="loadingIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />
                  <Button Text="Interact"

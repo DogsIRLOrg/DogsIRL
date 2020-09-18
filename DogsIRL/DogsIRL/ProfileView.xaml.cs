@@ -16,8 +16,6 @@ namespace DogsIRL
 {
     public partial class ProfileView : ContentPage
     {
-        //HttpClient client = new HttpClient();
-        ObservableCollection<FileImageSource> imageSources = new ObservableCollection<FileImageSource>();
         private List<PetCard> PetList { get; set; }
         private List<PetCard> CollectedList { get; set; }
         private ApiAccountService _apiAccountService { get; set; }
@@ -145,6 +143,11 @@ namespace DogsIRL
             await Navigation.PushAsync(new DonatePage());
         }
 
+        public async void PrivacyButtonClicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new PrivacyPage());
+        }
+
         public void Busy()
         {
             loadingIndicator.IsVisible = true;
@@ -152,6 +155,7 @@ namespace DogsIRL
             CurrentDog.IsVisible = false;
             btnGoToPark.IsVisible = false;
             btnAddNewPet.IsVisible = false;
+            btnPrivacy.IsVisible = false;
         }
 
         /// <summary>
@@ -164,6 +168,7 @@ namespace DogsIRL
             CurrentDog.IsVisible = true;
             btnGoToPark.IsVisible = true;
             btnAddNewPet.IsVisible = true;
+            btnPrivacy.IsVisible = true;
 
         }
     }

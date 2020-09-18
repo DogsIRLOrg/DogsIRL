@@ -27,6 +27,7 @@ namespace DogsIRL
             InitializeComponent();
             ApiAccountService = new ApiAccountService();
         }
+
         /// <summary>
         /// Checks input username and password, if a match is found in database, logs user in.
         /// </summary>
@@ -54,7 +55,6 @@ namespace DogsIRL
             NotBusy();
         }
 
-        
         /// <summary>
         /// Takes current user to a register page.
         /// </summary>
@@ -74,6 +74,11 @@ namespace DogsIRL
             NotBusy();
         }
 
+        async void PrivacyButtonOnClicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new PrivacyPage());
+        }
+
         public void Busy()
         {
             loadingIndicator.IsVisible = true;
@@ -82,9 +87,11 @@ namespace DogsIRL
             btnCreate.IsVisible = false;
             btnSignIn.IsVisible = false;
             btnForgot.IsVisible = false;
+            btnPrivacy.IsVisible = false;
             btnCreate.IsEnabled = false;
             btnForgot.IsEnabled = false;
             btnSignIn.IsEnabled = false;
+            btnPrivacy.IsEnabled = false;
         }
 
         /// <summary>
@@ -98,9 +105,11 @@ namespace DogsIRL
             btnCreate.IsVisible = true;
             btnSignIn.IsVisible = true;
             btnForgot.IsVisible = true;
+            btnPrivacy.IsVisible = true;
             btnCreate.IsEnabled = true;
             btnForgot.IsEnabled = true;
             btnSignIn.IsEnabled = true;
+            btnPrivacy.IsEnabled = true;
         }
     }
 }
