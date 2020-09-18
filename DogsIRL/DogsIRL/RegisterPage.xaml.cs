@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using DogsIRL.Models;
 using DogsIRL.Services;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
@@ -42,8 +43,8 @@ namespace DogsIRL
                 if (!response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    List<IdentityError> errors = JsonConvert.DeserializeObject<List<IdentityError>>(content);
-                    foreach (IdentityError error in errors)
+                    var result = JsonConvert.DeserializeObject<RegisterResponse>(content);
+                    foreach (IdentityError error in result.Errors)
                     {
                         await DisplayAlert("Registration failed", error.Description, "Return");
                     }
@@ -54,7 +55,6 @@ namespace DogsIRL
                     Password = password.Text
                };
                 await DisplayAlert("Confirm Email", "Please check your email for a confirmation link in order to log in.", "Go to Login Page");
-                // await _apiAccountService.RequestLogin(signIn);
                 await Navigation.PopToRootAsync();
 
             }

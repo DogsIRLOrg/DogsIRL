@@ -131,6 +131,9 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                <Button Text="Privacy"
+                        x:Name="btnPrivacy"
+                        Clicked="PrivacyButtonClicked"/>
             </StackLayout>
             
         </ScrollView>

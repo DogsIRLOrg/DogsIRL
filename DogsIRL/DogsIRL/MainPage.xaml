@@ -18,7 +18,6 @@
                 x:Name="btnSignIn"
                 Clicked="OnButtonClicked" />
 
-
         <Label x:Name="textOr" Text="-----Or-----" FontSize="20"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="EndAndExpand" />
@@ -32,6 +31,11 @@
                 x:Name="btnCreate"
                 HorizontalOptions="FillAndExpand"
                 Clicked="RegisterButtonOnClicked"  />
-    </StackLayout>
+
+        <Button Text="Privacy"
+                x:Name="btnPrivacy"
+                Clicked="PrivacyButtonOnClicked" />
+
+        </StackLayout>
     </ScrollView>
 </ContentPage>
