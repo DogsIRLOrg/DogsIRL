@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DogsIRL.Models
 {
-    class RegisterResponse
+    public class RegisterResponse
     {
         public IEnumerable<IdentityError> Errors { get; set; }
     }

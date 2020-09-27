@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -40,21 +41,17 @@ namespace DogsIRL
 
                 var response = await _apiAccountService.RequestRegister(model);
 
-                if (!response.IsSuccessStatusCode)
+                if(response == null)
                 {
-                    string content = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<RegisterResponse>(content);
-                    foreach (IdentityError error in result.Errors)
-                    {
-                        await DisplayAlert("Registration failed", error.Description, "Return");
-                    }
+                    await DisplayAlert("Couldn't register", "Oh no we couldn't register! Check the page for any issues with your info!", "Ok");
                     return;
                 }
-                var signIn = new UserSignIn {
-                    UserName = username.Text,
-                    Password = password.Text
-               };
-                await DisplayAlert("Confirm Email", "Please check your email for a confirmation link in order to log in.", "Go to Login Page");
+                foreach (IdentityError error in response.Errors)
+                {
+                    await DisplayAlert("Registration failed", error.Description, "Return");
+                }
+
+                await DisplayAlert("Success!", "Please check your email for a confirmation link in order to log in.", "Go to Login Page");
                 await Navigation.PopToRootAsync();
 
             }
