@@ -8,5 +8,6 @@ namespace DogsIRL.Models
     {
         public string Jwt { get; set; }
         public DateTime Expiration { get; set; }
+        public string Username { get; set; }
     }
 }
