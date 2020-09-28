@@ -32,15 +32,16 @@ namespace DogsIRL.Services
         /// <returns>HttpResponseMessage</returns>
         public async Task<HttpResponseMessage> RequestLogin(UserSignIn userSignIn)
         {
+            userSignIn.UserName = userSignIn.UserName.ToUpper();
             var json = JsonConvert.SerializeObject(userSignIn);
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var response = await Client.PostAsync($"{App.ApiUrl}/account/login", content);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                App.Username = userSignIn.UserName;
                 string responseContent = await response.Content.ReadAsStringAsync();
                 LoginJwt loginJwt = JsonConvert.DeserializeObject<LoginJwt>(responseContent);
+                App.Username = loginJwt.Username;
                 App.Token = loginJwt.Jwt;
             }
             return response;
