@@ -50,7 +50,7 @@ namespace DogsIRL
             }
             else
             {
-                await DisplayAlert("Failed Login Attempt", "Something has gone horribly wrong. Its probably your fault", "Try Again");
+                await DisplayAlert("Failed Login Attempt", "Oh no! Check your username and password are correct, and that you've confirmed your email.", "Try Again");
             }
             NotBusy();
         }

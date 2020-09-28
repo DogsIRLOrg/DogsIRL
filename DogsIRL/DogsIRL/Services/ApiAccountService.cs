@@ -51,15 +51,19 @@ namespace DogsIRL.Services
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<HttpResponseMessage> RequestRegister(RegisterInput input)
+        public async Task<RegisterResponse> RequestRegister(RegisterInput input)
         {
             var json = JsonConvert.SerializeObject(input);
             HttpContent httpContent = new StringContent(json);
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var response = await Client.PostAsync(
-                $"{App.ApiUrl}/account/register", httpContent);
-
-            return response;
+            var response = await Client.PostAsync($"{App.ApiUrl}/account/register", httpContent);
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+            string content = await response.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<RegisterResponse>(content);
+            return result;
         }
 
         /// <summary>
