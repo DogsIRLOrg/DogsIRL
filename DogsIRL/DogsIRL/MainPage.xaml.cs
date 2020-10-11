@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using DogsIRL.Models;
-using Newtonsoft.Json;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using DogsIRL.Services;
 
@@ -28,6 +19,12 @@ namespace DogsIRL
             ApiAccountService = new ApiAccountService();
         }
 
+        protected override async void OnAppearing()
+        {
+            Password.Text = String.Empty;
+            ApiAccountService.Logout();
+        }
+
         /// <summary>
         /// Checks input username and password, if a match is found in database, logs user in.
         /// </summary>
@@ -44,8 +41,6 @@ namespace DogsIRL
             var result = await ApiAccountService.RequestLogin(signInUser);
             if (result.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                //var token = await ApiAccountService.RequestJwtTokenFromApi();
-                //App.Token = token;
                 await Navigation.PushAsync(new ProfileView());
             }
             else
@@ -92,6 +87,7 @@ namespace DogsIRL
             btnForgot.IsEnabled = false;
             btnSignIn.IsEnabled = false;
             btnPrivacy.IsEnabled = false;
+            labelVersion.IsVisible = false;
         }
 
         /// <summary>
@@ -110,6 +106,7 @@ namespace DogsIRL
             btnForgot.IsEnabled = true;
             btnSignIn.IsEnabled = true;
             btnPrivacy.IsEnabled = true;
+            labelVersion.IsVisible = true;
         }
     }
 }

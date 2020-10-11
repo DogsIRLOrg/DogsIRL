@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using DogsIRL.Models;
 using DogsIRL.Services;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 
 namespace DogsIRL
@@ -29,8 +21,10 @@ namespace DogsIRL
         /// </summary>
         async void OnButtonClicked(System.Object sender, System.EventArgs e)
         {
+            
             if (!string.IsNullOrWhiteSpace(username.Text) && !string.IsNullOrWhiteSpace(email.Text))
             {
+                Busy();
                 var model = new RegisterInput
                 {
                     Username = username.Text,
@@ -40,21 +34,32 @@ namespace DogsIRL
                 };
 
                 var response = await _apiAccountService.RequestRegister(model);
-
-                if(response == null)
+                NotBusy();
+                if (response.Errors != null)
                 {
-                    await DisplayAlert("Couldn't register", "Oh no we couldn't register! Check the page for any issues with your info!", "Ok");
+                    foreach (string error in response.Errors)
+                    {
+                        await DisplayAlert("Registration failed", error, "Return");
+                    }
                     return;
                 }
-                foreach (IdentityError error in response.Errors)
-                {
-                    await DisplayAlert("Registration failed", error.Description, "Return");
-                }
-
                 await DisplayAlert("Success!", "Please check your email for a confirmation link in order to log in.", "Go to Login Page");
                 await Navigation.PopToRootAsync();
-
             }
+        }
+
+        public void Busy()
+        {
+            loadingIndicator.IsVisible = true;
+            loadingIndicator.IsRunning = true;
+            btnRegister.IsVisible = false;
+        }
+
+        public void NotBusy()
+        {
+            loadingIndicator.IsVisible = false;
+            loadingIndicator.IsRunning = false;
+            btnRegister.IsVisible = true;
         }
     }
 }

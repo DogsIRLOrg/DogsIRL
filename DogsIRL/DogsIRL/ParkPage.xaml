@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.ParkPage">
+<ContentPage Title="Park" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.ParkPage">
     <ContentPage.Resources>
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>
@@ -12,17 +12,38 @@
     </ContentPage.ToolbarItems> 
     <ContentPage.Content>
         <ScrollView>
+            
         <StackLayout>
-                <Image Source="DogPark.png" Opacity="0.5"
-                 RelativeLayout.WidthConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
-                RelativeLayout.HeightConstraint=
-                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
-                <Label x:Name="LineOne" HorizontalOptions="Start" Padding="10" FontSize="Medium"></Label>
-                <Label x:Name="LineTwo" HorizontalOptions="End" Padding="10" FontSize="Medium"></Label>
-                <Label x:Name="LineThree" HorizontalOptions="Start" Padding="10" FontSize="Medium"></Label>
-                <Label x:Name="LineFour" HorizontalOptions="End" Padding="10" FontSize="Medium"></Label>
-                <Label x:Name="LineFive" HorizontalOptions="Start" Padding="10" FontSize="Medium"></Label>
+                
+                <Grid>
+                    <Image Source="DogPark.png"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Opacity="0.2"/>
+                    <StackLayout Padding="5" Grid.Row="0"
+                                 Grid.Column="0">
+                        <Label x:Name="LineOne" 
+                               HorizontalOptions="Start" 
+                               Padding="5" 
+                               FontSize="Medium"/>
+                        <Label x:Name="LineTwo" 
+                               HorizontalOptions="End" 
+                               Padding="5" 
+                               FontSize="Medium"/>
+                        <Label x:Name="LineThree" 
+                               HorizontalOptions="Start" 
+                               Padding="5" 
+                               FontSize="Medium"/>
+                        <Label x:Name="LineFour" 
+                               HorizontalOptions="End" 
+                               Padding="5" 
+                               FontSize="Medium"/>
+                        <Label x:Name="LineFive" 
+                               HorizontalOptions="Start" 
+                               Padding="5" 
+                               FontSize="Medium"/>
+                    </StackLayout>
+                </Grid>
                 <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>

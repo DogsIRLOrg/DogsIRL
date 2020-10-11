@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"   
+<ContentPage Title="My Profile" xmlns="http://xamarin.com/schemas/2014/forms"   
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"   
              xmlns:local="clr-namespace:DogsIRL"  
              x:Class="DogsIRL.ProfileView">
@@ -18,14 +18,14 @@
 </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
+            <StackLayout Padding="5">
                 <ActivityIndicator x:Name="loadingIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />
-                <Label Text="My Profile:" FontSize="Title"></Label>
+                <StackLayout x:Name="stackLoadedContent">
                 <CollectionView ItemsLayout="HorizontalList" x:Name="petCardsList" HeightRequest="400">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ContentView x:Name="contentView">
-                            <Grid RowSpacing="0" Margin="5">
+                        <ContentView x:Name="contentView" Padding="5" WidthRequest="250">
+                            <Grid RowSpacing="2" Padding="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
@@ -33,8 +33,6 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="150" />
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -50,30 +48,26 @@
                                     </Frame>
                                             
                                 <Label TextColor="Black" Padding="5" Text="{Binding Name}" FontSize="Large" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="0"></Label>
-                                <Frame Padding="1" Margin="1" IsClippedToBounds="True" CornerRadius="30"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.RowSpan="11" BackgroundColor="Transparent" >
+                                <Frame Padding="1" Margin="1" IsClippedToBounds="True" CornerRadius="30"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.RowSpan="9" BackgroundColor="Transparent" >
                                     <Image Source="boneBg.png" Aspect="AspectFill"/>
-                                    </Frame>
-                                <Frame Padding="0" Margin="0" IsClippedToBounds="True" CornerRadius="10"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="Transparent" >
-                                  <Image Source="{Binding ImageURL}" VerticalOptions="FillAndExpand"/>
                                 </Frame>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Sex : " Grid.Column="0" Grid.Row="2"></Label>
-                                <Label TextColor="Black" Text="{Binding Sex}" Grid.Column="1" Grid.Row="2"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Owner : " Grid.Column="0" Grid.Row="3"></Label>
-                                <Label TextColor="Black" Text="{Binding Owner}" Grid.Column="1" Grid.Row="3"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Good Dog Rating : " Grid.Column="0" Grid.Row="4"></Label>
-                                <Label TextColor="Black" Text="{Binding GoodDog}" Grid.Column="1" Grid.Row="4"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Floofiness Rating : " Grid.Column="0" Grid.Row="5"></Label>
-                                <Label TextColor="Black" Text="{Binding Floofiness}" Grid.Column="1" Grid.Row="5"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Energy Rating : " Grid.Column="0" Grid.Row="6"></Label>
-                                <Label TextColor="Black" Text="{Binding Energy}" Grid.Column="1" Grid.Row="6"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Snuggles Rating : " Grid.Column="0" Grid.Row="7"></Label>
-                                <Label TextColor="Black" Text="{Binding Snuggles}" Grid.Column="1" Grid.Row="7"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Appetite Rating : " Grid.Column="0" Grid.Row="8"></Label>
-                                <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="8"></Label>
-                                <Label TextColor="Black" HorizontalOptions="End" Text="Bravery Rating : " Grid.Column="0" Grid.Row="9"></Label>
-                                <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="9"></Label>
+                                <Frame Padding="0" Margin="0" IsClippedToBounds="True" CornerRadius="10"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="Transparent" >
+                                    <Image Source="{Binding ImageURL}" VerticalOptions="FillAndExpand"/>
+                                </Frame>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Good Dog: " Grid.Column="0" Grid.Row="2"></Label>
+                                <Label TextColor="Black" Text="{Binding GoodDog}" Grid.Column="1" Grid.Row="2"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Floofiness: " Grid.Column="0" Grid.Row="3"></Label>
+                                <Label TextColor="Black" Text="{Binding Floofiness}" Grid.Column="1" Grid.Row="3"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Energy: " Grid.Column="0" Grid.Row="4"></Label>
+                                <Label TextColor="Black" Text="{Binding Energy}" Grid.Column="1" Grid.Row="4"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Snuggles: " Grid.Column="0" Grid.Row="5"></Label>
+                                <Label TextColor="Black" Text="{Binding Snuggles}" Grid.Column="1" Grid.Row="5"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Appetite: " Grid.Column="0" Grid.Row="6"></Label>
+                                <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="6"></Label>
+                                <Label TextColor="Black" HorizontalOptions="End" Text="Bravery: " Grid.Column="0" Grid.Row="7"></Label>
+                                <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="7"></Label>
                                 <Button x:Name="{Binding ID}" Text="Edit"
-                                Clicked="EditPetCardClicked" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="10"/>
+                                Clicked="EditPetCardClicked" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="8"/>
                             </Grid>
                             </ContentView>
                         </DataTemplate>
@@ -96,7 +90,9 @@
                         x:Name="btnAddNewPet"
                 HorizontalOptions="FillAndExpand"
                 Clicked="PetCardButtonClicked" />
-                <Label FontSize="Large" Text="My Collected Pet Cards:"></Label>
+                <Label Text="My Collected Pet Cards:"
+                       x:Name="labelCollectionTitle"
+                       FontSize="Large" />
                 <CollectionView x:Name="collectionList">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical"
@@ -105,29 +101,30 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <ContentView>
-                                <Frame Padding="2" Margin="2" IsClippedToBounds="True" Grid.Row="0" CornerRadius="25" Grid.ColumnSpan="1" Grid.RowSpan="3"  HorizontalOptions="Center" BackgroundColor="Transparent" >
-                            <Grid RowSpacing="0" BackgroundColor="Transparent">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                    <Image Margin="2" Source="boneBg.png" Aspect="AspectFill" BackgroundColor="White"/>
-                                <Frame StyleClass="Card,CollectionCard" HasShadow="False" BorderColor="#335470" BackgroundColor="Transparent">
-                            <StackLayout>
-                                <Label FontSize="Medium" HorizontalOptions="Center" Text="{Binding Name}" Grid.Row="0" Grid.ColumnSpan="1" BackgroundColor="Transparent"/>
-                                <Frame IsClippedToBounds="True" Grid.Row="0" Padding="0" Margin="0" CornerRadius="8">
-                                  <Image Source="{Binding ImageURL}" VerticalOptions="FillAndExpand" />
-                                </Frame>
-                            </StackLayout>
-                                   
-                                </Frame>
-                             </Grid>
+                                <Frame Padding="2" Margin="2" IsClippedToBounds="True" HorizontalOptions="Center" BackgroundColor="Transparent">
+                                    <Grid RowSpacing="0" BackgroundColor="Transparent">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                            
+                                            <Frame StyleClass="Card,CollectionCard" IsClippedToBounds="True" HasShadow="True" BorderColor="#335470" BackgroundColor="White">
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="CollectionCardTapped" CommandParameter="{Binding ID}"/>
+                                                </Frame.GestureRecognizers>
+                                                <StackLayout>
+                                                    <Label FontSize="Medium" HorizontalOptions="Center" Text="{Binding Name}" Grid.Row="0" Grid.ColumnSpan="1" BackgroundColor="Transparent"/>
+                                                    <Frame IsClippedToBounds="True" Grid.Row="0" Padding="0" Margin="0" CornerRadius="8">
+                                                        <Image Source="{Binding ImageURL}" VerticalOptions="FillAndExpand"/>
+                                                    </Frame>
+                                                </StackLayout>
+
+                                            </Frame>
+                                    </Grid>
                                     </Frame>
-                                </ContentView>
+                               </ContentView>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -135,7 +132,7 @@
                         x:Name="btnPrivacy"
                         Clicked="PrivacyButtonClicked"/>
             </StackLayout>
-            
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

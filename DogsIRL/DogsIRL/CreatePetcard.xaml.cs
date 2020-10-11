@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using DogsIRL.Models;
-using Microsoft.WindowsAzure.Storage;
 using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -269,7 +268,7 @@ namespace DogsIRL
             await Navigation.PopToRootAsync();
 
             _apiAccountService = new ApiAccountService();
-            await _apiAccountService.Logout();
+            _apiAccountService.Logout();
         }
 
         /// <summary>

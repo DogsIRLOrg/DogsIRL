@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -7,7 +6,6 @@ using System.Threading.Tasks;
 using DogsIRL.Models;
 using DogsIRL.Services;
 using Newtonsoft.Json;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace DogsIRL
@@ -135,7 +133,7 @@ namespace DogsIRL
         {
             Busy();
             await AddToCollection(OtherDog.ID);
-            await Navigation.PushAsync(new ProfileView());
+            await Navigation.PopAsync();
             NotBusy();
         }
 
@@ -165,8 +163,8 @@ namespace DogsIRL
         public async void LogoutClicked(System.Object sender, System.EventArgs e)
         {
            await Navigation.PopToRootAsync();
-            _apiAccountService = new ApiAccountService();
-           await _apiAccountService.Logout();
+           _apiAccountService = new ApiAccountService();
+           _apiAccountService.Logout();
         }
 
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.EditPetCard">
+<ContentPage Title="Edit Pet Card" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.EditPetCard">
     <ContentPage.Resources>
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>  
@@ -12,60 +12,194 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-               <StackLayout>
-                            <Label Text="Pet Name" FontSize="20" HorizontalOptions="Center" />
-        <Entry x:Name = "petname" PlaceholderColor="Gray" FontSize="15" />
-        <Picker  x:Name = "sex" Title="Boy Doggo or Girl Doggo?" >
-            <Picker.Items>
-                    <x:String>
-                        Boy Doggo
-                    </x:String>
-                    <x:String>
-                        Girl Doggo
-                    </x:String>
-            </Picker.Items>
-        </Picker>
+               <StackLayout Padding="5">
+                <Label Text="Pet Name" FontSize="20" HorizontalOptions="Center" />
+                <Entry x:Name = "petname" PlaceholderColor="Gray" FontSize="15" />
 
-         <Label Text="Age in Years" FontSize="20" HorizontalOptions="Center"/>
-        <Entry PlaceholderColor="Gray" x:Name = "ageyears" FontSize="15" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="btnSelectPic" 
+                            Grid.Row="0" 
+                            Grid.Column="0" 
+                            Text="Select picture" 
+                            Clicked="btnSelectPic_Clicked" 
+                            BackgroundColor="DodgerBlue" 
+                            TextColor="White" />
+                    <Button x:Name="btnTakePic" 
+                            Grid.Row="0" 
+                            Grid.Column="1" 
+                            Text="Take picture" 
+                            Clicked="btnTakePic_Clicked" 
+                            BackgroundColor="DodgerBlue" 
+                            TextColor="White" />
+                </Grid>
+                <Image x:Name="imageView" 
+                       HeightRequest="300" 
+                       WidthRequest="400" />
+                <ActivityIndicator x:Name="uploadIndicator" 
+                                   IsVisible="False" 
+                                   IsRunning="False" 
+                                   Color="DodgerBlue" />
+                <Button Text="Upload Image" 
+                        Clicked="btnUpload_Clicked" 
+                        x:Name="btnUpload" 
+                        BackgroundColor="Green" 
+                        TextColor="White" />
+                <Label x:Name="UploadedUrl" 
+                        TextColor="Black" 
+                        HeightRequest="85" 
+                        Text="https://dogsirlblob.blob.core.windows.net/dogsirl/main.png" 
+                        IsVisible="False"/>
 
-         <Label Text="Good Dog Rating" FontSize="20" HorizontalOptions="Center"/>
-        <Slider Value="5" Maximum="10" Minimum="1" x:Name="gooddog"></Slider>
+                <Label Text="Good Dog Rating" 
+                        FontSize="20" 
+                        HorizontalOptions="Center"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Bad dog"
+                           Grid.Row="0" Grid.Column="0"
+                           HorizontalOptions="Start"
+                           FontSize="Small"/>
+                    <Label Text="Good pup"
+                           Grid.Row="0" Grid.Column="1"
+                           HorizontalOptions="End"
+                           FontSize="Small"/>
+                </Grid>
+                <Slider Value="5"
+                        Maximum="10" 
+                        Minimum="1" 
+                        x:Name="gooddog">
+                </Slider>
 
-        <Label Text="Floofiness Rating" FontSize="20" HorizontalOptions="Center"/>
-        <Slider Value="5" Maximum="10" Minimum="1" x:Name="floofiness"></Slider>
+                <Label Text="Floofiness Rating" 
+                        FontSize="20" 
+                        HorizontalOptions="Center"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Sleek like seal"
+                           Grid.Row="0" Grid.Column="0"
+                           HorizontalOptions="Start"
+                           FontSize="Small"/>
+                    <Label Text="Floofball"
+                           Grid.Row="0" Grid.Column="1"
+                           HorizontalOptions="End"
+                           FontSize="Small"/>
+                </Grid>
+                <Slider Value="5" 
+                        Maximum="10" 
+                        Minimum="1" 
+                        x:Name="floofiness">
+                </Slider>
 
-        <Label Text="Energy Rating" FontSize="20" HorizontalOptions="Center"/>
-        <Slider Value="5" Maximum="10" Minimum="1" x:Name="energy"></Slider>
+                <Label Text="Energy Rating" FontSize="20" HorizontalOptions="Center"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Lazy Bones"
+                           Grid.Row="0" Grid.Column="0"
+                           HorizontalOptions="Start"
+                           FontSize="Small"/>
+                    <Label Text="Barely contained"
+                           Grid.Row="0" Grid.Column="1"
+                           HorizontalOptions="End"
+                           FontSize="Small"/>
+                </Grid>
+                <Slider Value="5" Maximum="10" Minimum="1" x:Name="energy"></Slider>
 
-        <Label Text="Snuggles Rating" FontSize="20" HorizontalOptions="Center"/>
-        <Slider Value="5" Maximum="10" Minimum="1" x:Name="snuggles"></Slider>
+                <Label Text="Snuggles Rating" FontSize="20" HorizontalOptions="Center"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="No snuggles"
+                           Grid.Row="0" Grid.Column="0"
+                           HorizontalOptions="Start"
+                           FontSize="Small"/>
+                    <Label Text="Loves to snuggle"
+                           Grid.Row="0" Grid.Column="1"
+                           HorizontalOptions="End"
+                           FontSize="Small"/>
+                </Grid>
+                <Slider Value="5" Maximum="10" Minimum="1" x:Name="snuggles"></Slider>
 
-        <Label Text="Appetite Rating" FontSize="20" HorizontalOptions="Center"/>
-        <Slider Value="5" Maximum="10" Minimum="1" x:Name="appetite"></Slider>
+                <Label Text="Appetite Rating" FontSize="20" HorizontalOptions="Center"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Extremely picky"
+                           Grid.Row="0" Grid.Column="0"
+                           HorizontalOptions="Start"
+                           FontSize="Small"/>
+                    <Label Text="Will eat anything"
+                           Grid.Row="0" Grid.Column="1"
+                           HorizontalOptions="End"
+                           FontSize="Small"/>
+                </Grid>
+                <Slider Value="5" Maximum="10" Minimum="1" x:Name="appetite"></Slider>
+                   
+                <Label Text="Bravery Rating" FontSize="20" HorizontalOptions="Center"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Total coward"
+                           Grid.Row="0" Grid.Column="0"
+                           HorizontalOptions="Start"
+                           FontSize="Small"/>
+                    <Label Text="Fears nothing"
+                           Grid.Row="0" Grid.Column="1"
+                           HorizontalOptions="End"
+                           FontSize="Small"/>
+                </Grid>
+                <Slider Value="5" Maximum="10" Minimum="1" x:Name="bravery"></Slider>
+                   
+                <Picker  x:Name = "sex" Title="Boy Doggo or Girl Doggo?" >
+                    <Picker.Items>
+                        <x:String>
+                            Boy Doggo
+                        </x:String>
+                        <x:String>
+                            Girl Doggo
+                        </x:String>
+                    </Picker.Items>
+                </Picker>
 
-        <Label Text="Bravery Rating" FontSize="20" HorizontalOptions="Center"/>
-        <Slider Value="5" Maximum="10" Minimum="1" x:Name="bravery"></Slider>
+                <Label Text="Age in Years" FontSize="20" HorizontalOptions="Center"/>
+                <Entry PlaceholderColor="Gray" x:Name = "ageyears" FontSize="15" />
 
-        <Grid>  
-        <Grid.ColumnDefinitions>  
-            <ColumnDefinition Width="*" />  
-        </Grid.ColumnDefinitions>  
-        <Grid.RowDefinitions>  
-            <RowDefinition Height="*" />  
-        </Grid.RowDefinitions>  
-        <Button x:Name="btnSelectPic" Grid.Row="0" Grid.Column="0" Text="Select picture" Clicked="btnSelectPic_Clicked" BackgroundColor="DodgerBlue" TextColor="White" />  
-        <Button x:Name="btnTakePic" Grid.Row="0" Grid.Column="1" Text="Take picture" Clicked="btnTakePic_Clicked" BackgroundColor="DodgerBlue" TextColor="White" />  
-    </Grid>  
-    <Image x:Name="imageView" HeightRequest="300" WidthRequest="400" />  
-    <ActivityIndicator x:Name="uploadIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />  
-    <Button Text="Upload to Blob" Clicked="btnUpload_Clicked" x:Name="btnUpload" BackgroundColor="Green" TextColor="White" />
-                <Editor x:Name="UploadedUrl" TextColor="Black" HeightRequest="85" Text="https://dogsirlblob.blob.core.windows.net/dogsirl/main.png" /> 
-
-        <Button Text="Update this pet"
-                Clicked="OnButtonClicked" />
-         <Button Text="Delete this pet"
-                Clicked="OnDeleteButtonClicked" />
+                <Button Text="Update this pet"
+                        Clicked="OnButtonClicked" />
+                <Button Text="Delete this pet"
+                        Clicked="OnDeleteButtonClicked" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
