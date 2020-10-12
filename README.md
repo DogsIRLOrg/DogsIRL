@@ -66,6 +66,8 @@ Security - Protecting users emails and passwords as they are stored. We will use
 *  *  *  *  *
 
 #### 🔨 Patch Notes
+October 12 - 2020 || 0.8 Released for testing
+
 August 9 - 2020 || Readme updated.
 
 May 22 - 2020 || App Created.
