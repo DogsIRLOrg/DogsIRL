@@ -17,7 +17,6 @@ namespace DogsIRL
 
         public App()
         {
-            Device.SetFlags(new string[] { "RadioButton_Experimental" });
             InitializeComponent();
             MainPage = new NavigationPage(new MainPage());
         }

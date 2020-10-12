@@ -4,8 +4,8 @@ using System.Text;
 
 namespace DogsIRL.Models
 {
-    public class RegisterResponse
+    public class ErrorResponse
     {
-        public IEnumerable<IdentityError> Errors { get; set; }
+        List<string> Errors { get; set; }
     }
 }

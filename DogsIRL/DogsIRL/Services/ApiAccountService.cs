@@ -1,13 +1,10 @@
-﻿using DogsIRL.Models;
-using Microsoft.AspNetCore.Http;
+﻿using System;
+using DogsIRL.Models;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 
 namespace DogsIRL.Services
 {
@@ -21,7 +18,7 @@ namespace DogsIRL.Services
             HttpClientHandler insecureHandler = GetInsecureHandler();
             Client = new HttpClient(insecureHandler);
 #else
-            HttpClient Client = new HttpClient();
+            Client = new HttpClient();
 #endif
         }
 
@@ -52,26 +49,64 @@ namespace DogsIRL.Services
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<RegisterResponse> RequestRegister(RegisterInput input)
+        public async Task<WebApiRegisterErrors> RequestRegister(RegisterInput input)
         {
             var json = JsonConvert.SerializeObject(input);
             HttpContent httpContent = new StringContent(json);
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             var response = await Client.PostAsync($"{App.ApiUrl}/account/register", httpContent);
+            WebApiRegisterErrors errors = new WebApiRegisterErrors();
             if (!response.IsSuccessStatusCode)
             {
-                return null;
+                string content = await response.Content.ReadAsStringAsync();
+                
+                if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    errors = JsonConvert.DeserializeObject<WebApiRegisterErrors>(content);
+                }
+                else if(response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                {
+                    WebApiRegisterModelErrors modelErrors = JsonConvert.DeserializeObject<WebApiRegisterModelErrors>(content);
+                    List<string> errorList = new List<string>();
+                    if(modelErrors.Errors.Username != null)
+                    {
+                        foreach (string error in modelErrors.Errors.Username)
+                        {
+                            errorList.Add(error);
+                        }
+                    }
+                    if(modelErrors.Errors.Email != null)
+                    {
+                        foreach (string error in modelErrors.Errors.Email)
+                        {
+                            errorList.Add(error);
+                        }
+                    }
+                    if(modelErrors.Errors.Password != null)
+                    {
+                        foreach (string error in modelErrors.Errors.Password)
+                        {
+                            errorList.Add(error);
+                        }
+                    }
+                    if(modelErrors.Errors.ConfirmPassword != null)
+                    {
+                        foreach (string error in modelErrors.Errors.ConfirmPassword)
+                        {
+                            errorList.Add(error);
+                        }
+                    }
+                    errors.Errors = errorList;
+                }
             }
-            string content = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<RegisterResponse>(content);
-            return result;
+            return errors;
         }
 
         /// <summary>
         /// Clears cached data for current user
         /// </summary>
         /// <returns></returns>
-        public async Task Logout()
+        public void Logout()
         {
             App.Username = null;
             App.CurrentDog = null;

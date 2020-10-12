@@ -1,41 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="DogsIRL.MainPage">
+<ContentPage Title="Welcome!" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="DogsIRL.MainPage">
     <ContentPage.Resources>
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>
     <ScrollView>
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Image Source="main.png"
-               HeightRequest="300" />
-        <Label Text="Username" FontSize="20" HorizontalOptions="Center" />
-        <Entry Text="" x:Name = "NameEntry" PlaceholderColor="Gray" FontSize="15" />
-        <Label Text="Password" FontSize="20" HorizontalOptions="Center"/>
-        <Entry PlaceholderColor="Gray" x:Name = "Password" IsPassword="true" FontSize="15" />
-        <ActivityIndicator x:Name="loadingIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />
+        <StackLayout Padding="5">
+            <Image Source="main.png"
+                   HeightRequest="250" />
+            <Label Text="Username" 
+                   FontSize="20" 
+                   HorizontalOptions="Start" />
+            <Entry Text="" 
+                   x:Name = "NameEntry" 
+                   PlaceholderColor="Gray" 
+                   FontSize="15" />
+            <Label Text="Password" 
+                   FontSize="20" 
+                   HorizontalOptions="Start"/>
+            <Entry PlaceholderColor="Gray" 
+                   x:Name = "Password" 
+                   IsPassword="true" 
+                   FontSize="15" />
+            <ActivityIndicator x:Name="loadingIndicator" 
+                               IsVisible="False" 
+                               IsRunning="False"
+                               Color="DodgerBlue" />
+            <Button Text="Sign In"
+                    x:Name="btnSignIn"
+                    Clicked="OnButtonClicked" />
 
-        <Button Text="Sign In"
-                x:Name="btnSignIn"
-                Clicked="OnButtonClicked" />
+            <Label x:Name="textOr" Text="-----Or-----" FontSize="20"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="EndAndExpand" />
 
-        <Label x:Name="textOr" Text="-----Or-----" FontSize="20"
-               HorizontalOptions="CenterAndExpand"
-               VerticalOptions="EndAndExpand" />
-
-        <Button Text="Forgot Password"
-                x:Name="btnForgot"
-                HorizontalOptions="FillAndExpand"
-                Clicked="ForgotPasswordButtonOnClicked"  />
-
-        <Button Text="Create New Account"
-                x:Name="btnCreate"
-                HorizontalOptions="FillAndExpand"
-                Clicked="RegisterButtonOnClicked"  />
-
-        <Button Text="Privacy"
-                x:Name="btnPrivacy"
-                Clicked="PrivacyButtonOnClicked" />
-
+            <Button Text="Create New Account"
+                    x:Name="btnCreate"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="RegisterButtonOnClicked"  />
+            <Button Text="Forgot Password"
+                    x:Name="btnForgot"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="ForgotPasswordButtonOnClicked"  />
+            <Button Text="Privacy"
+                    x:Name="btnPrivacy"
+                    Clicked="PrivacyButtonOnClicked" />
+            <Label Text="Version 0.8"
+                   x:Name="labelVersion"
+                   HorizontalOptions="Center"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

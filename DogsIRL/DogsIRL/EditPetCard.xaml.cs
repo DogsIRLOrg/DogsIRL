@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using DogsIRL.Models;
 using DogsIRL.Services;
-using Microsoft.WindowsAzure.Storage;
 using Newtonsoft.Json;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
@@ -184,7 +181,7 @@ namespace DogsIRL
             await Navigation.PopToRootAsync();
 
             _apiAccountService = new ApiAccountService();
-            await _apiAccountService.Logout();
+            _apiAccountService.Logout();
         }
 
         async void OnButtonClicked(System.Object sender, System.EventArgs e)

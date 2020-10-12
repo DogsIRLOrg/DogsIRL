@@ -1,20 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.RegisterPage">
+<ContentPage Title="Register" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DogsIRL.RegisterPage">
     <ContentPage.Resources>
-        <StyleSheet Source="/Assets/styles.css" />
+        <StyleSheet Source="/Assets/styles.css"/>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-         <Label Text="Username" FontSize="20" HorizontalOptions="Center" />
-        <Entry x:Name = "username" PlaceholderColor="Gray" FontSize="15" />
-        <Label Text="Email" FontSize="20" HorizontalOptions="Center"/>
-        <Entry PlaceholderColor="Gray" x:Name = "email" FontSize="15" />
-            <Label Text="Password" FontSize="20" HorizontalOptions="Center"/>
-        <Entry PlaceholderColor="Gray" x:Name = "password" IsPassword="true" FontSize="15" />
-            <Label Text="Confirm Password" FontSize="20" HorizontalOptions="Center"/>
-        <Entry PlaceholderColor="Gray" x:Name = "confirmPassword" IsPassword="true" FontSize="15" />
+         <Label Text="Username" 
+                FontSize="20" 
+                HorizontalOptions="Center" />
+        <Entry x:Name = "username" 
+               PlaceholderColor="Gray" 
+               FontSize="15" />
+        <Label Text="Email" 
+               FontSize="20" 
+               HorizontalOptions="Center"/>
+        <Entry PlaceholderColor="Gray" 
+               x:Name = "email" 
+               FontSize="15" />
+        <Label Text="Password" 
+               FontSize="20" 
+               HorizontalOptions="Center"/>
+        <Entry PlaceholderColor="Gray" 
+               x:Name = "password" 
+               IsPassword="true" 
+               FontSize="15" />
+        <Label Text="Confirm Password" 
+               FontSize="20" 
+               HorizontalOptions="Center"/>
+        <Entry PlaceholderColor="Gray" 
+               x:Name = "confirmPassword" 
+               IsPassword="true" 
+               FontSize="15" />
         <Button Text="Register!"
+                x:Name="btnRegister"
                 Clicked="OnButtonClicked" />
+        <ActivityIndicator x:Name="loadingIndicator" 
+                           IsVisible="False" 
+                           IsRunning="False" 
+                           Color="DodgerBlue" />
             </StackLayout>
     </ContentPage.Content>
 </ContentPage>

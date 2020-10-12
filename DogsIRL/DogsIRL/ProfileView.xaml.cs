@@ -4,11 +4,8 @@ using System.Net.Http;
 using DogsIRL.Models;
 using Newtonsoft.Json;
 using Xamarin.Forms;
-using System.Collections.ObjectModel;
-using Plugin.Connectivity;
 using System.Net.Http.Headers;
 using DogsIRL.Services;
-using Xamarin.Essentials;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,18 +21,21 @@ namespace DogsIRL
         public ProfileView()
         {
             InitializeComponent();
-            Busy();
             _apiAccountService = new ApiAccountService();
-            GetPetsOfCurrentUser();
-            GetCollectionOfCurrentUser();
-            NotBusy();
+        }
 
+        protected override async void OnAppearing()
+        {
+            Busy();
+            await GetPetsOfCurrentUser();
+            await GetCollectionOfCurrentUser();
+            NotBusy();
         }
 
         /// <summary>
         /// This method will get the current user's pet. If no pet exist, it will redirect to Create Petcard page.
         /// </summary>
-        public async void GetPetsOfCurrentUser()
+        public async Task GetPetsOfCurrentUser()
         {
 
 #if DEBUG
@@ -65,7 +65,7 @@ namespace DogsIRL
         /// <summary>
         /// This method will show all the petcards that has been collected by the user after interacting with other pet in the park.
         /// </summary>
-        public async void GetCollectionOfCurrentUser()
+        public async Task GetCollectionOfCurrentUser()
         {
 #if DEBUG
             HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
@@ -111,7 +111,7 @@ namespace DogsIRL
         {
             await Navigation.PopToRootAsync();
             _apiAccountService = new ApiAccountService();
-            await _apiAccountService.Logout();
+            _apiAccountService.Logout();
         }
 
         public async void EditPetCardClicked(System.Object sender, System.EventArgs e)
@@ -138,6 +138,15 @@ namespace DogsIRL
             NotBusy();
         }
 
+        private async void CollectionCardTapped(object sender, EventArgs e)
+        {
+            Frame tappedFrame = (Frame)sender;
+            var recognizer = (TapGestureRecognizer)tappedFrame.GestureRecognizers[0];
+            int cardId = (int)recognizer.CommandParameter;
+            PetCard tappedCard = CollectedList.FirstOrDefault(pc => pc.ID == cardId);
+            await Navigation.PushAsync(new PetCardDetailPage(tappedCard));
+        }
+
         public async void DonateClicked(System.Object sender, System.EventArgs e)
         {
             await Navigation.PushAsync(new DonatePage());
@@ -152,10 +161,7 @@ namespace DogsIRL
         {
             loadingIndicator.IsVisible = true;
             loadingIndicator.IsRunning = true;
-            CurrentDog.IsVisible = false;
-            btnGoToPark.IsVisible = false;
-            btnAddNewPet.IsVisible = false;
-            btnPrivacy.IsVisible = false;
+            stackLoadedContent.IsVisible = false;
         }
 
         /// <summary>
@@ -165,11 +171,7 @@ namespace DogsIRL
         {
             loadingIndicator.IsVisible = false;
             loadingIndicator.IsRunning = false;
-            CurrentDog.IsVisible = true;
-            btnGoToPark.IsVisible = true;
-            btnAddNewPet.IsVisible = true;
-            btnPrivacy.IsVisible = true;
-
+            stackLoadedContent.IsVisible = true;
         }
     }
 }
