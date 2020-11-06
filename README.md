@@ -1,4 +1,4 @@
-![Main Logo](/assets/main.png)
+![Main Logo](/assets/DogsIRL-logo.png)
 
 ## 🐶 Authors 
 - Andrew Casper
