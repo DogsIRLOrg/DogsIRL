@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage Title="Welcome!" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="DogsIRL.MainPage">
+<ContentPage Title="" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="DogsIRL.MainPage" NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>
     <ScrollView>
         <StackLayout Padding="5">
-            <Image Source="main.png"
-                   HeightRequest="250" />
+            <Image Source="DogsIRLlogo.png"
+                   HeightRequest="250" 
+                   Margin="0, 30, 0, 30"/>
             <Label Text="Username" 
                    FontSize="20" 
                    HorizontalOptions="Start" />

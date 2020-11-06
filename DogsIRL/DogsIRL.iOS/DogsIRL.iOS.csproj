@@ -159,4 +159,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\donate.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DogsIRL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mainLogout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DogsIRLlogo.png" />
+  </ItemGroup>
 </Project>
