@@ -245,6 +245,12 @@ namespace DogsIRL
                 Bravery = (sbyte)bravery.Value
 
             };
+
+            bool result = await DisplayAlert("Delete?", $"Are you sure you want to delete the card for {model.Name}?", "DELETE", "Cancel");
+            if (!result)
+            {
+                return;
+            }
             var json = JsonConvert.SerializeObject(model);
             HttpContent httpContent = new StringContent(json);
             httpContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
