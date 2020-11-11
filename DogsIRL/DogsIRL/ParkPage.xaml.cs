@@ -28,7 +28,7 @@ namespace DogsIRL
         protected override async void OnAppearing()
         {
            
-            OtherDog = await GetRandomOtherDog(App.Username);
+            OtherDog = await GetRandomOtherDog(App.CurrentDog);
             OtherDogName.Text = OtherDog.Name;
             OtherDogImage.Source = OtherDog.ImageURL;
             CurrentDogName.Text = App.CurrentDog.Name;
@@ -39,7 +39,7 @@ namespace DogsIRL
         /// <summary>
         /// This method will generate random dog. We put owner in param so that it will grab anything other than that user's dog.
         /// </summary>
-        public async Task<PetCard> GetRandomOtherDog(string owner)
+        public async Task<PetCard> GetRandomOtherDog(PetCard currentDog)
         {
 #if DEBUG
             HttpClientHandler insecureHandler = _apiAccountService.GetInsecureHandler();
@@ -48,9 +48,12 @@ namespace DogsIRL
             HttpClient client = new HttpClient();
 #endif
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", App.Token);
-            var response = await client.GetStringAsync($"{App.ApiUrl}/petcards/random");
-            //TODO: return only a dog that doesn't belong to the user
-            return JsonConvert.DeserializeObject<PetCard>(response);
+            var dogNamesJson = JsonConvert.SerializeObject(currentDog);
+            HttpContent currentDogContent = new StringContent(dogNamesJson);
+            currentDogContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            var response = await client.PostAsync($"{App.ApiUrl}/petcards/randomOtherPet", currentDogContent);
+            var responseContent = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<PetCard>(responseContent);
         }
 
         /// <summary>
