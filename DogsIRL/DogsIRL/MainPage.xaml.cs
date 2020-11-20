@@ -78,7 +78,6 @@ namespace DogsIRL
         {
             loadingIndicator.IsVisible = true;
             loadingIndicator.IsRunning = true;
-            textOr.IsVisible = false;
             btnCreate.IsVisible = false;
             btnSignIn.IsVisible = false;
             btnForgot.IsVisible = false;
@@ -97,7 +96,6 @@ namespace DogsIRL
         {
             loadingIndicator.IsVisible = false;
             loadingIndicator.IsRunning = false;
-            textOr.IsVisible = true;
             btnCreate.IsVisible = true;
             btnSignIn.IsVisible = true;
             btnForgot.IsVisible = true;

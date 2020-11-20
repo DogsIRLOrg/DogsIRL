@@ -71,10 +71,12 @@
                 <ActivityIndicator x:Name="loadingIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />
                  <Button Text="Interact"
                          x:Name="btnInteract"
-                Clicked="OnInteractClicked" />
+                Clicked="OnInteractClicked" 
+                         BackgroundColor="#E5B557"/>
             <Button Text="Collect"
                     x:Name="btnCollect"
-                Clicked="OnCollectClicked" />
+                Clicked="OnCollectClicked" 
+                    BackgroundColor="#FF6666"/>
         </StackLayout>
      </ScrollView>
     </ContentPage.Content>

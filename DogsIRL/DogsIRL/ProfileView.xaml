@@ -79,7 +79,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                 <Picker SelectedIndexChanged="OnPickerSelectedIndexChanged" ItemsSource="{Binding PetList}" ItemDisplayBinding="{Binding Name}"
-                       SelectedItem="{Binding SelectedPet}" x:Name = "CurrentDog" Title="Select Dog" >
+                       SelectedItem="{Binding SelectedPet}" x:Name = "CurrentDog" Title="Select Dog                   ▼" >
                 </Picker>
                 <Button Grid.Column="1" Text="Go To Park"
                         x:Name="btnGoToPark"

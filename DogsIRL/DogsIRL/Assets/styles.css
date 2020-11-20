@@ -1,14 +1,13 @@
 ﻿^ContentPage {
-    background-color: #EEF9FC;
+    background-color: #EEFCFB;
 }
 
 ^Button {
-    background-color: #335470;
+    background-color: #ff6666;
     color: #fff;
 }
 
 ^Picker {
-    background-color: #335470;
     color: #fff;
 }
 
