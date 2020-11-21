@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="DogsIRL.PetCardDetailPage">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <Grid RowSpacing="5" Padding="20">
                 <Grid.ColumnDefinitions>
@@ -14,7 +15,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="400" />
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -45,5 +46,6 @@
                 <Label x:Name="LabelBravery" FontSize="Large" TextColor="Black" Grid.Column="1" Grid.Row="7"/>
             </Grid>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

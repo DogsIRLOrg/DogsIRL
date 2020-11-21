@@ -26,28 +26,39 @@
                                IsVisible="False" 
                                IsRunning="False"
                                Color="DodgerBlue" />
+
+            <Button Text="Forgot Password?"
+                    x:Name="btnForgot"
+                    HorizontalOptions="End"
+                    Clicked="ForgotPasswordButtonOnClicked" 
+                    TextColor="#3b3f51"
+                    FontSize="Micro"
+                    HeightRequest="30"
+                    BackgroundColor="#EEFCFB"/>
+
             <Button Text="Sign In"
                     x:Name="btnSignIn"
                     Clicked="OnButtonClicked" />
 
-            <Label x:Name="textOr" Text="-----Or-----" FontSize="20"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="EndAndExpand" />
+
 
             <Button Text="Create New Account"
                     x:Name="btnCreate"
                     HorizontalOptions="FillAndExpand"
-                    Clicked="RegisterButtonOnClicked"  />
-            <Button Text="Forgot Password"
-                    x:Name="btnForgot"
-                    HorizontalOptions="FillAndExpand"
-                    Clicked="ForgotPasswordButtonOnClicked"  />
+                    Clicked="RegisterButtonOnClicked" />
+
             <Button Text="Privacy"
                     x:Name="btnPrivacy"
-                    Clicked="PrivacyButtonOnClicked" />
+                    Clicked="PrivacyButtonOnClicked"
+                    TextColor="#3b3f51"
+                    FontSize="Small"
+                    BackgroundColor="#EEFCFB"/>
             <Label Text="Version 0.8"
                    x:Name="labelVersion"
-                   HorizontalOptions="Center"/>
+                   HorizontalOptions="Center"
+                   FontSize="Micro"
+
+                   />
         </StackLayout>
     </ScrollView>
 </ContentPage>
