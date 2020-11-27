@@ -41,14 +41,17 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Text="{Binding ID}" x:Name="CurrentID" IsVisible="false"/>
-                                    <Frame StyleClass="Card,PetCard" Grid.ColumnSpan="2" Grid.RowSpan="11" CornerRadius="30" BorderColor="#335470">
+                                        <Label Text="{Binding ID}" x:Name="CurrentID" IsVisible="false"/>
+                                        <Frame StyleClass="Card,PetCard" Grid.ColumnSpan="2" Grid.RowSpan="11" CornerRadius="30" BorderColor="#335470">
                                         <BoxView>
                                         </BoxView>
                                     </Frame>
-                                            
-                                <Label TextColor="Black" Padding="5" Text="{Binding Name}" FontSize="Large" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="0"></Label>
-                                <Frame Padding="1" Margin="1" IsClippedToBounds="True" CornerRadius="30"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.RowSpan="9" BackgroundColor="Transparent" >
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="0" Padding="5">
+                                            <Label TextColor="Black" Text="{Binding Name}" FontSize="Large"></Label>
+                                            <Label TextColor="Red" FontSize="Large" Margin="30, 0, 0, 0">♥</Label>
+                                            <Label TextColor="Black" Text="{Binding Collections}" FontSize="Large"></Label>
+                                        </StackLayout>
+                                        <Frame Padding="1" Margin="1" IsClippedToBounds="True" CornerRadius="30"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.RowSpan="9" BackgroundColor="Transparent" >
                                     <Image Source="boneBg.png" Aspect="AspectFill"/>
                                 </Frame>
                                 <Frame Padding="0" Margin="0" IsClippedToBounds="True" CornerRadius="10"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="Transparent" >
@@ -115,10 +118,15 @@
                                                     <TapGestureRecognizer Tapped="CollectionCardTapped" CommandParameter="{Binding ID}"/>
                                                 </Frame.GestureRecognizers>
                                                 <StackLayout>
+                                                    
                                                     <Label FontSize="Medium" HorizontalOptions="Center" Text="{Binding Name}" Grid.Row="0" Grid.ColumnSpan="1" BackgroundColor="Transparent"/>
                                                     <Frame IsClippedToBounds="True" Grid.Row="0" Padding="0" Margin="0" CornerRadius="8">
                                                         <Image Source="{Binding ImageURL}" VerticalOptions="FillAndExpand"/>
                                                     </Frame>
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                                        <Label TextColor="Red" FontSize="Medium" Margin="10, 0, 0, 0">♥</Label>
+                                                        <Label TextColor="Black" Text="{Binding Collections}" FontSize="Medium"></Label>
+                                                    </StackLayout>
                                                 </StackLayout>
 
                                             </Frame>

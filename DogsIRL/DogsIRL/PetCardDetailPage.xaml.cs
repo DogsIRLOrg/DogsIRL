@@ -23,6 +23,7 @@ namespace DogsIRL
         protected override void OnAppearing()
         {
             LabelName.Text = PetCard.Name;
+            LabelCollections.Text = PetCard.Collections.ToString();
             ImageElement.Source = PetCard.ImageURL;
             LabelGoodDog.Text = PetCard.GoodDog.ToString();
             LabelFloofiness.Text = PetCard.Floofiness.ToString();
