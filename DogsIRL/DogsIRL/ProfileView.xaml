@@ -66,7 +66,7 @@
                                 <Label TextColor="Black" Text="{Binding Appetite}" Grid.Column="1" Grid.Row="6"></Label>
                                 <Label TextColor="Black" HorizontalOptions="End" Text="Bravery: " Grid.Column="0" Grid.Row="7"></Label>
                                 <Label TextColor="Black" Text="{Binding Bravery}" Grid.Column="1" Grid.Row="7"></Label>
-                                <Button x:Name="{Binding ID}" Text="Edit"
+                                <Button x:Name="{Binding ID}" Text="Edit" HeightRequest="35" Margin="10"
                                 Clicked="EditPetCardClicked" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="8"/>
                             </Grid>
                             </ContentView>
