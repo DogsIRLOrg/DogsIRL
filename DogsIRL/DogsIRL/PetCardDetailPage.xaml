@@ -28,8 +28,12 @@
                     <BoxView>
                     </BoxView>
                 </Frame>
-                <Label x:Name="LabelName" TextColor="Black" Padding="5" FontSize="Large" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="0"/>
-                <Frame Padding="0" Margin="0" IsClippedToBounds="True" CornerRadius="10"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="Transparent" >
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="0">
+                        <Label TextColor="Black" x:Name="LabelName" FontSize="Large"></Label>
+                        <Label TextColor="Red" FontSize="Large" Margin="30, 0, 0, 0">♥</Label>
+                        <Label TextColor="Black" x:Name="LabelCollections" FontSize="Large"></Label>
+                    </StackLayout>
+                    <Frame Padding="0" Margin="0" IsClippedToBounds="True" CornerRadius="10"  HorizontalOptions="Center" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="Transparent" >
                     <Image x:Name="ImageElement" VerticalOptions="FillAndExpand"/>
                 </Frame>
                 <Label Text="Good Dog: " FontSize="Large" TextColor="Black" HorizontalOptions="End" Grid.Column="0" Grid.Row="2"/>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "848595195719",
+    "project_id": "dogs-irl-notifications",
+    "storage_bucket": "dogs-irl-notifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848595195719:android:844405dd3eb63c14261e62",
+        "android_client_info": {
+          "package_name": "com.theboys.dogsirl.dogsirl.apk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848595195719-ugilghrghbg113c95impb3sd8np9anrn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXERijV-eLkF0lH6NhI18wgufx8XbzN-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848595195719-ugilghrghbg113c95impb3sd8np9anrn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

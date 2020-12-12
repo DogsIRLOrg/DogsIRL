@@ -18,5 +18,6 @@ namespace DogsIRL.Models
         public sbyte Snuggles { get; set; }
         public sbyte Appetite { get; set; }
         public sbyte Bravery { get; set; }
+        public int Collections { get; set; }
     }
 }
