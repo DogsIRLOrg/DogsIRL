@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -11,7 +12,7 @@ namespace DogsIRL.Services
 {
     public class NotificationRegistrationService : INotificationRegistrationService
     {
-        const string RequestUrl = "api/notifications/installations";
+        const string RequestUrl = "notifications/installations";
         const string CachedDeviceTokenKey = "cached_device_token";
         const string CachedTagsKey = "cached_tags";
 
@@ -19,13 +20,13 @@ namespace DogsIRL.Services
         HttpClient _client;
         IDeviceInstallationService _deviceInstallationService;
 
-        public NotificationRegistrationService(string baseApiUri, string apiKey)
+        public NotificationRegistrationService(string baseApiUrl, string apiJwtToken)
         {
             _client = new HttpClient();
             _client.DefaultRequestHeaders.Add("Accept", "application/json");
-            _client.DefaultRequestHeaders.Add("apikey", apiKey);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiJwtToken);
 
-            _baseApiUrl = baseApiUri;
+            _baseApiUrl = baseApiUrl;
         }
 
         IDeviceInstallationService DeviceInstallationService
