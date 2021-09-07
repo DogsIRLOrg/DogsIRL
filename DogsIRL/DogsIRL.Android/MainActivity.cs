@@ -47,9 +47,9 @@ namespace DogsIRL.Droid
             Bootstrap.Begin(() => new DeviceInstallationService());
             if (DeviceInstallationService.NotificationsSupported)
             {
-                FirebaseInstanceId.GetInstance(Firebase.FirebaseApp.Instance)
-                    .GetInstanceId()
-                    .AddOnSuccessListener(this);
+                //FirebaseInstanceId.GetInstance(Firebase.FirebaseApp.Instance)
+                //    .GetInstanceId()
+                //    .AddOnSuccessListener(this);
             }
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

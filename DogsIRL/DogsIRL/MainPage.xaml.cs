@@ -13,13 +13,13 @@ namespace DogsIRL
     public partial class MainPage : ContentPage
     {
         ApiAccountService ApiAccountService { get; set; }
-        readonly INotificationRegistrationService _notificationRegistrationService;
+        //readonly INotificationRegistrationService _notificationRegistrationService;
         public MainPage()
         {
             InitializeComponent();
             ApiAccountService = new ApiAccountService();
-            _notificationRegistrationService =
-        ServiceContainer.Resolve<INotificationRegistrationService>();
+        //    _notificationRegistrationService =
+        //ServiceContainer.Resolve<INotificationRegistrationService>();
         }
 
         protected override async void OnAppearing()
@@ -44,12 +44,12 @@ namespace DogsIRL
             var result = await ApiAccountService.RequestLogin(signInUser);
             if (result.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                await _notificationRegistrationService.RegisterDeviceAsync().ContinueWith((task)
-        => {
-            DisplayAlert("Notification Status", task.IsFaulted ?
-               task.Exception.Message :
-               $"Device registered", "Ok");
-        });
+        //        await _notificationRegistrationService.RegisterDeviceAsync().ContinueWith((task)
+        //=> {
+        //    DisplayAlert("Notification Status", task.IsFaulted ?
+        //       task.Exception.Message :
+        //       $"Device registered", "Ok");
+        //});
                 await Navigation.PushAsync(new ProfileView());
             }
             else
